@@ -38,6 +38,7 @@ ggplot(cori_education,
   geom_line() +
   geom_point() +
   scale_color_cori(guide = guide_legend(reverse = TRUE)) +
+  scale_y_continuous(labels = scales::percent) +
   theme_minimal()
 ```
 
