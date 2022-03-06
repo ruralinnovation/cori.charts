@@ -1,11 +1,20 @@
 Package: cori.charts
-Title: What the Package Does (One Line, Title Case)
+Title: CORI data visualization themes
 Version: 0.0.0.9000
-Authors@R: 
-    person("Julia", "Silge", , "julia.silge@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Authors@R: c(
+    person("Camden", "Blatchly", , "camden.blatchly@ruralinnovation.us", role = c("aut", "cre")),
+    person("Julia", "Silge", , "julia.silge@gmail.com", role = "aut",
+           comment = c(ORCID = "0000-0002-3671-836X")),
+    person("Dashansh", "Prajapati", , "dashanshp@gmail.com", role = "aut"),
+    person("Meongsu", "Lee", , "muwizayeon@gmail.com", role = "aut"),
+    person("Harsh", "Josh", role = "aut"),
+    person("Matt", "Zdun", role = "aut")
+  )
+Description: Theming and colors for the Center for Rural Innovation data
+    visualization style.
+License: MIT + file LICENSE
+Imports: 
+    ggplot2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
