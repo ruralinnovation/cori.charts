@@ -37,6 +37,5 @@ cori_colors["Emerald"]
 cori_cols("Emerald")
 cori_palettes[["ctg2gn"]]
 cori_pal("ctg7")
-
 }
 \keyword{datasets}
