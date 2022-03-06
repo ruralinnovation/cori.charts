@@ -18,8 +18,6 @@ indicating a vertical threshold}
 \item{shift}{How much to shift the label in \code{shift} units above the
 threshold line along "y", or in \code{shift} units to the right of the
 threshold line along "x", defaults to 0}
-
-\item{...}{Other arguments passed to \code{\link[ggplot2:annotate]{ggplot2::annotate()}}}
 }
 \description{
 This is a utility function that allows the user to add a line threshold with
@@ -30,7 +28,7 @@ respect to the defined threshold value.
 \examples{
 
 library(ggplot2)
-update_cori_geom_defaults()
+
 ggplot(mtcars, aes(wt, mpg)) +
   geom_point() +
   geom_threshold_annotate(20, axis = "y", shift = 1, label = "20 mpg")

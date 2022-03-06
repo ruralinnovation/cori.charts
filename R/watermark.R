@@ -15,7 +15,7 @@
 geom_watermark <- function(alpha = 0.2) {
   m <- png::readPNG(system.file("img", "logo.png", package = "cori.charts"))
   img <- matrix(
-    rgb(m[, , 1], m[, , 2], m[, , 3], m[, , 4] * alpha),
+    grDevices::rgb(m[, , 1], m[, , 2], m[, , 3], m[, , 4] * alpha),
     nrow = dim(m)[1]
   )
   ggplot2::annotation_custom(

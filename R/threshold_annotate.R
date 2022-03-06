@@ -8,7 +8,7 @@
 #' @examples
 #'
 #' library(ggplot2)
-#' update_cori_geom_defaults()
+#'
 #' ggplot(mtcars, aes(wt, mpg)) +
 #'   geom_point() +
 #'   geom_threshold_annotate(20, axis = "y", shift = 1, label = "20 mpg")
@@ -20,27 +20,24 @@
 #' @param shift How much to shift the label in `shift` units above the
 #' threshold line along "y", or in `shift` units to the right of the
 #' threshold line along "x", defaults to 0
-#' @param ... Other arguments passed to [ggplot2::annotate()]
 #' @export
 geom_threshold_annotate <- function(intercept, axis = c("x", "y"),
                                     label = "", shift = 0) {
   rlang::arg_match(axis)
   if (axis == "x") {
     list(
-      geom_vline(xintercept = intercept),
-      annotate(
+      ggplot2::geom_vline(xintercept = intercept),
+      ggplot2::annotate(
         geom = "text", x = intercept + shift, y = Inf,
-        label = label, color = "#06BCCB", vjust = "top",
-        family = cori_font, ...
+        label = label, color = "#06BCCB", vjust = "top"
       )
     )
   } else {
     list(
-      geom_hline(yintercept = intercept),
-      annotate(
+      ggplot2::geom_hline(yintercept = intercept),
+      ggplot2::annotate(
         geom = "text", y = intercept + shift, x = Inf,
-        label = label, color = "#06BCCB", hjust = "right", size = 10.5,
-        family = cori_font, ...
+        label = label, color = "#06BCCB", hjust = "right", size = 10.5
       )
     )
   }
