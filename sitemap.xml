@@ -13,6 +13,12 @@
     <loc>https://ruralinnovation.github.io/cori.charts/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://ruralinnovation.github.io/cori.charts/articles/cori.charts.html</loc>
+  </url>
+  <url>
+    <loc>https://ruralinnovation.github.io/cori.charts/articles/index.html</loc>
+  </url>
+  <url>
     <loc>https://ruralinnovation.github.io/cori.charts/authors.html</loc>
   </url>
   <url>
@@ -41,5 +47,11 @@
   </url>
   <url>
     <loc>https://ruralinnovation.github.io/cori.charts/reference/scales.html</loc>
+  </url>
+  <url>
+    <loc>https://ruralinnovation.github.io/cori.charts/reference/theme_cori.html</loc>
+  </url>
+  <url>
+    <loc>https://ruralinnovation.github.io/cori.charts/reference/update_cori_geom_defaults.html</loc>
   </url>
 </urlset>
