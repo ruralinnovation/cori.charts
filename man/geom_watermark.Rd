@@ -20,5 +20,4 @@ cori_employment \%>\%
   ggplot(aes(estimate_pop_2014, estimate_pop_2019)) +
   geom_watermark(alpha = 0.1) +
   geom_point(size = 4, alpha = .6)
-
 }

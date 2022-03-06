@@ -10,7 +10,6 @@
 #'   ggplot(aes(estimate_pop_2014, estimate_pop_2019)) +
 #'   geom_watermark(alpha = 0.1) +
 #'   geom_point(size = 4, alpha = .6)
-#'
 #' @param alpha Opacity for the watermark, defaults to 0.2
 #' @export
 geom_watermark <- function(alpha = 0.2) {
