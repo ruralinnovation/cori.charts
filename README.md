@@ -9,8 +9,9 @@
 <!-- badges: end -->
 
 The goal of cori.charts is to make the process of creating
-publication-ready graphics and charts at the Center for Rural Innovation
-as easy as possible. Check out [the
+publication-ready graphics and charts at the [Center for Rural
+Innovation](https://ruralinnovation.us/) as easy as possible. Check out
+[the
 guidelines](https://www.figma.com/file/gaAFFK9UHvs4baFXDlOKKR/CORI-Design-Guideline),
 and then get started.
 
@@ -41,9 +42,12 @@ ggplot(cori_education,
   geom_line() +
   geom_point() +
   scale_color_cori(guide = guide_legend(reverse = TRUE)) +
-  scale_y_continuous(labels = scales::percent) +
-  labs(title = "Proportion working remotely",
-       subtitle = "By education level")
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b") +
+  scale_y_continuous(labels = scales::percent, limits = c(NA, 0.8)) +
+  labs(title = "Working remotely during 2021",
+       subtitle = "By education level",
+       x = NULL,
+       y = "Percentage %")
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
