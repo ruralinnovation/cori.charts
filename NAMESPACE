@@ -2,9 +2,12 @@
 
 export(cori_colors)
 export(cori_cols)
+export(cori_font)
 export(cori_pal)
 export(cori_palettes)
 export(scale_color_cori)
 export(scale_fill_cori)
+export(theme_cori)
 export(tthoves_install)
 export(tthoves_test)
+export(update_cori_geom_defaults)

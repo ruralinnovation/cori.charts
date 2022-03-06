@@ -7,13 +7,19 @@
 #' - `tthoves_install()` registers the TT Hoves font for use in R.
 #'
 #' @examples
+#' cori_font
 #' try(tthoves_test())
-#'
 #' @rdname fonts
 #' @export
 #'
+cori_font <- "TT Hoves"
+
+#' @rdname fonts
+#' @export
+#'
+
 tthoves_install <- function() {
-  if (sum(grepl("TT Hoves", extrafont::fonts())) > 0) {
+  if (sum(grepl(cori_font, extrafont::fonts())) > 0) {
     "TT Hoves font is already imported and registered."
   } else {
     extrafont::font_import(pattern = "TT Hoves")
@@ -26,7 +32,7 @@ tthoves_install <- function() {
 #' @export
 #'
 tthoves_test <- function() {
-  if (sum(grepl("TT Hoves", extrafont::fonts())) > 0) {
+  if (sum(grepl(cori_font, extrafont::fonts())) > 0) {
     rlang::inform("TT Hoves font is imported and registered.")
   } else {
     rlang::abort(c(
@@ -36,3 +42,4 @@ tthoves_test <- function() {
     ))
   }
 }
+

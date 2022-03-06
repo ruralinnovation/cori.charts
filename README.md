@@ -31,6 +31,9 @@ This is a basic example which shows the application of the CORI theme:
 ``` r
 library(ggplot2)
 library(cori.charts)
+theme_set(theme_cori())
+update_cori_geom_defaults()
+
 data("cori_education")
 
 ggplot(cori_education, 
@@ -39,7 +42,8 @@ ggplot(cori_education,
   geom_point() +
   scale_color_cori(guide = guide_legend(reverse = TRUE)) +
   scale_y_continuous(labels = scales::percent) +
-  theme_minimal(base_family = "TT Hoves")
+  labs(title = "Proportion working remotely",
+       subtitle = "By education level")
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />

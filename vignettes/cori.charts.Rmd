@@ -1,0 +1,55 @@
+---
+title: "Data visualization for the Center for Rural Innovation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Data visualization for the Center for Rural Innovation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(cori.charts)
+```
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(stringr)
+data(cori_poverty)
+
+cori_poverty %>%
+  mutate(
+    percent_below_poverty_2014 = estimate_below_poverty_level_2014 / estimate_pop_2014,
+    percent_below_poverty_2019 = estimate_below_poverty_level_2019 / estimate_pop_2019
+  ) %>%
+  pivot_longer(
+    contains("percent"),
+    names_to = "year",
+    values_to = "percent_below_poverty"
+  ) %>%
+  mutate(
+    year = str_remove(year, "percent_below_poverty_"),
+    rin_community = reorder(rin_community, percent_below_poverty)
+  ) %>%
+  ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
+  geom_col(position = "dodge") +
+  scale_fill_cori() +
+  scale_x_continuous(labels = scales::percent) +
+  labs(
+    title = "Percent below poverty level",
+    subtitle = "For select CORI communities",
+    y = NULL
+  ) +
+  theme_cori()
+
+```
+
