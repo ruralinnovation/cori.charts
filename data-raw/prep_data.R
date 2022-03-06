@@ -3,7 +3,7 @@
 library(tidyverse)
 
 cori_education <-
-  read_csv("data/time_series_sample_data.csv") %>%
+  read_csv("data-raw/time_series_sample_data.csv") %>%
   mutate(date = lubridate::mdy(date)) %>%
   pivot_longer(less_than_high_school:bachelors_or_higher,
                names_to = "education",
@@ -11,10 +11,10 @@ cori_education <-
   mutate(education = forcats::fct_inorder(education))
 usethis::use_data(cori_education, overwrite = TRUE)
 
-cori_communities <- read_csv("data/cori_network_communities.csv")
+cori_communities <- read_csv("data-raw/cori_network_communities.csv")
 usethis::use_data(cori_communities, overwrite = TRUE)
 
-population_sample <- read_csv("data/population_sample_data.csv") %>%
+population_sample <- read_csv("data-raw/population_sample_data.csv") %>%
   mutate(geoid = as.character(geoid),
          geoid = str_pad(geoid, width = 11, side = "left", pad = "0"),
          geoid_co = stringr::str_sub(geoid, start = 1, end = 5))
