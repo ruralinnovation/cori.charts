@@ -42,4 +42,3 @@ tthoves_test <- function() {
     ))
   }
 }
-

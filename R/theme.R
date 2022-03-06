@@ -57,18 +57,16 @@ theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
 
   # Legend attributes
   ret$legend.title <- ggplot2::element_blank()
-  ret$legend.position = "bottom"
-  ret$legend.justification = c(0,0)
+  ret$legend.position <- "bottom"
+  ret$legend.justification <- c(0, 0)
 
   ret
-
 }
 
 #' @rdname theme_cori
 #' @export
 #'
 theme_cori_horizontal_bars <- function(base_family = "TT Hoves", base_size = 12) {
-
   ret <- theme_cori(
     base_family = base_family,
     base_size = base_size
@@ -77,5 +75,4 @@ theme_cori_horizontal_bars <- function(base_family = "TT Hoves", base_size = 12)
   ret$panel.grid.major.y <- ggplot2::element_blank()
 
   ret
-
 }
