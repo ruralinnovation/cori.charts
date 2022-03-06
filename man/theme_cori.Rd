@@ -2,14 +2,17 @@
 % Please edit documentation in R/theme.R
 \name{theme_cori}
 \alias{theme_cori}
+\alias{theme_cori_horizontal_bars}
 \title{A \link{ggplot2} theme for the Center on Rural Innovation (CORI) style}
 \usage{
-theme_cori(base_family = "TT Hoves", base_font_size = 12)
+theme_cori(base_family = "TT Hoves", base_size = 12)
+
+theme_cori_horizontal_bars(base_family = "TT Hoves", base_size = 12)
 }
 \arguments{
 \item{base_family}{Font family that CORI employs, defaults to  "TT Hoves"}
 
-\item{base_font_size}{Base text font size, defaults to 12}
+\item{base_size}{Base text font size, defaults to 12}
 }
 \description{
 \code{theme_cori()} provides a \link{ggplot2} theme formatted according to the CORI

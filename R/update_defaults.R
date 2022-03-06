@@ -32,7 +32,7 @@ update_cori_geom_defaults <- function(base_family = "TT Hoves") {
 
   ggplot2::update_geom_defaults("point", list(colour = "#00835D", size = 3))
   ggplot2::update_geom_defaults("line", list(colour = "#00835D", size = 1.5, alpha = 0.8))
-  ggplot2::update_geom_defaults("rect", list(fill = "#00835D", alpha = 0.8))
+  ggplot2::update_geom_defaults("rect", list(fill = "#00835D", alpha = 0.9))
   ggplot2::update_geom_defaults("vline", list(colour = "#D2D6D7", size = 1.2, lty = 2))
   ggplot2::update_geom_defaults("hline", list(colour = "#D2D6D7", size = 1.2, lty = 2))
 }

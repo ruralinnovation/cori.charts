@@ -4,17 +4,18 @@
 #' style guide.
 #'
 #' @param base_family Font family that CORI employs, defaults to  "TT Hoves"
-#' @param base_font_size Base text font size, defaults to 12
+#' @param base_size Base text font size, defaults to 12
 #'
+#' @rdname theme_cori
 #' @export
 #'
-theme_cori <- function(base_family = "TT Hoves", base_font_size = 12) {
+theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
   black <- "#121E22"
   gray <- "#666666"
 
   ret <- ggplot2::theme_minimal(
     base_family = base_family,
-    base_size = base_font_size
+    base_size = base_size
   )
 
   # Panel Attributes
@@ -68,6 +69,25 @@ theme_cori <- function(base_family = "TT Hoves", base_font_size = 12) {
   ret$legend.title <- ggplot2::element_blank()
   ret$legend.position = "bottom"
   ret$legend.justification = c(0,0)
+
+  ret
+
+}
+
+#' @rdname theme_cori
+#' @export
+#'
+theme_cori_horizontal_bars <- function(base_family = "TT Hoves", base_size = 12) {
+
+  ret <- theme_cori(
+    base_family = base_family,
+    base_size = base_size
+  )
+
+  ret$panel.grid.major.y <- ggplot2::element_blank()
+  ret$axis.title.x <- ggplot2::element_text(
+    size = 10, vjust = 0, hjust = 0.04
+  )
 
   ret
 
