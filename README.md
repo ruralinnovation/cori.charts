@@ -48,7 +48,8 @@ ggplot(cori_education,
 
 <img src="man/figures/README-example-1.png" width="100%" />
 
-Check out the vignette for a cookbook of CORI-themed plots!
+Check out the vignette for a [cookbook of CORI-themed
+plots](https://ruralinnovation.github.io/cori.charts/articles/cookbook.html)!
 
 ## Contributing
 

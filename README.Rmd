@@ -52,7 +52,7 @@ ggplot(cori_education,
        subtitle = "By education level")
 ```
 
-Check out the vignette for a cookbook of CORI-themed plots!
+Check out the vignette for a [cookbook of CORI-themed plots](https://ruralinnovation.github.io/cori.charts/articles/cookbook.html)!
 
 ## Contributing
   

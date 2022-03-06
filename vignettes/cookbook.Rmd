@@ -49,6 +49,7 @@ cori_poverty %>%
   labs(
     title = "Percent below poverty level",
     subtitle = "For select CORI communities",
+    x = NULL,
     y = NULL
   ) +
   theme_cori()
