@@ -1,0 +1,62 @@
+﻿name,description
+geoid,Tract-level Census geographic identifier
+rural_ruca,Rurality flag for the tract-level Rural-Urban Commuting Area codes rural definition (1 = rural)
+rural_fhfa,Rurality flag for the tract-level Federal Housing Finance Agency rural definition
+rural_forhp,Rurality flag for the tract-level Federal Office of Rural Health Policy rural definition
+rural_rucc,Rurality flag for the county-level Rural-Urban Continuum Codes rural definition
+rural_uic,Rurality flag for the county-level Urban-Influence Codes rural definition
+rural_cdc,Rurality flag for the county-level Center for Disease Control rural definition
+rural_cbsa_2020,Rurality flag for the county-level 2020 Core-based Statistical Areas rural definition
+rural_cbsa_2013,Rurality flag for the county-level 2013 Core-based Statistical Areas rural definition
+rural_far,Rurality flag for the tract-level Frontier and Remote Area Codes rural definition
+estimate_agriculture_2014,"Population employed in agriculture, forestry, fishing, and hunting"
+estimate_agriculture_2019,"Population employed in agriculture, forestry, fishing, and hunting"
+estimate_ba_or_higher_2014,Population with a BA degree or higher
+estimate_ba_or_higher_2019,Population with a BA degree or higher
+estimate_below_poverty_level_2014,Population with an income in the past 12 months below the poverty level
+estimate_below_poverty_level_2019,Population with an income in the past 12 months below the poverty level
+estimate_broadband_access_2019,Households with access to broadband
+estimate_employed_2014,Employed population
+estimate_employed_2019,Employed population
+estimate_health_insurance_2019,Population with health insurance
+estimate_households_2019,Number of households
+estimate_labor_force_2014,Labor force population
+estimate_labor_force_2019,Labor force population
+estimate_manufacturing_2014,Population employed in manufacturing
+estimate_manufacturing_2019,Population employed in manufacturing
+estimate_not_enrolled_youth_2014,Population of youth (5 to 19 years old) not enrolled in school 
+estimate_not_enrolled_youth_2019,Population of youth (5 to 19 years old) not enrolled in school 
+estimate_pop_16_years_over_2014,Population 16 years and over
+estimate_pop_16_years_over_2019,Population 16 years and over
+estimate_pop_2014,Total population
+estimate_pop_2019,Total population
+estimate_pop_25_years_over_2014,Population 25 years and over
+estimate_pop_25_years_over_2019,Population 25 years and over
+estimate_pop_american_indian_2014,Population who identify as American Indian or Alaskan Native
+estimate_pop_american_indian_2019,Population who identify as American Indian or Alaskan Native
+estimate_pop_asian_2014,Population who identify as Asian
+estimate_pop_asian_2019,Population who identify as Asian
+estimate_pop_black_2014,Population who identify as Black or African American
+estimate_pop_black_2019,Population who identify as Black or African American
+estimate_pop_civilian_employed_16_years_over_2014,"Civilian employed population, 16 years and over"
+estimate_pop_civilian_employed_16_years_over_2019,"Civilian employed population, 16 years and over"
+estimate_pop_civilian_noninstitutionalized_2019,"Civilian, non-institutionalized population"
+estimate_pop_disconnected_youth_2014,Population 16 to 19 years old not enrolled in school and not employed
+estimate_pop_disconnected_youth_2019,Population 16 to 19 years old not enrolled in school and not employed
+estimate_pop_hispanic_2014,Population who identify as Hispanic or Latino
+estimate_pop_hispanic_2019,Population who identify as Hispanic or Latino
+estimate_pop_more_than_one_race_2014,Population who identify as more than one race
+estimate_pop_more_than_one_race_2019,Population who identify as more than one race
+estimate_pop_native_hawaiian_pacific_islander_2014,Population who identify as Native Hawaiian or Pacific Islander
+estimate_pop_native_hawaiian_pacific_islander_2019,Population who identify as Native Hawaiian or Pacific Islander
+estimate_pop_white_2014,Population who identify as white
+estimate_pop_white_2019,Population who identify as white
+estimate_professional_services_2014,"Population employed in professional, technical, and scientific services"
+estimate_professional_services_2019,"Population employed in professional, technical, and scientific services"
+,
+,
+,
+,
+,
+,
+,

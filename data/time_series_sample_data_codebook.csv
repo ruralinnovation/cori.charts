@@ -1,0 +1,6 @@
+﻿name,description
+date,Date in month/day/year format
+less_than_high_school,Percent of population with less than a high school degree who are working remotely
+high_school_no_college,Percent of population with a high school degree and no college coursework who are working remotely
+some_college_or_associates,Percent of population with an associates degree or some college coursework who are working remotely
+bachelors_or_higher,Percent of population with a bachelor's degree or higher who are working remotely
