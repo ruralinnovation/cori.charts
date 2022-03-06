@@ -10,7 +10,9 @@
 
 The goal of cori.charts is to make the process of creating
 publication-ready graphics and charts at the Center for Rural Innovation
-as easy as possible. Here’s how to start.
+as easy as possible. Check out [the
+guidelines](https://www.figma.com/file/gaAFFK9UHvs4baFXDlOKKR/CORI-Design-Guideline),
+and then get started.
 
 ## Installation
 
@@ -24,14 +26,22 @@ devtools::install_github("ruralinnovation/cori.charts")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows the application of the CORI theme:
 
 ``` r
+library(ggplot2)
 library(cori.charts)
-cori_colors["Emerald"]
-#>   Emerald 
-#> "#018362"
+data("cori_education")
+
+ggplot(cori_education, 
+       aes(date, percent_working_remotely, color = education)) +
+  geom_line() +
+  geom_point()
 ```
+
+<img src="man/figures/README-example-1.png" width="100%" />
+
+Check out the vignette for a cookbook of CORI-themed plots!
 
 ## Contributing
 
