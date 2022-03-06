@@ -1,0 +1,6 @@
+url: https://ruralinnovation.github.io/cori.charts/
+
+template:
+  bootstrap: 5
+  bootswatch: flatly
+

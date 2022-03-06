@@ -24,3 +24,4 @@ Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
 LazyData: true
+URL: https://ruralinnovation.github.io/cori.charts/
