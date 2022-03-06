@@ -4,6 +4,8 @@
 # cori.charts
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/ruralinnovation/cori.charts/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ruralinnovation/cori.charts/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of cori.charts is to make the process of creating
