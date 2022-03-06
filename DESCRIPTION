@@ -1,6 +1,6 @@
 Package: cori.charts
 Title: CORI data visualization themes
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
     person("Camden", "Blatchly", , "camden.blatchly@ruralinnovation.us", role = c("aut", "cre")),
     person("Smarth", "Gupta", role = "aut"),
