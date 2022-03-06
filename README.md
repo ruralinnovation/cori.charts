@@ -47,7 +47,8 @@ ggplot(cori_education,
   labs(title = "Working remotely during 2021",
        subtitle = "By education level",
        x = NULL,
-       y = "Percentage %")
+       y = "Percentage %",
+       caption = "Source: A website URL")
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />

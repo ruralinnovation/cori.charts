@@ -1,8 +1,8 @@
 ---
-title: "Data visualization for the Center for Rural Innovation"
+title: "Data visualization cookbook for the Center for Rural Innovation"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Data visualization for the Center for Rural Innovation}
+  %\VignetteIndexEntry{Data visualization cookbook for the Center for Rural Innovation}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -50,7 +50,8 @@ cori_poverty %>%
     title = "Percent below poverty level",
     subtitle = "For select CORI communities",
     x = NULL,
-    y = NULL
+    y = NULL,
+    caption = "Source: U.S. Census Bureau"
   ) +
   theme_cori_horizontal_bars()
 
