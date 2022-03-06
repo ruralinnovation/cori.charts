@@ -2,8 +2,8 @@ pandoc: 2.14.2
 pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
-  cori.charts: cori.charts.html
-last_built: 2022-03-06T20:52Z
+  cookbook: cookbook.html
+last_built: 2022-03-06T20:59Z
 urls:
   reference: https://ruralinnovation.github.io/cori.charts/reference
   article: https://ruralinnovation.github.io/cori.charts/articles
