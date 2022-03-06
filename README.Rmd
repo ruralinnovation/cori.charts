@@ -34,7 +34,7 @@ devtools::install_github("ruralinnovation/cori.charts")
 
 This is a basic example which shows the application of the CORI theme:
 
-```{r example}
+```{r example, fig.width=8, fig.height=5}
 library(ggplot2)
 library(cori.charts)
 data("cori_education")
@@ -42,7 +42,9 @@ data("cori_education")
 ggplot(cori_education, 
        aes(date, percent_working_remotely, color = education)) +
   geom_line() +
-  geom_point()
+  geom_point() +
+  scale_color_cori(guide = guide_legend(reverse = TRUE)) +
+  theme_minimal()
 ```
 
 Check out the vignette for a cookbook of CORI-themed plots!

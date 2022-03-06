@@ -36,7 +36,9 @@ data("cori_education")
 ggplot(cori_education, 
        aes(date, percent_working_remotely, color = education)) +
   geom_line() +
-  geom_point()
+  geom_point() +
+  scale_color_cori(guide = guide_legend(reverse = TRUE)) +
+  theme_minimal()
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
