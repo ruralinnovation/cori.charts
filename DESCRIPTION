@@ -19,7 +19,9 @@ BugReports: https://github.com/ruralinnovation/cori.charts/issues
 Depends: 
     R (>= 2.10)
 Imports: 
-    ggplot2
+    extrafont,
+    ggplot2,
+    rlang
 Suggests: 
     dplyr,
     scales,

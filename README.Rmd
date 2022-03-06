@@ -45,7 +45,7 @@ ggplot(cori_education,
   geom_point() +
   scale_color_cori(guide = guide_legend(reverse = TRUE)) +
   scale_y_continuous(labels = scales::percent) +
-  theme_minimal()
+  theme_minimal(base_family = "TT Hoves")
 ```
 
 Check out the vignette for a cookbook of CORI-themed plots!

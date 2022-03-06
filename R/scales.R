@@ -16,7 +16,7 @@
 #' cori_employment %>%
 #'   ggplot(
 #'     aes(estimate_pop_2014, estimate_pop_2019,
-#'         color = estimate_employed_2019
+#'       color = estimate_employed_2019
 #'     )
 #'   ) +
 #'   geom_point(size = 4, alpha = .6) +
