@@ -23,6 +23,8 @@ Depends:
 Imports: 
     extrafont,
     ggplot2,
+    grid,
+    png,
     rlang
 Suggests: 
     dplyr,

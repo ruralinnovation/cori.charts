@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+## How to create graphs using CORI themes
+
 ```{r}
 library(cori.charts)
 library(ggplot2)
