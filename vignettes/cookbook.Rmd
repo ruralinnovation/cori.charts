@@ -16,16 +16,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(cori.charts)
-```
-
-
 ```{r}
+library(cori.charts)
 library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(stringr)
+```
+
+
+```{r}
 data(cori_poverty)
 
 cori_poverty %>%
