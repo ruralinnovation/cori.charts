@@ -25,8 +25,8 @@ update_cori_geom_defaults <- function(base_family = "TT Hoves") {
 
   # add base_family font to text and label geoms ---------------------------
 
-  ggplot2::update_geom_defaults("text", list(family = base_family))
-  ggplot2::update_geom_defaults("label", list(family = base_family))
+  ggplot2::update_geom_defaults("text", list(family = base_family, color = "#121E22"))
+  ggplot2::update_geom_defaults("label", list(family = base_family, color = "#121E22"))
 
   # set defaults for geoms --------------------------------------------------
 

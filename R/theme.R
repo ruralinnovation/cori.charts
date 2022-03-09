@@ -33,8 +33,8 @@ theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
     margin = ggplot2::margin(r = 10)
   )
   ret$axis.line.x <- ggplot2::element_line(color = "grey", linetype = "solid")
-  ret$axis.text.x <- ggplot2::element_text(hjust = 0.5, size = 10.5)
-  ret$axis.text.y <- ggplot2::element_text(hjust = 1, size = 10.5)
+  ret$axis.text.x <- ggplot2::element_text(hjust = 0.5, size = 10.5, color = "#121E22")
+  ret$axis.text.y <- ggplot2::element_text(hjust = 1, size = 10.5, color = "#121E22")
 
   # Plot Attributes
   ret$plot.title <- ggplot2::element_text(
