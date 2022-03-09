@@ -25,6 +25,8 @@ theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
     linetype = "dashed",
     color = gray
   )
+  ret$panel.background = ggplot2::element_blank()
+
 
   # Axis Attributes
   ret$axis.title.x <- ggplot2::element_text(hjust = 0, size = 10.5)
