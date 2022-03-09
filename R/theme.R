@@ -41,13 +41,15 @@ theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
     size = 18,
     hjust = 0,
     face = "bold",
-    margin = ggplot2::margin(b = 10)
+    margin = ggplot2::margin(b = 10),
+    color = "#121E22"
   )
 
   ret$plot.subtitle <- ggplot2::element_text(
     size = 12,
     hjust = 0,
-    margin = ggplot2::margin(b = 12)
+    margin = ggplot2::margin(b = 12),
+    color = "#121E22"
   )
 
   ret$plot.caption <- ggplot2::element_text(
