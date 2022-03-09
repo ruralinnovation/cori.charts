@@ -59,11 +59,6 @@ theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
     margin = ggplot2::margin(t = -35, b = 40)
   )
 
-  ret$plot.margin = ggplot2::margin(t = base_size/2L,
-                                  r = base_size/2L,
-                                  b = base_size/2L,
-                                  l = base_size/2L)
-
   # Legend attributes
   ret$legend.title <- ggplot2::element_blank()
   ret$legend.position <- "bottom"
