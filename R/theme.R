@@ -60,7 +60,7 @@ theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
   )
 
   ret$plot.margin = ggplot2::margin(t = base_size/2L,
-                                  r = 0.5 * 24,
+                                  r = base_size/2L,
                                   b = base_size/2L,
                                   l = base_size/2L)
 
