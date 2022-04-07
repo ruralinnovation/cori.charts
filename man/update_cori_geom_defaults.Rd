@@ -4,10 +4,10 @@
 \alias{update_cori_geom_defaults}
 \title{The Center for Rural Innovation \link{ggplot2} theme}
 \usage{
-update_cori_geom_defaults(base_family = "TT Hoves")
+update_cori_geom_defaults(base_family = "Montserrat")
 }
 \arguments{
-\item{base_family}{The base font family for the theme, defaults to "TT Hoves".}
+\item{base_family}{The base font family for the theme, defaults to "Montserrat".}
 }
 \description{
 \code{update_cori_geom_defaults()} provides a \link{ggplot2} theme that aligns with the
