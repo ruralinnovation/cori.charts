@@ -3,7 +3,7 @@
 #' `update_cori_geom_defaults()` provides a [ggplot2] theme that aligns with the
 #' CORI style guide, with sensible defaults.
 #'
-#' @param base_family The base font family for the theme, defaults to "TT Hoves".
+#' @param base_family The base font family for the theme, defaults to "Montserrat".
 #'
 #' @examples
 #' library(ggplot2)
@@ -21,7 +21,7 @@
 #'   geom_point()
 #' @export
 #'
-update_cori_geom_defaults <- function(base_family = "TT Hoves") {
+update_cori_geom_defaults <- function(base_family = "Montserrat") {
 
   # add base_family font to text and label geoms ---------------------------
 
