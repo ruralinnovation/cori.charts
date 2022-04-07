@@ -3,14 +3,14 @@
 #' `theme_cori()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide.
 #'
-#' @param base_family Font family that CORI employs, defaults to  "TT Hoves"
+#' @param base_family Font family that CORI employs, defaults to  "Montserrat"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori
 #' @export
 #'
-theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
-  gray <- "#666666"
+theme_cori <- function(base_family = "Montserrat", base_size = 12) {
+  gray <- "#d0d2ce"
 
   ret <- ggplot2::theme_minimal(
     base_family = base_family,
@@ -34,7 +34,7 @@ theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
     hjust = 1, angle = 90,
     margin = ggplot2::margin(r = 10)
   )
-  ret$axis.line.x <- ggplot2::element_line(color = "grey", linetype = "solid")
+  ret$axis.line.x <- ggplot2::element_line(color = gray, linetype = "solid")
   ret$axis.text.x <- ggplot2::element_text(hjust = 0.5, size = 10.5, color = "#121E22")
   ret$axis.text.y <- ggplot2::element_text(hjust = 1, size = 10.5, color = "#121E22")
 
@@ -55,8 +55,8 @@ theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
   )
 
   ret$plot.caption <- ggplot2::element_text(
-    color = gray, size = 8, hjust = 0,
-    margin = ggplot2::margin(t = -35, b = 40)
+    color = gray, size = 10.5, hjust = 0,
+    margin = ggplot2::margin(t = 25, b = 10)
   )
 
   # Legend attributes
@@ -70,7 +70,7 @@ theme_cori <- function(base_family = "TT Hoves", base_size = 12) {
 #' @rdname theme_cori
 #' @export
 #'
-theme_cori_horizontal_bars <- function(base_family = "TT Hoves", base_size = 12) {
+theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 12) {
   ret <- theme_cori(
     base_family = base_family,
     base_size = base_size
