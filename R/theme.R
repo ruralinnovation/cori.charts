@@ -10,7 +10,9 @@
 #' @export
 #'
 theme_cori <- function(base_family = "Montserrat", base_size = 12) {
+  
   gray <- "#d0d2ce"
+  black <- "#121E22"
 
   ret <- ggplot2::theme_minimal(
     base_family = base_family,
@@ -35,8 +37,8 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     margin = ggplot2::margin(r = 10)
   )
   ret$axis.line.x <- ggplot2::element_line(color = gray, linetype = "solid")
-  ret$axis.text.x <- ggplot2::element_text(hjust = 0.5, size = 10.5, color = "#121E22")
-  ret$axis.text.y <- ggplot2::element_text(hjust = 1, size = 10.5, color = "#121E22")
+  ret$axis.text.x <- ggplot2::element_text(hjust = 0.5, size = 10.5, color = black)
+  ret$axis.text.y <- ggplot2::element_text(hjust = 1, size = 10.5, color = black)
 
   # Plot Attributes
   ret$plot.title <- ggplot2::element_text(
@@ -44,18 +46,20 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     hjust = 0,
     face = "bold",
     margin = ggplot2::margin(b = 10),
-    color = "#121E22"
+    color = black
   )
 
   ret$plot.subtitle <- ggplot2::element_text(
     size = 12,
     hjust = 0,
     margin = ggplot2::margin(b = 12),
-    color = "#121E22"
+    color = black
   )
 
   ret$plot.caption <- ggplot2::element_text(
-    color = gray, size = 10.5, hjust = 0,
+    color = black,
+    size = 10.5,
+    hjust = 0,
     margin = ggplot2::margin(t = 25, b = 10)
   )
 
