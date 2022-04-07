@@ -61,7 +61,7 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     color = dark_gray,
     size = 10.5,
     hjust = 0,
-    margin = ggplot2::margin(t = 25, b = 10)
+    margin = ggplot2::margin(t = 25, b = 0)
   )
 
   # Legend attributes
