@@ -12,6 +12,7 @@
 theme_cori <- function(base_family = "Montserrat", base_size = 12) {
   
   gray <- "#d0d2ce"
+  dark_gray <- "#8e8e8e"
   black <- "#121E22"
 
   ret <- ggplot2::theme_minimal(
@@ -57,7 +58,7 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
   )
 
   ret$plot.caption <- ggplot2::element_text(
-    color = black,
+    color = dark_gray,
     size = 10.5,
     hjust = 0,
     margin = ggplot2::margin(t = 25, b = 10)
