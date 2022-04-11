@@ -30,11 +30,16 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
   )
   ret$panel.background = ggplot2::element_blank()
 
-
   # Axis Attributes
-  ret$axis.title.x <- ggplot2::element_text(hjust = 0, size = 10.5)
+  ret$axis.title <- ggplot2::element_text(face = "italic")
+  ret$axis.title.x <- ggplot2::element_text(
+    margin = ggplot2::margin(t = 10),
+    hjust = 0.5,
+    size = 10.5
+  )
   ret$axis.title.y <- ggplot2::element_text(
-    hjust = 1, angle = 90,
+    hjust = 1,
+    angle = 90,
     margin = ggplot2::margin(r = 10)
   )
   ret$axis.line.x <- ggplot2::element_line(color = gray, linetype = "solid")
@@ -65,17 +70,17 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
   )
 
   # Legend attributes
-  ret$legend.background <- ggplot2::element_blank(),
-  ret$legend.spacing <- ggplot2::unit(20L, "pt"),
-  ret$legend.spacing.x <- ggplot2::unit(4L, "pt"),
-  ret$legend.key <- ggplot2::element_blank(),
-  ret$legend.key.size <- ggplot2::unit(10L, "pt"),
-  ret$legend.text <- ggplot2::element_text(size = 10.5, vjust = 0.5, color = "#121E22"),
-  ret$legend.title <- ggplot2::element_blank(),
-  ret$legend.position <- "top",
-  ret$legend.direction <- "horizontal",
-  ret$legend.margin <- ggplot2::margin(t = 0L, r = 0L, b = 0L, l = 0L, "pt"),
-  ret$legend.box <- "horizontal",
+  ret$legend.background <- ggplot2::element_blank()
+  ret$legend.spacing <- ggplot2::unit(20L, "pt")
+  ret$legend.spacing.x <- ggplot2::unit(4L, "pt")
+  ret$legend.key <- ggplot2::element_blank()
+  ret$legend.key.size <- ggplot2::unit(10L, "pt")
+  ret$legend.text <- ggplot2::element_text(size = 10.5, vjust = 0.5, color = "#121E22")
+  ret$legend.title <- ggplot2::element_blank()
+  ret$legend.position <- "top"
+  ret$legend.direction <- "horizontal"
+  ret$legend.margin <- ggplot2::margin(t = 0L, r = 0L, b = 0L, l = 0L, "pt")
+  ret$legend.box <- "horizontal"
   ret$legend.justification <- NULL
 
   ret
@@ -90,7 +95,10 @@ theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 1
     base_size = base_size
   )
 
+  # show only vertical lines
   ret$panel.grid.major.y <- ggplot2::element_blank()
+  ret$panel.grid.major.x = element_line(colour = "#d0d2ce", size = .3)
+  ret$axis.line.x.bottom = element_blank()
 
   ret
 }
