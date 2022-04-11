@@ -38,7 +38,7 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     size = 10.5
   )
   ret$axis.title.y <- ggplot2::element_text(
-    hjust = 1,
+    hjust = 0.5,
     angle = 90,
     margin = ggplot2::margin(r = 10)
   )
