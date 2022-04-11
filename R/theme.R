@@ -75,7 +75,7 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
   ret$legend.spacing.x <- ggplot2::unit(5L, "pt")
   ret$legend.key <- ggplot2::element_blank()
   ret$legend.key.size <- ggplot2::unit(10.5, "pt")
-  ret$legend.text <- ggplot2::element_text(size = 10.5, vjust = 0.5, color = "#121E22", unit = "pt")
+  ret$legend.text <- ggplot2::element_text(size = 10.5, vjust = 0.5, color = "#121E22")
   ret$legend.title <- ggplot2::element_blank()
   ret$legend.position <- "top"
   ret$legend.direction <- "horizontal"
