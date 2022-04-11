@@ -20,6 +20,8 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     base_size = base_size
   )
 
+  ret$text <- geom_text(family = base_family)
+
   # Panel Attributes
   ret$panel.grid.major.x <- ggplot2::element_blank()
   ret$panel.grid.minor.x <- ggplot2::element_blank()
