@@ -69,6 +69,8 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     margin = ggplot2::margin(t = 25, b = 0)
   )
 
+  ret$plot.margin <- ggplot2::margin(base_size, base_size, base_size, base_size, "pt"),
+
   # Legend attributes
   ret$legend.background <- ggplot2::element_blank()
   ret$legend.spacing <- ggplot2::unit(20L, "pt")
