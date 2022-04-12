@@ -58,10 +58,13 @@ cori_poverty %>%
   ) %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
   geom_col(position = "dodge") +
-  scale_fill_cori() +
-  scale_x_continuous(labels = scales::percent, expand = c(0,0)) +
+  scale_fill_cori(reverse = TRUE) +
+  scale_x_continuous(
+    labels = NULL,
+    expand = expansion(mult = c(.005, .1))
+  ) +
   labs(
-    title = "Percent below poverty level",
+    title = "Share of population below poverty level",
     subtitle = "For select CORI communities",
     x = NULL,
     y = NULL,
