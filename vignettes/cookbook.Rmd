@@ -116,3 +116,36 @@ grouped_bar_data %>%
 
 ```
 
+## Bullet Chart
+
+```{r, fig.asp = 0.8, fig.width = 5, warning = FALSE, message = FALSE}
+
+bullet_chart_data <- grouped_bar_data %>%
+  dplyr::mutate(
+    width = ifelse(year == "2014", 0.75, 0.5)
+  )
+
+bullet_chart_data %>%
+  ggplot(aes(x = percent_below_poverty, y = rin_community, fill = year)) +
+  geom_col(width = bullet_chart_data$width) +
+  geom_text(
+    data = dplyr::filter(bullet_chart_data, year == "2019"),
+    aes(x = percent_below_poverty, label = scales::percent(percent_below_poverty, accuracy = 1)),
+    hjust = 1.3,
+    family = "Montserrat",
+    color = "white"
+  ) +
+  scale_fill_cori(reverse = TRUE) +
+  scale_x_continuous(
+    labels = scales::label_percent(accuracy = 1),
+    expand = expansion(mult = c(.005, .1))
+  ) +
+  labs(
+    title = "Share of population below poverty level",
+    subtitle = "For select CORI communities",
+    x = NULL,
+    y = NULL,
+    caption = "Source: ACS 5-year estimates"
+  ) +
+  theme_cori_horizontal_bars()
+```
