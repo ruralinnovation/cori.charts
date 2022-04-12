@@ -11,14 +11,14 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 8.75,
-  fig.height = 8
+  fig.width = 6,
+  fig.height = 5
 )
 ```
 
 ## Installing Montserrat
 
-```{r}
+```{r, message=FALSE, warning = FALSE}
 library(sysfonts)
 library(showtext)
 
@@ -30,6 +30,7 @@ showtext_auto()
 
 ## How to create graphs using CORI themes
 
+First load the necessary libraries
 ```{r, message = FALSE, warning = FALSE}
 library(cori.charts)
 library(ggplot2)
@@ -40,7 +41,7 @@ library(stringr)
 
 ### Grouped Bar Chart
 
-First pivot the data into a long format for easy plotting
+Pivot the data into a long format for easy plotting
 ```{r}
 data(cori_poverty)
 
