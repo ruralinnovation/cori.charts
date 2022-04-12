@@ -11,8 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 6,
-  fig.height = 5
+  out.width = "100%"
 )
 ```
 
@@ -63,7 +62,7 @@ grouped_bar_data <- cori_poverty %>%
 ```
 
 With data labels
-```{r}
+```{r, fig.width=8, fig.height=6}
 
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
@@ -95,7 +94,7 @@ grouped_bar_data %>%
 ```
 
 Without data labels
-```{r}
+```{r, fig.width=8, fig.height=6}
 
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
