@@ -62,7 +62,7 @@ grouped_bar_data <- cori_poverty %>%
 ```
 
 With data labels
-```{r, fig.width=8, fig.height=6}
+```{r, fig.asp = 0.8, fig.width = 5}
 
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
@@ -94,7 +94,7 @@ grouped_bar_data %>%
 ```
 
 Without data labels
-```{r, fig.width=8, fig.height=6}
+```{r, fig.asp = 0.8, fig.width = 5}
 
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
