@@ -10,7 +10,7 @@
 #' @export
 #'
 theme_cori <- function(base_family = "Montserrat", base_size = 12) {
-  
+
   gray <- "#d0d2ce"
   dark_gray <- "#8e8e8e"
   black <- "#121E22"
@@ -99,8 +99,8 @@ theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 1
 
   # show only vertical lines
   ret$panel.grid.major.y <- ggplot2::element_blank()
-  ret$panel.grid.major.x = element_line(colour = "#d0d2ce", size = .3)
-  ret$axis.line.x.bottom = element_blank()
+  ret$panel.grid.major.x = ggplot2::element_line(colour = "#d0d2ce", size = .3)
+  ret$axis.line.x.bottom = ggplot2::element_blank()
 
   ret
 }

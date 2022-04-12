@@ -39,10 +39,12 @@ library(stringr)
 ```
 
 ### Grouped Bar Chart
+
+First pivot the data into a long format for easy plotting
 ```{r}
 data(cori_poverty)
 
-cori_poverty %>%
+grouped_bar_data <- cori_poverty %>%
   mutate(
     percent_below_poverty_2014 = estimate_below_poverty_level_2014 / estimate_pop_2014,
     percent_below_poverty_2019 = estimate_below_poverty_level_2019 / estimate_pop_2019
@@ -55,12 +57,52 @@ cori_poverty %>%
   mutate(
     year = str_remove(year, "percent_below_poverty_"),
     rin_community = reorder(rin_community, percent_below_poverty)
-  ) %>%
+  ) 
+
+```
+
+With data labels
+```{r}
+
+grouped_bar_data %>%
+  ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
+  geom_col(position = "dodge") +
+  # Add in data labels
+  geom_text(
+    # accuracy determines how many digits are shown
+    # To show one decimal, update accuracy to 0.1
+    aes(label = scales::percent(percent_below_poverty, accuracy = 1)),
+    position = position_dodge2(width = 0.9, reverse = FALSE),
+    hjust = -.1,
+    family = "Montserrat"
+  ) +
+  scale_fill_cori(reverse = TRUE) +
+  scale_x_continuous(
+    # Axis labels are redundant to the data labels
+    labels = NULL,
+    expand = expansion(mult = c(.005, .1))
+  ) +
+  labs(
+    title = "Share of population below poverty level",
+    subtitle = "For select CORI communities",
+    x = NULL,
+    y = NULL,
+    caption = "Source: U.S. Census Bureau"
+  ) +
+  theme_cori_horizontal_bars()
+
+```
+
+Without data labels
+```{r}
+
+grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
   geom_col(position = "dodge") +
   scale_fill_cori(reverse = TRUE) +
   scale_x_continuous(
-    labels = NULL,
+    # Add back axis labels to provide context
+    labels = scales::label_percent(accuracy = 1),
     expand = expansion(mult = c(.005, .1))
   ) +
   labs(
