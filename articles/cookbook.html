@@ -112,10 +112,11 @@
 <div class="section level3">
 <h3 id="grouped-bar-chart">Grouped Bar Chart<a class="anchor" aria-label="anchor" href="#grouped-bar-chart"></a>
 </h3>
+<p>First pivot the data into a long format for easy plotting</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cori_poverty</span><span class="op">)</span>
 
-<span class="va">cori_poverty</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+<span class="va">grouped_bar_data</span> <span class="op">&lt;-</span> <span class="va">cori_poverty</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
     percent_below_poverty_2014 <span class="op">=</span> <span class="va">estimate_below_poverty_level_2014</span> <span class="op">/</span> <span class="va">estimate_pop_2014</span>,
     percent_below_poverty_2019 <span class="op">=</span> <span class="va">estimate_below_poverty_level_2019</span> <span class="op">/</span> <span class="va">estimate_pop_2019</span>
@@ -128,11 +129,25 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
     year <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html" class="external-link">str_remove</a></span><span class="op">(</span><span class="va">year</span>, <span class="st">"percent_below_poverty_"</span><span class="op">)</span>,
     rin_community <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">rin_community</span>, <span class="va">percent_below_poverty</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="op">)</span> </code></pre></div>
+<p>With data labels</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">grouped_bar_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, <span class="va">rin_community</span>, fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="co"># Add in data labels</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span>
+    <span class="co"># accuracy determines how many digits are shown</span>
+    <span class="co"># To show one decimal, update accuracy to 0.1</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">percent</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,
+    position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html" class="external-link">position_dodge2</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.9</span>, reverse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+    hjust <span class="op">=</span> <span class="op">-</span><span class="fl">.1</span>,
+    family <span class="op">=</span> <span class="st">"Montserrat"</span>
+  <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/scales.html">scale_fill_cori</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>
+    <span class="co"># Axis labels are redundant to the data labels</span>
     labels <span class="op">=</span> <span class="cn">NULL</span>,
     expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span> <span class="op">+</span>
@@ -144,7 +159,28 @@
     caption <span class="op">=</span> <span class="st">"Source: U.S. Census Bureau"</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/theme_cori.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="cookbook_files/figure-html/unnamed-chunk-4-1.png" width="840"></p>
+<p><img src="cookbook_files/figure-html/unnamed-chunk-5-1.png" width="840"></p>
+<p>Without data labels</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">grouped_bar_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, <span class="va">rin_community</span>, fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scales.html">scale_fill_cori</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>
+    <span class="co"># Add back axis labels to provide context</span>
+    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"Share of population below poverty level"</span>,
+    subtitle <span class="op">=</span> <span class="st">"For select CORI communities"</span>,
+    x <span class="op">=</span> <span class="cn">NULL</span>,
+    y <span class="op">=</span> <span class="cn">NULL</span>,
+    caption <span class="op">=</span> <span class="st">"Source: U.S. Census Bureau"</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/theme_cori.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p><img src="cookbook_files/figure-html/unnamed-chunk-6-1.png" width="840"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
