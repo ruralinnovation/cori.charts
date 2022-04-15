@@ -38,11 +38,53 @@ library(tidyr)
 library(stringr)
 ```
 
+## Load your data
+
+We'll be using a dataset which gives the population with an income below the 
+poverty level in the last 12 months for a selection of RIN members
+```{r}
+data(cori_poverty)
+dplyr::glimpse(cori_poverty)
+```
+
+----  
+
+### Horizontal Bar Chart
+
+```{r}
+
+cori_poverty %>%
+  ggplot2::ggplot(aes(estimate_below_poverty_level_2019, reorder(rin_community, estimate_below_poverty_level_2019))) +
+  ggplot2::geom_col(fill = cori_colors["Emerald"]) +
+  geom_text(
+    aes(label = scales::number(estimate_below_poverty_level_2019, accuracy = 1, big.mark = ",")),
+    hjust = -.1,
+    family = "Montserrat"
+  ) +
+  ggplot2::scale_x_continuous(
+    labels = NULL,
+    expand = expansion(mult = c(.005, .1))
+  ) +
+  theme_cori_horizontal_bars() +
+  ggplot2::theme(
+    panel.grid.major.x = element_blank()
+  ) +
+  ggplot2::labs(
+    title = "Population living below the poverty level",
+    subtitle = "For select RIN communities (2019)",
+    y = NULL,
+    x = NULL,
+    caption = "Source: ACS 5-year estimates (2019)"
+  )
+
+```
+
+----  
+
 ### Grouped Bar Chart
 
 Pivot the data into a long format for easy plotting
 ```{r}
-data(cori_poverty)
 
 grouped_bar_data <- cori_poverty %>%
   mutate(
@@ -116,7 +158,9 @@ grouped_bar_data %>%
 
 ```
 
-## Bullet Chart
+----  
+
+### Bullet Chart
 
 ```{r, fig.asp = 0.8, fig.width = 5, warning = FALSE, message = FALSE}
 
