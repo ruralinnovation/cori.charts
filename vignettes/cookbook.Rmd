@@ -267,7 +267,7 @@ line_chart_data <- line_chart_data %>%
 glimpse(line_chart_data)
 ```
 Simple line chart with right-hand legend
-```{r}
+```{r, fig.asp=2/2}
 # When using line charts, you need to 
 # update the geom defaults before plotting
 update_cori_geom_defaults()
@@ -307,8 +307,7 @@ line_chart_data %>%
        caption = "Source: Bureau of Labor Statistics")
 ```
 If your lines are spaced further apart, you can use a secondary axis to directly label the line endpoints
-```{r}
-
+```{r, fig.asp=2/3}
 # Let's filter to just two lines to simplify the chart
 direct_label_data <- line_chart_data %>%
   dplyr::filter(
@@ -355,10 +354,12 @@ direct_label_data %>%
     axis.ticks.x = element_line(color = "#d0d2ce"),
     axis.ticks.length = unit(4, 'pt')
   ) +
-  labs(title = "Percent of workers able to work from home",
-       subtitle = "By education level (May 2020 - December 2021)",
-       x = NULL,
-       y = NULL,
-       caption = "Source: Bureau of Labor Statistics")
-
+  labs(
+    title = "Percent of workers able to work from home",
+    subtitle = "By education level (May 2020 - December 2021)",
+    x = NULL,
+    y = NULL,
+    caption = "Source: Bureau of Labor Statistics"
+  )
 ```
+
