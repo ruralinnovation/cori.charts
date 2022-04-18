@@ -15,7 +15,8 @@ knitr::opts_chunk$set(
   fig.retina = 2,
   fig.width = 6,
   fig.asp = 2/3,
-  fig.show = "hold"
+  fig.show = "hold",
+  out.width = "100%"
 )
 
 # Set figure display options
@@ -60,7 +61,7 @@ Now we are ready to begin charting!
 
 ### Horizontal Bar Chart
 
-```{r, dpi = 300}
+```{r}
 
 cori_poverty %>%
   ggplot2::ggplot(
@@ -121,7 +122,7 @@ cori_poverty %>%
 ### Grouped Bar Chart
 
 Pivot the data into a long format for easy plotting
-```{r, fig.width = 3, dpi = 300}
+```{r}
 
 grouped_bar_data <- cori_poverty %>%
   mutate(
@@ -141,7 +142,7 @@ grouped_bar_data <- cori_poverty %>%
 ```
 
 With data labels
-```{r, fig.width = 1.4, dpi = 300}
+```{r}
 
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
