@@ -60,7 +60,7 @@ Now we are ready to begin charting!
 
 ### Horizontal Bar Chart
 
-```{r}
+```{r, dpi = 300}
 
 cori_poverty %>%
   ggplot2::ggplot(
@@ -121,7 +121,7 @@ cori_poverty %>%
 ### Grouped Bar Chart
 
 Pivot the data into a long format for easy plotting
-```{r}
+```{r, fig.width = 3, dpi = 300}
 
 grouped_bar_data <- cori_poverty %>%
   mutate(
@@ -141,7 +141,7 @@ grouped_bar_data <- cori_poverty %>%
 ```
 
 With data labels
-```{r}
+```{r, fig.width = 1.4, dpi = 300}
 
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
