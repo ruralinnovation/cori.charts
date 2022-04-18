@@ -251,15 +251,7 @@ line_chart_data <- cori_education %>%
     education_clean = stringr::str_to_title(stringr::str_replace_all(education, "_", " "))
   )
 
-glimpse(line_chart_data)
-```
-Simple line chart with legend
-```{r}
-# When using line charts, you need to 
-# update the geom defaults before plotting
-update_cori_geom_defaults()
-
-# Order the legend labels based upon their final data point
+# Prep work so that the legend labels can be ordered based upon their final data point
 #
 # Filter to the final data point and pull the order
 latest_date <- line_chart_data %>% pull(date) %>% max()
@@ -271,6 +263,14 @@ factor_order <- line_chart_data %>%
 # Update the column based upon the preferred order
 line_chart_data <- line_chart_data %>%
   dplyr::mutate(education_clean = factor(education_clean, levels = factor_order))
+
+glimpse(line_chart_data)
+```
+Simple line chart with right-hand legend
+```{r}
+# When using line charts, you need to 
+# update the geom defaults before plotting
+update_cori_geom_defaults()
 
 line_chart_data %>%
   ggplot(
@@ -305,4 +305,60 @@ line_chart_data %>%
        x = NULL,
        y = NULL,
        caption = "Source: Bureau of Labor Statistics")
+```
+If your lines are spaced further apart, you can use a secondary axis to directly label the line endpoints
+```{r}
+
+# Let's filter to just two lines to simplify the chart
+direct_label_data <- line_chart_data %>%
+  dplyr::filter(
+    education == "bachelors_or_higher" | education == "some_college_or_associates"
+  )
+
+# Determine the value and label at the most recent date for each line
+line_labels <- direct_label_data %>%
+  dplyr::filter(date == latest_date) %>%
+  dplyr::arrange(desc(percent_working_remotely)) %>%
+  pull(education_clean)
+
+line_values <- direct_label_data %>%
+  dplyr::filter(date == latest_date) %>%
+  dplyr::arrange(desc(percent_working_remotely)) %>%
+  pull(percent_working_remotely)
+
+direct_label_data %>%
+  ggplot(
+       aes(date, percent_working_remotely, color = education_clean)) +
+  geom_line() +
+  scale_color_cori(guide = guide_legend(reverse = TRUE)) +
+  scale_x_date(
+    date_breaks = "3 months",
+    date_labels =  "%b '%y",
+    expand = expansion(mult = c(.01,0))
+  ) +
+  scale_y_continuous(
+    labels = scales::label_percent(accuracy = 1),
+    limits = c(0, .65),
+    expand = expansion(mult = c(0, .1)),
+    # Add the direct labels as a second axis
+    sec.axis = sec_axis(
+      trans = ~.*1,
+      breaks = line_values,
+      labels = line_labels
+    )
+  ) +
+  theme_cori() +
+  ggplot2::theme(
+    # Remove the legend
+    legend.position = "none",
+    # Add ticks to the x-axis
+    axis.ticks.x = element_line(color = "#d0d2ce"),
+    axis.ticks.length = unit(4, 'pt')
+  ) +
+  labs(title = "Percent of workers able to work from home",
+       subtitle = "By education level (May 2020 - December 2021)",
+       x = NULL,
+       y = NULL,
+       caption = "Source: Bureau of Labor Statistics")
+
 ```
