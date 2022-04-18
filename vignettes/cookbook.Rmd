@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
   # Chart settings
   fig.retina = 2,
   fig.width = 6,
-  fig.asp = 2/3,
+  fig.asp = .75,
   fig.show = "hold",
   out.width = "100%"
 )
@@ -61,8 +61,7 @@ Now we are ready to begin charting!
 
 ### Horizontal Bar Chart
 
-```{r, fig.width=3, dpi=144}
-
+```{r}
 cori_poverty %>%
   ggplot2::ggplot(
     aes(
@@ -114,7 +113,6 @@ cori_poverty %>%
     x = NULL,
     caption = "Source: ACS 5-year estimates (2019)"
   )
-
 ```
 
 ----  
@@ -123,7 +121,6 @@ cori_poverty %>%
 
 Pivot the data into a long format for easy plotting
 ```{r}
-
 grouped_bar_data <- cori_poverty %>%
   mutate(
     percent_below_poverty_2014 = estimate_below_poverty_level_2014 / estimate_pop_2014,
@@ -139,26 +136,27 @@ grouped_bar_data <- cori_poverty %>%
     rin_community = reorder(rin_community, percent_below_poverty)
   ) 
 
+glimpse(grouped_bar_data)
 ```
 
 With data labels
 ```{r}
-
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
   geom_col(position = "dodge") +
   # Add in data labels
   geom_text(
-    # accuracy determines how many digits are shown
-    # To show one decimal, update accuracy to 0.1
     aes(label = scales::percent(percent_below_poverty, accuracy = 1)),
+    # Need to add a position value to ensure that the data labels
+    # are aligned with their appropriate bar
     position = position_dodge2(width = 0.9, reverse = FALSE),
     hjust = -.1,
     family = "Montserrat"
   ) +
   scale_fill_cori(reverse = TRUE) +
   scale_x_continuous(
-    # Axis labels are redundant to the data labels
+    # Axis labels are redundant to the data labels,
+    # so we don't display them by setting labels = NULL
     labels = NULL,
     expand = expansion(mult = c(.005, .1))
   ) +
@@ -170,18 +168,17 @@ grouped_bar_data %>%
     caption = "Source: U.S. Census Bureau"
   ) +
   theme_cori_horizontal_bars()
-
 ```
 
 Without data labels
 ```{r}
-
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
   geom_col(position = "dodge") +
   scale_fill_cori(reverse = TRUE) +
   scale_x_continuous(
     # Add back axis labels to provide context
+    # because we aren't displaying data labels
     labels = scales::label_percent(accuracy = 1),
     expand = expansion(mult = c(.005, .1))
   ) +
@@ -193,7 +190,6 @@ grouped_bar_data %>%
     caption = "Source: U.S. Census Bureau"
   ) +
   theme_cori_horizontal_bars()
-
 ```
 
 ----  
@@ -201,15 +197,24 @@ grouped_bar_data %>%
 ### Bullet Chart
 
 ```{r, warning = FALSE, message = FALSE}
-
+# Create a column for the width of the two bars using dplyr:: mutate()
+#
+# Generally, when comparing time periods, the wide bar is the
+# earlier time period and the skinny bar is the later time period
 bullet_chart_data <- grouped_bar_data %>%
   dplyr::mutate(
     width = ifelse(year == "2014", 0.75, 0.5)
   )
 
+glimpse(bullet_chart_data)
+```
+
+```{r, warning = FALSE, message=FALSE}
 bullet_chart_data %>%
   ggplot(aes(x = percent_below_poverty, y = rin_community, fill = year)) +
+  # Determine the width using the "width" column we created above
   geom_col(width = bullet_chart_data$width) +
+  # Add data labels for the later time period only
   geom_text(
     data = dplyr::filter(bullet_chart_data, year == "2019"),
     aes(x = percent_below_poverty, label = scales::percent(percent_below_poverty, accuracy = 1)),
