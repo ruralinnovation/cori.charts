@@ -250,6 +250,7 @@ line_chart_data <- cori_education %>%
     # Remove underscores and convert to title case
     education_clean = stringr::str_to_title(stringr::str_replace_all(education, "_", " "))
   )
+
 glimpse(line_chart_data)
 ```
 Simple line chart with legend
@@ -258,25 +259,49 @@ Simple line chart with legend
 # update the geom defaults before plotting
 update_cori_geom_defaults()
 
+# Order the legend labels based upon their final data point
+#
+# Filter to the final data point and pull the order
+latest_date <- line_chart_data %>% pull(date) %>% max()
+factor_order <- line_chart_data %>%
+  dplyr::filter(date == latest_date) %>%
+  dplyr::arrange(desc(percent_working_remotely)) %>%
+  pull(education_clean)
+
+# Update the column based upon the preferred order
+line_chart_data <- line_chart_data %>%
+  dplyr::mutate(education_clean = factor(education_clean, levels = factor_order))
+
 line_chart_data %>%
   ggplot(
        aes(date, percent_working_remotely, color = education_clean)) +
   geom_line() +
   scale_color_cori(guide = guide_legend(reverse = TRUE)) +
-  scale_x_date(date_breaks = "3 months", date_labels =  "%b") +
-  scale_y_continuous(labels = scales::percent, limits = c(NA, 0.8)) +
+  scale_x_date(
+    date_breaks = "3 months",
+    date_labels =  "%b '%y",
+    expand = expansion(mult = c(.01,.01))
+  ) +
+  scale_y_continuous(
+    labels = scales::label_percent(accuracy = 1),
+    limits = c(0, .65),
+    expand = expansion(mult = c(0, .1))
+  ) +
   theme_cori() +
   ggplot2::theme(
     # CORI themes defaults to a horizontal legend below the title,
-    # but with long names it can be easier to display the legend on
-    # the right
-    legend.spacing.y = unit(10, "pt"),
+    # but with long names it can be easier to display the legend on the right
     legend.position = "right",
-    legend.direction = "vertical"
+    legend.direction = "vertical",
+    # Add ticks to the x-axis
+    axis.ticks.x = element_line(color = "#d0d2ce"),
+    axis.ticks.length = unit(4, 'pt')
   ) +
- guides(color = guide_legend(nrow = 8, byrow = TRUE)) +
+  # In order for a legend on the right to render properly,
+  # you need to specify that byrow = TRUE
+  guides(color = guide_legend(byrow = TRUE)) +
   labs(title = "Percent of workers able to work from home",
-       subtitle = "By education level (May 2020 - Dec. 2021)",
+       subtitle = "By education level (May 2020 - December 2021)",
        x = NULL,
        y = NULL,
        caption = "Source: Bureau of Labor Statistics")
