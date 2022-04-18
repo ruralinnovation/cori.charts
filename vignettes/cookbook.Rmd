@@ -11,8 +11,16 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  out.width = "100%"
+  # Chart settings
+  fig.retina = 2,
+  fig.width = 6,
+  fig.asp = 2/3,
+  fig.show = "hold"
 )
+
+# Set figure display options
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+
 ```
 
 ## Installing Montserrat
@@ -52,7 +60,7 @@ Now we are ready to begin charting!
 
 ### Horizontal Bar Chart
 
-```{r, dpi=300}
+```{r}
 
 cori_poverty %>%
   ggplot2::ggplot(
@@ -133,7 +141,7 @@ grouped_bar_data <- cori_poverty %>%
 ```
 
 With data labels
-```{r, fig.asp = 0.8, fig.width = 5, dpi=300}
+```{r}
 
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
@@ -165,7 +173,7 @@ grouped_bar_data %>%
 ```
 
 Without data labels
-```{r, fig.asp = 0.8, fig.width = 5, dpi=300}
+```{r}
 
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
@@ -191,7 +199,7 @@ grouped_bar_data %>%
 
 ### Bullet Chart
 
-```{r, fig.asp = 0.8, fig.width = 5, dpi=300, warning = FALSE, message = FALSE}
+```{r, warning = FALSE, message = FALSE}
 
 bullet_chart_data <- grouped_bar_data %>%
   dplyr::mutate(
