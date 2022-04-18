@@ -267,7 +267,7 @@ line_chart_data <- line_chart_data %>%
 glimpse(line_chart_data)
 ```
 Simple line chart with right-hand legend
-```{r, fig.asp=2/2}
+```{r, fig.asp=2/3}
 # When using line charts, you need to 
 # update the geom defaults before plotting
 update_cori_geom_defaults()
