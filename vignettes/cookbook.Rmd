@@ -236,3 +236,48 @@ bullet_chart_data %>%
   ) +
   theme_cori_horizontal_bars()
 ```
+
+----  
+
+### Line Charts
+
+```{r}
+data("cori_education")
+
+# Clean up the labels for the chart
+line_chart_data <- cori_education %>%
+  dplyr::mutate(
+    # Remove underscores and convert to title case
+    education_clean = stringr::str_to_title(stringr::str_replace_all(education, "_", " "))
+  )
+glimpse(line_chart_data)
+```
+Simple line chart with legend
+```{r}
+# When using line charts, you need to 
+# update the geom defaults before plotting
+update_cori_geom_defaults()
+
+line_chart_data %>%
+  ggplot(
+       aes(date, percent_working_remotely, color = education_clean)) +
+  geom_line() +
+  scale_color_cori(guide = guide_legend(reverse = TRUE)) +
+  scale_x_date(date_breaks = "3 months", date_labels =  "%b") +
+  scale_y_continuous(labels = scales::percent, limits = c(NA, 0.8)) +
+  theme_cori() +
+  ggplot2::theme(
+    # CORI themes defaults to a horizontal legend below the title,
+    # but with long names it can be easier to display the legend on
+    # the right
+    legend.spacing.y = unit(10, "pt"),
+    legend.position = "right",
+    legend.direction = "vertical"
+  ) +
+ guides(color = guide_legend(nrow = 8, byrow = TRUE)) +
+  labs(title = "Percent of workers able to work from home",
+       subtitle = "By education level (May 2020 - Dec. 2021)",
+       x = NULL,
+       y = NULL,
+       caption = "Source: Bureau of Labor Statistics")
+```
