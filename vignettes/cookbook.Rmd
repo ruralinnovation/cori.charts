@@ -61,7 +61,7 @@ Now we are ready to begin charting!
 
 ### Horizontal Bar Chart
 
-```{r}
+```{r, fig.width=3, dpi=144}
 
 cori_poverty %>%
   ggplot2::ggplot(
