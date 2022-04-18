@@ -59,7 +59,7 @@ Now we are ready to begin charting!
 
 ----  
 
-### Horizontal Bar Chart
+## Horizontal Bar Chart
 
 ```{r}
 cori_poverty %>%
@@ -117,7 +117,7 @@ cori_poverty %>%
 
 ----  
 
-### Grouped Bar Chart
+## Grouped Bar Chart
 
 Pivot the data into a long format for easy plotting
 ```{r}
@@ -194,7 +194,7 @@ grouped_bar_data %>%
 
 ----  
 
-### Bullet Chart
+## Bullet Chart
 
 ```{r, warning = FALSE, message = FALSE}
 # Create a column for the width of the two bars using dplyr:: mutate()
@@ -239,7 +239,7 @@ bullet_chart_data %>%
 
 ----  
 
-### Line Charts
+## Line Charts
 
 ```{r}
 data("cori_education")
