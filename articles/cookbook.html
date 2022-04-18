@@ -87,9 +87,9 @@
 
     
     
-<div class="section level2">
-<h2 id="installing-montserrat">Installing Montserrat<a class="anchor" aria-label="anchor" href="#installing-montserrat"></a>
-</h2>
+<div class="section level3">
+<h3 id="install-montserrat">Install Montserrat<a class="anchor" aria-label="anchor" href="#install-montserrat"></a>
+</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/sysfonts" class="external-link">sysfonts</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext" class="external-link">showtext</a></span><span class="op">)</span>
@@ -99,10 +99,9 @@
 <span class="co"># Ensures that any newly opened graphics devices will use showtext to draw text</span>
 <span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="how-to-create-graphs-using-cori-themes">How to create graphs using CORI themes<a class="anchor" aria-label="anchor" href="#how-to-create-graphs-using-cori-themes"></a>
-</h2>
-<p>First load the necessary libraries</p>
+<div class="section level3">
+<h3 id="load-required-libraries">Load required libraries<a class="anchor" aria-label="anchor" href="#load-required-libraries"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ruralinnovation/cori.charts" class="external-link">cori.charts</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
@@ -110,9 +109,9 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="load-your-data">Load your data<a class="anchor" aria-label="anchor" href="#load-your-data"></a>
-</h2>
+<div class="section level3">
+<h3 id="load-your-data">Load your data<a class="anchor" aria-label="anchor" href="#load-your-data"></a>
+</h3>
 <p>We will be using a dataset which gives the population with an income below the poverty level in the last 12 months for a subset of RIN communities.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cori_poverty</span><span class="op">)</span>
@@ -128,11 +127,14 @@
 <span class="co">#&gt; $ estimate_below_poverty_level_2014 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15746, 8102, 10597, 15238, 18284, 83…</span>
 <span class="co">#&gt; $ estimate_below_poverty_level_2019 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13063, 7513, 9833, 14545, 16330, 731…</span></code></pre></div>
 <p>Now we are ready to begin charting!</p>
-<hr>
 </div>
 <div class="section level2">
-<h2 id="horizontal-bar-chart">Horizontal Bar Chart<a class="anchor" aria-label="anchor" href="#horizontal-bar-chart"></a>
+<h2 id="chart-recipes">Chart Recipes<a class="anchor" aria-label="anchor" href="#chart-recipes"></a>
 </h2>
+<hr>
+<div class="section level3">
+<h3 id="horizontal-bar-chart">Horizontal Bar Chart<a class="anchor" aria-label="anchor" href="#horizontal-bar-chart"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cori_poverty</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>
@@ -188,9 +190,9 @@
 <p><img src="cookbook_files/figure-html/unnamed-chunk-5-1.png" width="100%"></p>
 <hr>
 </div>
-<div class="section level2">
-<h2 id="grouped-bar-chart">Grouped Bar Chart<a class="anchor" aria-label="anchor" href="#grouped-bar-chart"></a>
-</h2>
+<div class="section level3">
+<h3 id="grouped-bar-chart">Grouped Bar Chart<a class="anchor" aria-label="anchor" href="#grouped-bar-chart"></a>
+</h3>
 <p>Pivot the data into a long format for easy plotting</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">grouped_bar_data</span> <span class="op">&lt;-</span> <span class="va">cori_poverty</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -274,9 +276,9 @@
 <p><img src="cookbook_files/figure-html/unnamed-chunk-8-1.png" width="100%"></p>
 <hr>
 </div>
-<div class="section level2">
-<h2 id="bullet-chart">Bullet Chart<a class="anchor" aria-label="anchor" href="#bullet-chart"></a>
-</h2>
+<div class="section level3">
+<h3 id="bullet-chart">Bullet Chart<a class="anchor" aria-label="anchor" href="#bullet-chart"></a>
+</h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create a column for the width of the two bars using dplyr:: mutate()</span>
 <span class="co">#</span>
@@ -330,9 +332,9 @@
 <p><img src="cookbook_files/figure-html/unnamed-chunk-10-1.png" width="100%"></p>
 <hr>
 </div>
-<div class="section level2">
-<h2 id="line-charts">Line Charts<a class="anchor" aria-label="anchor" href="#line-charts"></a>
-</h2>
+<div class="section level3">
+<h3 id="line-charts">Line Charts<a class="anchor" aria-label="anchor" href="#line-charts"></a>
+</h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"cori_education"</span><span class="op">)</span>
 
@@ -458,6 +460,7 @@
     caption <span class="op">=</span> <span class="st">"Source: Bureau of Labor Statistics"</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="cookbook_files/figure-html/unnamed-chunk-13-1.png" width="100%"></p>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
