@@ -54,6 +54,7 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     margin = ggplot2::margin(b = 10),
     color = black
   )
+  ret$plot.title.position <- "plot"
 
   ret$plot.subtitle <- ggplot2::element_text(
     size = 12,
@@ -68,6 +69,7 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     hjust = 0,
     margin = ggplot2::margin(t = 25, b = 0)
   )
+  ret$plot.caption.position <-  "plot"
 
   ret$plot.margin <- ggplot2::margin(base_size, base_size, base_size, base_size, "pt")
 
