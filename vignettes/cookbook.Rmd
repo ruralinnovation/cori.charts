@@ -364,3 +364,81 @@ direct_label_data %>%
   )
 ```
 
+----  
+
+## Maps  
+
+Choropleth 
+
+```{r, results='hide'}
+
+# We'll use 2019 county-level data on computer and math jobs
+acs19_vars <- c("comp_math_male" = "C24010_008", "comp_math_female" = "C24010_044")
+dta <- tidycensus::get_acs(
+    "county",
+    year = 2019,
+    variables = acs19_vars,
+    geometry = TRUE
+  ) %>%
+  dplyr::group_by(GEOID) %>%
+  dplyr::summarise(
+    estimate = sum(estimate, na.rm = TRUE)
+  ) %>%
+  dplyr::rename(
+    geoid = GEOID
+  )
+
+dta <- dta %>%
+  dplyr::mutate(
+    pct = estimate / sum(dta$estimate, na.rm = TRUE),
+    grouping = ifelse (pct > .015, ">1.5% share", 
+                       ifelse( pct > .005, ">=0.5% share", "<0.5% share")),
+    geoid_st = stringr::str_sub(geoid, 1, 2)
+  ) %>%
+  dplyr::filter(geoid_st < "60") %>%
+  tigris::shift_geometry(geoid_column = "geoid", position = "below")
+
+# Load in states geometry
+states <- tigris::states(cb = TRUE, year = 2010) %>%
+  dplyr::filter(STATE < "60") %>%
+  sf::st_as_sf() %>%
+  tigris::shift_geometry(geoid_column = "STATE", position = "below")
+
+fill_scale <- c(">1.5% share" = "#A3E2B5", ">=0.5% share" = "#456E66", "<0.5% share" = "#16343E")
+
+# Specify points in WGS84
+us_limits_wgs84 <- sf::st_sfc(sf::st_point(c(-120, 0)), sf::st_point(c(-65, 35)), crs = 4326)
+# Convert to Albers
+us_limits_albers <- sf::st_transform(us_limits_wgs84, crs = 5070)
+us_limits_coord <- sf::st_coordinates(us_limits_albers)
+
+dta %>%
+  ggplot(aes(fill = grouping, geometry = geometry)) + 
+  geom_sf(color = "red", size = 0.0) + 
+  geom_sf(data = states, fill = "transparent", color = "white", size = .1) +
+  scale_fill_manual(values = fill_scale) +
+  theme_cori() +
+  coord_sf(
+    xlim = us_limits_coord[,'X'],
+    ylim = us_limits_coord[,'Y'],
+    datum = 5070,
+    expand = FALSE
+  ) +
+  ggplot2::theme(
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    rect = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line.x.bottom = element_blank()
+  ) +
+  ggplot2::labs(
+    title = "Distribution of computer and math jobs",
+    subtitle = "Share of computer and math employment by county, 2019",
+    y = NULL,
+    x = NULL,
+    caption = "Source: 2019 ACS 5-year estimates"
+  )
+
+```
+
