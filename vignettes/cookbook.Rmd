@@ -372,30 +372,25 @@ Choropleth
 
 ```{r, results='hide'}
 
-# We'll use 2019 county-level data on computer and math jobs
-acs19_vars <- c("comp_math_male" = "C24010_008", "comp_math_female" = "C24010_044")
-dta <- tidycensus::get_acs(
-    "county",
-    year = 2019,
-    variables = acs19_vars,
-    geometry = TRUE
-  ) %>%
-  dplyr::group_by(GEOID) %>%
-  dplyr::summarise(
-    estimate = sum(estimate, na.rm = TRUE)
-  ) %>%
-  dplyr::rename(
-    geoid = GEOID
-  )
+# We'll make a map highlighting cori communities
+data(cori_communities)
+dplyr::glimpse(cori_communities)
 
-dta <- dta %>%
-  dplyr::mutate(
-    pct = estimate / sum(dta$estimate, na.rm = TRUE),
-    grouping = ifelse (pct > .015, ">1.5% share", 
-                       ifelse( pct > .005, ">=0.5% share", "<0.5% share")),
-    geoid_st = stringr::str_sub(geoid, 1, 2)
+```
+
+
+```{r, results='hide'}
+
+# Load county geometry
+counties <- tigris::counties(cb = TRUE, year = 2019)
+
+dta <- dplyr::left_join(
+    cori_communities,
+    counties,
+    by = c("geoid_co" = "GEOID")
   ) %>%
-  dplyr::filter(geoid_st < "60") %>%
+  dplyr::filter(STATEFP < "60") %>%
+  sf::st_as_sf() %>%
   # Shift Alaska and Hawaii underneath the lower 48
   tigris::shift_geometry(geoid_column = "geoid", position = "below")
 
@@ -404,9 +399,6 @@ states <- tigris::states(cb = TRUE, year = 2010) %>%
   dplyr::filter(STATE < "60") %>%
   sf::st_as_sf() %>%
   tigris::shift_geometry(geoid_column = "STATE", position = "below")
-
-# Break out our color scale into 3 levels
-fill_scale <- c(">1.5% share" = "#A3E2B5", ">=0.5% share" = "#456E66", "<0.5% share" = "#16343E")
 
 
 # Most of the time the default limits for the data will work, but if you want scope the limits
@@ -420,10 +412,12 @@ us_limits_albers <- sf::st_transform(us_limits_wgs84, crs = 5070)
 us_limits_coord <- sf::st_coordinates(us_limits_albers)
 
 dta %>%
-  ggplot(aes(fill = grouping, geometry = geometry)) + 
+  ggplot(aes(fill = state_abbr)) + 
+  # State background
+  geom_sf(data = states, fill = "#d0d2ce", color = "white", size = .0) +
   geom_sf(color = "red", size = 0.0) + 
+  # State lines
   geom_sf(data = states, fill = "transparent", color = "white", size = .1) +
-  scale_fill_manual(values = fill_scale) +
   theme_cori_map() +
   coord_sf(
     xlim = us_limits_coord[,'X'],
@@ -431,12 +425,16 @@ dta %>%
     datum = 5070,
     expand = FALSE
   ) +
+  ggplot2::theme(
+    # Hide legend of different states
+    legend.position = "none"
+  ) +
   ggplot2::labs(
-    title = "Distribution of computer and math jobs",
-    subtitle = "Share of computer and math employment by county, 2019",
+    title = "Counties with CORI communities",
+    subtitle = "2019",
     y = NULL,
     x = NULL,
-    caption = "Source: 2019 ACS 5-year estimates"
+    caption = NULL
   )
 
 ```
