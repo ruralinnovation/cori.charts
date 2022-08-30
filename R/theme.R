@@ -91,7 +91,15 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
   ret
 }
 
-#' @rdname theme_cori
+#' A [ggplot2] theme for the Center on Rural Innovation (CORI) style
+#'
+#' `theme_cori_horizontal_bars()` provides a [ggplot2] theme formatted according to the CORI
+#' style guide for horizontal bar charts
+#'
+#' @param base_family Font family that CORI employs, defaults to  "Montserrat"
+#' @param base_size Base text font size, defaults to 12
+#'
+#' @rdname theme_cori_horizontal_bars
 #' @export
 #'
 theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 12) {
@@ -108,8 +116,15 @@ theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 1
   ret
 }
 
-
-#' @rdname theme_cori
+#' A [ggplot2] theme for the Center on Rural Innovation (CORI) style
+#'
+#' `theme_cori_map()` provides a [ggplot2] theme formatted according to the CORI
+#' style guide for maps (choropleth or dot density)
+#'
+#' @param base_family Font family that CORI employs, defaults to  "Montserrat"
+#' @param base_size Base text font size, defaults to 12
+#'
+#' @rdname theme_cori_map
 #' @export
 #'
 theme_cori_map <- function(base_family = "Montserrat", base_size = 12) {
