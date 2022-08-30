@@ -424,7 +424,7 @@ dta %>%
   geom_sf(color = "red", size = 0.0) + 
   geom_sf(data = states, fill = "transparent", color = "white", size = .1) +
   scale_fill_manual(values = fill_scale) +
-  theme_cori_choropleth() +
+  theme_cori_map() +
   coord_sf(
     xlim = us_limits_coord[,'X'],
     ylim = us_limits_coord[,'Y'],

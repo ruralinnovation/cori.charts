@@ -3,11 +3,14 @@
 \name{theme_cori}
 \alias{theme_cori}
 \alias{theme_cori_horizontal_bars}
+\alias{theme_cori_choropleth}
 \title{A \link{ggplot2} theme for the Center on Rural Innovation (CORI) style}
 \usage{
 theme_cori(base_family = "Montserrat", base_size = 12)
 
 theme_cori_horizontal_bars(base_family = "Montserrat", base_size = 12)
+
+theme_cori_choropleth(base_family = "Montserrat", base_size = 12)
 }
 \arguments{
 \item{base_family}{Font family that CORI employs, defaults to  "Montserrat"}
