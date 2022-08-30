@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Data visualization cookbook for the Center for Rural Innovation">
 <meta property="og:description" content="cori.charts">
@@ -77,7 +77,7 @@
 
 
 <div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Data visualization cookbook for the Center for Rural Innovation</h1>
             
       
@@ -91,41 +91,41 @@
 <h3 id="install-montserrat">Install Montserrat<a class="anchor" aria-label="anchor" href="#install-montserrat"></a>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/sysfonts" class="external-link">sysfonts</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext" class="external-link">showtext</a></span><span class="op">)</span>
-
-<span class="co"># Loads Montserrat from the google font repository and adds it to sysfonts</span>
-<span class="fu">sysfonts</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html" class="external-link">font_add_google</a></span><span class="op">(</span><span class="st">"Montserrat"</span><span class="op">)</span>
-<span class="co"># Ensures that any newly opened graphics devices will use showtext to draw text</span>
-<span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/sysfonts" class="external-link">sysfonts</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext" class="external-link">showtext</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Loads Montserrat from the google font repository and adds it to sysfonts</span></span>
+<span><span class="fu">sysfonts</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html" class="external-link">font_add_google</a></span><span class="op">(</span><span class="st">"Montserrat"</span><span class="op">)</span></span>
+<span><span class="co"># Ensures that any newly opened graphics devices will use showtext to draw text</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="load-required-libraries">Load required libraries<a class="anchor" aria-label="anchor" href="#load-required-libraries"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ruralinnovation/cori.charts" class="external-link">cori.charts</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ruralinnovation/cori.charts" class="external-link">cori.charts</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="load-your-data">Load your data<a class="anchor" aria-label="anchor" href="#load-your-data"></a>
 </h3>
 <p>We will be using a dataset which gives the population with an income below the poverty level in the last 12 months for a subset of RIN communities.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cori_poverty</span><span class="op">)</span>
-<span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cori_poverty</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 10</span>
-<span class="co">#&gt; Columns: 8</span>
-<span class="co">#&gt; $ rin_community                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Berkshire", "Emporia", "Marquette",…</span>
-<span class="co">#&gt; $ state_abbr                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MA", "KS", "MI", "KY", "OH", "OK", …</span>
-<span class="co">#&gt; $ county                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Berkshire", "Crawford", "Marquette"…</span>
-<span class="co">#&gt; $ geoid_co                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "25003", "20037", "26103", "21195", …</span>
-<span class="co">#&gt; $ estimate_pop_2014                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130064, 39277, 67535, 64380, 78520, …</span>
-<span class="co">#&gt; $ estimate_pop_2019                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 126425, 38968, 66686, 59497, 76040, …</span>
-<span class="co">#&gt; $ estimate_below_poverty_level_2014 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15746, 8102, 10597, 15238, 18284, 83…</span>
-<span class="co">#&gt; $ estimate_below_poverty_level_2019 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13063, 7513, 9833, 14545, 16330, 731…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cori_poverty</span><span class="op">)</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cori_poverty</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 10</span></span>
+<span><span class="co">#&gt; Columns: 8</span></span>
+<span><span class="co">#&gt; $ rin_community                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Berkshire", "Emporia", "Marquette",…</span></span>
+<span><span class="co">#&gt; $ state_abbr                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MA", "KS", "MI", "KY", "OH", "OK", …</span></span>
+<span><span class="co">#&gt; $ county                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Berkshire", "Crawford", "Marquette"…</span></span>
+<span><span class="co">#&gt; $ geoid_co                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "25003", "20037", "26103", "21195", …</span></span>
+<span><span class="co">#&gt; $ estimate_pop_2014                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130064, 39277, 67535, 64380, 78520, …</span></span>
+<span><span class="co">#&gt; $ estimate_pop_2019                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 126425, 38968, 66686, 59497, 76040, …</span></span>
+<span><span class="co">#&gt; $ estimate_below_poverty_level_2014 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15746, 8102, 10597, 15238, 18284, 83…</span></span>
+<span><span class="co">#&gt; $ estimate_below_poverty_level_2019 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13063, 7513, 9833, 14545, 16330, 731…</span></span></code></pre></div>
 <p>Now we are ready to begin charting!</p>
 </div>
 <div class="section level2">
@@ -136,57 +136,57 @@
 <h3 id="horizontal-bar-chart">Horizontal Bar Chart<a class="anchor" aria-label="anchor" href="#horizontal-bar-chart"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cori_poverty</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>
-      <span class="va">estimate_below_poverty_level_2019</span>,
-      <span class="co"># Make RIN communities appear in descending order</span>
-      <span class="co"># based upon their population below the poverty level</span>
-      <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">rin_community</span>, <span class="va">estimate_below_poverty_level_2019</span><span class="op">)</span>
-    <span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="co"># Set the bar color the the CORI "Emerald" color</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">cori_colors</span><span class="op">[</span><span class="st">"Emerald"</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span>
-  <span class="co"># Add data labels to the bars</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>
-      <span class="co"># You can adjust the scales function depending on the desired</span>
-      <span class="co"># number format (e.g., percent, dollar, etc.)</span>
-      label <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/number.html" class="external-link">number</a></span><span class="op">(</span>
-        <span class="va">estimate_below_poverty_level_2019</span>,
-        <span class="co"># accuracy determines what number to round to (e.g., accuracy = 0.01 will show 2 decimal places)</span>
-        accuracy <span class="op">=</span> <span class="fl">1</span>,
-        <span class="co"># big.mark determines the character used between every 3 digits to separate thousands</span>
-        big.mark <span class="op">=</span> <span class="st">","</span>
-      <span class="op">)</span>
-    <span class="op">)</span>,
-    <span class="co"># Provide spacing between the data label and the bar position</span>
-    hjust <span class="op">=</span> <span class="op">-</span><span class="fl">.1</span>,
-    <span class="co"># Data labels need to have their font family explicitly set to "Montserrat"</span>
-    family <span class="op">=</span> <span class="st">"Montserrat"</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>
-    <span class="co"># labels determines whether tick labels are shown</span>
-    labels <span class="op">=</span> <span class="cn">NULL</span>,
-    <span class="co"># You can provide an expansion multiplier to the axis to ensure that</span>
-    <span class="co"># data labels will have enough space</span>
-    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="co"># Call the horizontal bar theme to pull in default CORI theming</span>
-  <span class="fu"><a href="../reference/theme_cori.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="co"># Override any defaults styles using the ggplot2::theme() function AFTER</span>
-  <span class="co"># calling theme_cori_horizontal_bars()</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>
-    panel.grid.major.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="co"># Provide Title, subtitle, etc.</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"Population living below the poverty level"</span>,
-    subtitle <span class="op">=</span> <span class="st">"For select RIN communities (2019)"</span>,
-    y <span class="op">=</span> <span class="cn">NULL</span>,
-    x <span class="op">=</span> <span class="cn">NULL</span>,
-    caption <span class="op">=</span> <span class="st">"Source: ACS 5-year estimates (2019)"</span>
-  <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cori_poverty</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
+<span>      <span class="va">estimate_below_poverty_level_2019</span>,</span>
+<span>      <span class="co"># Make RIN communities appear in descending order</span></span>
+<span>      <span class="co"># based upon their population below the poverty level</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">rin_community</span>, <span class="va">estimate_below_poverty_level_2019</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Set the bar color the the CORI "Emerald" color</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">cori_colors</span><span class="op">[</span><span class="st">"Emerald"</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Add data labels to the bars</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
+<span>      <span class="co"># You can adjust the scales function depending on the desired</span></span>
+<span>      <span class="co"># number format (e.g., percent, dollar, etc.)</span></span>
+<span>      label <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/number.html" class="external-link">number</a></span><span class="op">(</span></span>
+<span>        <span class="va">estimate_below_poverty_level_2019</span>,</span>
+<span>        <span class="co"># accuracy determines what number to round to (e.g., accuracy = 0.01 will show 2 decimal places)</span></span>
+<span>        accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        <span class="co"># big.mark determines the character used between every 3 digits to separate thousands</span></span>
+<span>        big.mark <span class="op">=</span> <span class="st">","</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    <span class="co"># Provide spacing between the data label and the bar position</span></span>
+<span>    hjust <span class="op">=</span> <span class="op">-</span><span class="fl">.1</span>,</span>
+<span>    <span class="co"># Data labels need to have their font family explicitly set to "Montserrat"</span></span>
+<span>    family <span class="op">=</span> <span class="st">"Montserrat"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>    <span class="co"># labels determines whether tick labels are shown</span></span>
+<span>    labels <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    <span class="co"># You can provide an expansion multiplier to the axis to ensure that</span></span>
+<span>    <span class="co"># data labels will have enough space</span></span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Call the horizontal bar theme to pull in default CORI theming</span></span>
+<span>  <span class="fu"><a href="../reference/theme_cori_horizontal_bars.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Override any defaults styles using the ggplot2::theme() function AFTER</span></span>
+<span>  <span class="co"># calling theme_cori_horizontal_bars()</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    panel.grid.major.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Provide Title, subtitle, etc.</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Population living below the poverty level"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"For select RIN communities (2019)"</span>,</span>
+<span>    y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: ACS 5-year estimates (2019)"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="cookbook_files/figure-html/unnamed-chunk-5-1.png" width="100%"></p>
 <hr>
 </div>
@@ -195,84 +195,84 @@
 </h3>
 <p>Pivot the data into a long format for easy plotting</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">grouped_bar_data</span> <span class="op">&lt;-</span> <span class="va">cori_poverty</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    percent_below_poverty_2014 <span class="op">=</span> <span class="va">estimate_below_poverty_level_2014</span> <span class="op">/</span> <span class="va">estimate_pop_2014</span>,
-    percent_below_poverty_2019 <span class="op">=</span> <span class="va">estimate_below_poverty_level_2019</span> <span class="op">/</span> <span class="va">estimate_pop_2019</span>
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"percent"</span><span class="op">)</span>,
-    names_to <span class="op">=</span> <span class="st">"year"</span>,
-    values_to <span class="op">=</span> <span class="st">"percent_below_poverty"</span>
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    year <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html" class="external-link">str_remove</a></span><span class="op">(</span><span class="va">year</span>, <span class="st">"percent_below_poverty_"</span><span class="op">)</span>,
-    rin_community <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">rin_community</span>, <span class="va">percent_below_poverty</span><span class="op">)</span>
-  <span class="op">)</span> 
-
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">grouped_bar_data</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 20</span>
-<span class="co">#&gt; Columns: 10</span>
-<span class="co">#&gt; $ rin_community                     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> Berkshire, Berkshire, Emporia, Empor…</span>
-<span class="co">#&gt; $ state_abbr                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MA", "MA", "KS", "KS", "MI", "MI", …</span>
-<span class="co">#&gt; $ county                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Berkshire", "Berkshire", "Crawford"…</span>
-<span class="co">#&gt; $ geoid_co                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "25003", "25003", "20037", "20037", …</span>
-<span class="co">#&gt; $ estimate_pop_2014                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130064, 130064, 39277, 39277, 67535,…</span>
-<span class="co">#&gt; $ estimate_pop_2019                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 126425, 126425, 38968, 38968, 66686,…</span>
-<span class="co">#&gt; $ estimate_below_poverty_level_2014 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15746, 15746, 8102, 8102, 10597, 105…</span>
-<span class="co">#&gt; $ estimate_below_poverty_level_2019 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13063, 13063, 7513, 7513, 9833, 9833…</span>
-<span class="co">#&gt; $ year                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2014", "2019", "2014", "2019", "201…</span>
-<span class="co">#&gt; $ percent_below_poverty             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.12106348, 0.10332608, 0.20627848, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">grouped_bar_data</span> <span class="op">&lt;-</span> <span class="va">cori_poverty</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    percent_below_poverty_2014 <span class="op">=</span> <span class="va">estimate_below_poverty_level_2014</span> <span class="op">/</span> <span class="va">estimate_pop_2014</span>,</span>
+<span>    percent_below_poverty_2019 <span class="op">=</span> <span class="va">estimate_below_poverty_level_2019</span> <span class="op">/</span> <span class="va">estimate_pop_2019</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"percent"</span><span class="op">)</span>,</span>
+<span>    names_to <span class="op">=</span> <span class="st">"year"</span>,</span>
+<span>    values_to <span class="op">=</span> <span class="st">"percent_below_poverty"</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    year <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html" class="external-link">str_remove</a></span><span class="op">(</span><span class="va">year</span>, <span class="st">"percent_below_poverty_"</span><span class="op">)</span>,</span>
+<span>    rin_community <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">rin_community</span>, <span class="va">percent_below_poverty</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">grouped_bar_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 20</span></span>
+<span><span class="co">#&gt; Columns: 10</span></span>
+<span><span class="co">#&gt; $ rin_community                     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> Berkshire, Berkshire, Emporia, Empor…</span></span>
+<span><span class="co">#&gt; $ state_abbr                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MA", "MA", "KS", "KS", "MI", "MI", …</span></span>
+<span><span class="co">#&gt; $ county                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Berkshire", "Berkshire", "Crawford"…</span></span>
+<span><span class="co">#&gt; $ geoid_co                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "25003", "25003", "20037", "20037", …</span></span>
+<span><span class="co">#&gt; $ estimate_pop_2014                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130064, 130064, 39277, 39277, 67535,…</span></span>
+<span><span class="co">#&gt; $ estimate_pop_2019                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 126425, 126425, 38968, 38968, 66686,…</span></span>
+<span><span class="co">#&gt; $ estimate_below_poverty_level_2014 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15746, 15746, 8102, 8102, 10597, 105…</span></span>
+<span><span class="co">#&gt; $ estimate_below_poverty_level_2019 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13063, 13063, 7513, 7513, 9833, 9833…</span></span>
+<span><span class="co">#&gt; $ year                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2014", "2019", "2014", "2019", "201…</span></span>
+<span><span class="co">#&gt; $ percent_below_poverty             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.12106348, 0.10332608, 0.20627848, …</span></span></code></pre></div>
 <p>With data labels</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">grouped_bar_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, <span class="va">rin_community</span>, fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="co"># Add in data labels</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,
-    <span class="co"># Need to add a position value to ensure that the data labels</span>
-    <span class="co"># are aligned with their appropriate bar</span>
-    position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html" class="external-link">position_dodge2</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.9</span>, reverse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
-    hjust <span class="op">=</span> <span class="op">-</span><span class="fl">.1</span>,
-    family <span class="op">=</span> <span class="st">"Montserrat"</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/scales.html">scale_fill_cori</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>
-    <span class="co"># Axis labels are redundant to the data labels,</span>
-    <span class="co"># so we don't display them by setting labels = NULL</span>
-    labels <span class="op">=</span> <span class="cn">NULL</span>,
-    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"Share of population below poverty level"</span>,
-    subtitle <span class="op">=</span> <span class="st">"For select CORI communities"</span>,
-    x <span class="op">=</span> <span class="cn">NULL</span>,
-    y <span class="op">=</span> <span class="cn">NULL</span>,
-    caption <span class="op">=</span> <span class="st">"Source: U.S. Census Bureau"</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_cori.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">grouped_bar_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, <span class="va">rin_community</span>, fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Add in data labels</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="co"># Need to add a position value to ensure that the data labels</span></span>
+<span>    <span class="co"># are aligned with their appropriate bar</span></span>
+<span>    position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html" class="external-link">position_dodge2</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.9</span>, reverse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>    hjust <span class="op">=</span> <span class="op">-</span><span class="fl">.1</span>,</span>
+<span>    family <span class="op">=</span> <span class="st">"Montserrat"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/scales.html">scale_fill_cori</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>    <span class="co"># Axis labels are redundant to the data labels,</span></span>
+<span>    <span class="co"># so we don't display them by setting labels = NULL</span></span>
+<span>    labels <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Share of population below poverty level"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"For select CORI communities"</span>,</span>
+<span>    x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: U.S. Census Bureau"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_cori_horizontal_bars.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="cookbook_files/figure-html/unnamed-chunk-7-1.png" width="100%"></p>
 <p>Without data labels</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">grouped_bar_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, <span class="va">rin_community</span>, fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/scales.html">scale_fill_cori</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>
-    <span class="co"># Add back axis labels to provide context</span>
-    <span class="co"># because we aren't displaying data labels</span>
-    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
-    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"Share of population below poverty level"</span>,
-    subtitle <span class="op">=</span> <span class="st">"For select CORI communities"</span>,
-    x <span class="op">=</span> <span class="cn">NULL</span>,
-    y <span class="op">=</span> <span class="cn">NULL</span>,
-    caption <span class="op">=</span> <span class="st">"Source: U.S. Census Bureau"</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_cori.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">grouped_bar_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, <span class="va">rin_community</span>, fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/scales.html">scale_fill_cori</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>    <span class="co"># Add back axis labels to provide context</span></span>
+<span>    <span class="co"># because we aren't displaying data labels</span></span>
+<span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Share of population below poverty level"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"For select CORI communities"</span>,</span>
+<span>    x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: U.S. Census Bureau"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_cori_horizontal_bars.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="cookbook_files/figure-html/unnamed-chunk-8-1.png" width="100%"></p>
 <hr>
 </div>
@@ -280,55 +280,55 @@
 <h3 id="bullet-chart">Bullet Chart<a class="anchor" aria-label="anchor" href="#bullet-chart"></a>
 </h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Create a column for the width of the two bars using dplyr:: mutate()</span>
-<span class="co">#</span>
-<span class="co"># Generally, when comparing time periods, the wide bar is the</span>
-<span class="co"># earlier time period and the skinny bar is the later time period</span>
-<span class="va">bullet_chart_data</span> <span class="op">&lt;-</span> <span class="va">grouped_bar_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="st">"2014"</span>, <span class="fl">0.75</span>, <span class="fl">0.5</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">bullet_chart_data</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 20</span>
-<span class="co">#&gt; Columns: 11</span>
-<span class="co">#&gt; $ rin_community                     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> Berkshire, Berkshire, Emporia, Empor…</span>
-<span class="co">#&gt; $ state_abbr                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MA", "MA", "KS", "KS", "MI", "MI", …</span>
-<span class="co">#&gt; $ county                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Berkshire", "Berkshire", "Crawford"…</span>
-<span class="co">#&gt; $ geoid_co                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "25003", "25003", "20037", "20037", …</span>
-<span class="co">#&gt; $ estimate_pop_2014                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130064, 130064, 39277, 39277, 67535,…</span>
-<span class="co">#&gt; $ estimate_pop_2019                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 126425, 126425, 38968, 38968, 66686,…</span>
-<span class="co">#&gt; $ estimate_below_poverty_level_2014 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15746, 15746, 8102, 8102, 10597, 105…</span>
-<span class="co">#&gt; $ estimate_below_poverty_level_2019 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13063, 13063, 7513, 7513, 9833, 9833…</span>
-<span class="co">#&gt; $ year                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2014", "2019", "2014", "2019", "201…</span>
-<span class="co">#&gt; $ percent_below_poverty             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.12106348, 0.10332608, 0.20627848, …</span>
-<span class="co">#&gt; $ width                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.75, 0.50, 0.75, 0.50, 0.75, 0.50, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Create a column for the width of the two bars using dplyr:: mutate()</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co"># Generally, when comparing time periods, the wide bar is the</span></span>
+<span><span class="co"># earlier time period and the skinny bar is the later time period</span></span>
+<span><span class="va">bullet_chart_data</span> <span class="op">&lt;-</span> <span class="va">grouped_bar_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="st">"2014"</span>, <span class="fl">0.75</span>, <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">bullet_chart_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 20</span></span>
+<span><span class="co">#&gt; Columns: 11</span></span>
+<span><span class="co">#&gt; $ rin_community                     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> Berkshire, Berkshire, Emporia, Empor…</span></span>
+<span><span class="co">#&gt; $ state_abbr                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MA", "MA", "KS", "KS", "MI", "MI", …</span></span>
+<span><span class="co">#&gt; $ county                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Berkshire", "Berkshire", "Crawford"…</span></span>
+<span><span class="co">#&gt; $ geoid_co                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "25003", "25003", "20037", "20037", …</span></span>
+<span><span class="co">#&gt; $ estimate_pop_2014                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130064, 130064, 39277, 39277, 67535,…</span></span>
+<span><span class="co">#&gt; $ estimate_pop_2019                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 126425, 126425, 38968, 38968, 66686,…</span></span>
+<span><span class="co">#&gt; $ estimate_below_poverty_level_2014 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15746, 15746, 8102, 8102, 10597, 105…</span></span>
+<span><span class="co">#&gt; $ estimate_below_poverty_level_2019 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13063, 13063, 7513, 7513, 9833, 9833…</span></span>
+<span><span class="co">#&gt; $ year                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2014", "2019", "2014", "2019", "201…</span></span>
+<span><span class="co">#&gt; $ percent_below_poverty             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.12106348, 0.10332608, 0.20627848, …</span></span>
+<span><span class="co">#&gt; $ width                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.75, 0.50, 0.75, 0.50, 0.75, 0.50, …</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bullet_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">percent_below_poverty</span>, y <span class="op">=</span> <span class="va">rin_community</span>, fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="co"># Determine the width using the "width" column we created above</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>width <span class="op">=</span> <span class="va">bullet_chart_data</span><span class="op">$</span><span class="va">width</span><span class="op">)</span> <span class="op">+</span>
-  <span class="co"># Add data labels for the later time period only</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span>
-    data <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bullet_chart_data</span>, <span class="va">year</span> <span class="op">==</span> <span class="st">"2019"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">percent_below_poverty</span>, label <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,
-    hjust <span class="op">=</span> <span class="fl">1.3</span>,
-    family <span class="op">=</span> <span class="st">"Montserrat"</span>,
-    color <span class="op">=</span> <span class="st">"white"</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/scales.html">scale_fill_cori</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>
-    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
-    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"Share of population below poverty level"</span>,
-    subtitle <span class="op">=</span> <span class="st">"For select CORI communities"</span>,
-    x <span class="op">=</span> <span class="cn">NULL</span>,
-    y <span class="op">=</span> <span class="cn">NULL</span>,
-    caption <span class="op">=</span> <span class="st">"Source: ACS 5-year estimates"</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_cori.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bullet_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">percent_below_poverty</span>, y <span class="op">=</span> <span class="va">rin_community</span>, fill <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Determine the width using the "width" column we created above</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>width <span class="op">=</span> <span class="va">bullet_chart_data</span><span class="op">$</span><span class="va">width</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Add data labels for the later time period only</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bullet_chart_data</span>, <span class="va">year</span> <span class="op">==</span> <span class="st">"2019"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">percent_below_poverty</span>, label <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent</a></span><span class="op">(</span><span class="va">percent_below_poverty</span>, accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    hjust <span class="op">=</span> <span class="fl">1.3</span>,</span>
+<span>    family <span class="op">=</span> <span class="st">"Montserrat"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"white"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/scales.html">scale_fill_cori</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.005</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Share of population below poverty level"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"For select CORI communities"</span>,</span>
+<span>    x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: ACS 5-year estimates"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_cori_horizontal_bars.html">theme_cori_horizontal_bars</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="cookbook_files/figure-html/unnamed-chunk-10-1.png" width="100%"></p>
 <hr>
 </div>
@@ -336,130 +336,201 @@
 <h3 id="line-charts">Line Charts<a class="anchor" aria-label="anchor" href="#line-charts"></a>
 </h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"cori_education"</span><span class="op">)</span>
-
-<span class="co"># Clean up the labels for the chart</span>
-<span class="va">line_chart_data</span> <span class="op">&lt;-</span> <span class="va">cori_education</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    <span class="co"># Remove underscores and convert to title case</span>
-    education_clean <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html" class="external-link">str_to_title</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="va">education</span>, <span class="st">"_"</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="co"># Prep work so that the legend labels can be ordered based upon their final data point</span>
-<span class="co">#</span>
-<span class="co"># Filter to the final data point and pull the order</span>
-<span class="va">latest_date</span> <span class="op">&lt;-</span> <span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">factor_order</span> <span class="op">&lt;-</span> <span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="va">latest_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">percent_working_remotely</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">education_clean</span><span class="op">)</span>
-
-<span class="co"># Update the column based upon the preferred order</span>
-<span class="va">line_chart_data</span> <span class="op">&lt;-</span> <span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>education_clean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">education_clean</span>, levels <span class="op">=</span> <span class="va">factor_order</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">line_chart_data</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 80</span>
-<span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ date                     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2020-05-01, 2020-05-01, 2020-05-01, 2020-05-…</span>
-<span class="co">#&gt; $ education                <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> less_than_high_school, high_school_no_college…</span>
-<span class="co">#&gt; $ percent_working_remotely <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.05, 0.15, 0.25, 0.60, 0.05, 0.13, 0.22, 0.5…</span>
-<span class="co">#&gt; $ education_clean          <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> Less Than High School, High School No College…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"cori_education"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Clean up the labels for the chart</span></span>
+<span><span class="va">line_chart_data</span> <span class="op">&lt;-</span> <span class="va">cori_education</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    <span class="co"># Remove underscores and convert to title case</span></span>
+<span>    education_clean <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html" class="external-link">str_to_title</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="va">education</span>, <span class="st">"_"</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Prep work so that the legend labels can be ordered based upon their final data point</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co"># Filter to the final data point and pull the order</span></span>
+<span><span class="va">latest_date</span> <span class="op">&lt;-</span> <span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">factor_order</span> <span class="op">&lt;-</span> <span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="va">latest_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">percent_working_remotely</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">education_clean</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Update the column based upon the preferred order</span></span>
+<span><span class="va">line_chart_data</span> <span class="op">&lt;-</span> <span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>education_clean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">education_clean</span>, levels <span class="op">=</span> <span class="va">factor_order</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">line_chart_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 80</span></span>
+<span><span class="co">#&gt; Columns: 4</span></span>
+<span><span class="co">#&gt; $ date                     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2020-05-01, 2020-05-01, 2020-05-01, 2020-05-…</span></span>
+<span><span class="co">#&gt; $ education                <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> less_than_high_school, high_school_no_college…</span></span>
+<span><span class="co">#&gt; $ percent_working_remotely <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.05, 0.15, 0.25, 0.60, 0.05, 0.13, 0.22, 0.5…</span></span>
+<span><span class="co">#&gt; $ education_clean          <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> Less Than High School, High School No College…</span></span></code></pre></div>
 <p>Simple line chart with right-hand legend</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># When using line charts, you need to </span>
-<span class="co"># update the geom defaults before plotting</span>
-<span class="fu"><a href="../reference/update_cori_geom_defaults.html">update_cori_geom_defaults</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>
-       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">percent_working_remotely</span>, color <span class="op">=</span> <span class="va">education_clean</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/scales.html">scale_color_cori</a></span><span class="op">(</span>guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html" class="external-link">scale_x_date</a></span><span class="op">(</span>
-    date_breaks <span class="op">=</span> <span class="st">"3 months"</span>,
-    date_labels <span class="op">=</span>  <span class="st">"%b '%y"</span>,
-    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.01</span>,<span class="fl">.01</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>
-    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
-    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.65</span><span class="op">)</span>,
-    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_cori.html">theme_cori</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>
-    <span class="co"># CORI themes defaults to a horizontal legend below the title,</span>
-    <span class="co"># but with long names it can be easier to display the legend on the right</span>
-    legend.position <span class="op">=</span> <span class="st">"right"</span>,
-    legend.direction <span class="op">=</span> <span class="st">"vertical"</span>,
-    <span class="co"># Add ticks to the x-axis</span>
-    axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#d0d2ce"</span><span class="op">)</span>,
-    axis.ticks.length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">4</span>, <span class="st">'pt'</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="co"># In order for a legend on the right to render properly,</span>
-  <span class="co"># you need to specify that byrow = TRUE</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Percent of workers able to work from home"</span>,
-       subtitle <span class="op">=</span> <span class="st">"By education level (May 2020 - December 2021)"</span>,
-       x <span class="op">=</span> <span class="cn">NULL</span>,
-       y <span class="op">=</span> <span class="cn">NULL</span>,
-       caption <span class="op">=</span> <span class="st">"Source: Bureau of Labor Statistics"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># When using line charts, you need to </span></span>
+<span><span class="co"># update the geom defaults before plotting</span></span>
+<span><span class="fu"><a href="../reference/update_cori_geom_defaults.html">update_cori_geom_defaults</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">percent_working_remotely</span>, color <span class="op">=</span> <span class="va">education_clean</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/scales.html">scale_color_cori</a></span><span class="op">(</span>guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html" class="external-link">scale_x_date</a></span><span class="op">(</span></span>
+<span>    date_breaks <span class="op">=</span> <span class="st">"3 months"</span>,</span>
+<span>    date_labels <span class="op">=</span>  <span class="st">"%b '%y"</span>,</span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.01</span>,<span class="fl">.01</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span></span>
+<span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.65</span><span class="op">)</span>,</span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_cori.html">theme_cori</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    <span class="co"># CORI themes defaults to a horizontal legend below the title,</span></span>
+<span>    <span class="co"># but with long names it can be easier to display the legend on the right</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    legend.direction <span class="op">=</span> <span class="st">"vertical"</span>,</span>
+<span>    <span class="co"># Add ticks to the x-axis</span></span>
+<span>    axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#d0d2ce"</span><span class="op">)</span>,</span>
+<span>    axis.ticks.length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">4</span>, <span class="st">'pt'</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># In order for a legend on the right to render properly,</span></span>
+<span>  <span class="co"># you need to specify that byrow = TRUE</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Percent of workers able to work from home"</span>,</span>
+<span>       subtitle <span class="op">=</span> <span class="st">"By education level (May 2020 - December 2021)"</span>,</span>
+<span>       x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>       y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>       caption <span class="op">=</span> <span class="st">"Source: Bureau of Labor Statistics"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="cookbook_files/figure-html/unnamed-chunk-12-1.png" width="100%"> If your lines are spaced further apart, you can use a secondary axis to directly label the line endpoints</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Let's filter to just two lines to simplify the chart</span>
-<span class="va">direct_label_data</span> <span class="op">&lt;-</span> <span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span>
-    <span class="va">education</span> <span class="op">==</span> <span class="st">"bachelors_or_higher"</span> <span class="op">|</span> <span class="va">education</span> <span class="op">==</span> <span class="st">"some_college_or_associates"</span>
-  <span class="op">)</span>
-
-<span class="co"># Determine the value and label at the most recent date for each line</span>
-<span class="va">line_labels</span> <span class="op">&lt;-</span> <span class="va">direct_label_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="va">latest_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">percent_working_remotely</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">education_clean</span><span class="op">)</span>
-
-<span class="va">line_values</span> <span class="op">&lt;-</span> <span class="va">direct_label_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="va">latest_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">percent_working_remotely</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">percent_working_remotely</span><span class="op">)</span>
-
-<span class="va">direct_label_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>
-       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">percent_working_remotely</span>, color <span class="op">=</span> <span class="va">education_clean</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/scales.html">scale_color_cori</a></span><span class="op">(</span>guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html" class="external-link">scale_x_date</a></span><span class="op">(</span>
-    date_breaks <span class="op">=</span> <span class="st">"3 months"</span>,
-    date_labels <span class="op">=</span>  <span class="st">"%b '%y"</span>,
-    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.01</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>
-    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
-    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.65</span><span class="op">)</span>,
-    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span>,
-    <span class="co"># Add the direct labels as a second axis</span>
-    sec.axis <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/sec_axis.html" class="external-link">sec_axis</a></span><span class="op">(</span>
-      trans <span class="op">=</span> <span class="op">~</span><span class="va">.</span><span class="op">*</span><span class="fl">1</span>,
-      breaks <span class="op">=</span> <span class="va">line_values</span>,
-      labels <span class="op">=</span> <span class="va">line_labels</span>
-    <span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_cori.html">theme_cori</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>
-    <span class="co"># Remove the legend</span>
-    legend.position <span class="op">=</span> <span class="st">"none"</span>,
-    <span class="co"># Add ticks to the x-axis</span>
-    axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#d0d2ce"</span><span class="op">)</span>,
-    axis.ticks.length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">4</span>, <span class="st">'pt'</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"Percent of workers able to work from home"</span>,
-    subtitle <span class="op">=</span> <span class="st">"By education level (May 2020 - December 2021)"</span>,
-    x <span class="op">=</span> <span class="cn">NULL</span>,
-    y <span class="op">=</span> <span class="cn">NULL</span>,
-    caption <span class="op">=</span> <span class="st">"Source: Bureau of Labor Statistics"</span>
-  <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Let's filter to just two lines to simplify the chart</span></span>
+<span><span class="va">direct_label_data</span> <span class="op">&lt;-</span> <span class="va">line_chart_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span></span>
+<span>    <span class="va">education</span> <span class="op">==</span> <span class="st">"bachelors_or_higher"</span> <span class="op">|</span> <span class="va">education</span> <span class="op">==</span> <span class="st">"some_college_or_associates"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Determine the value and label at the most recent date for each line</span></span>
+<span><span class="va">line_labels</span> <span class="op">&lt;-</span> <span class="va">direct_label_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="va">latest_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">percent_working_remotely</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">education_clean</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">line_values</span> <span class="op">&lt;-</span> <span class="va">direct_label_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="va">latest_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">percent_working_remotely</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">percent_working_remotely</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">direct_label_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">percent_working_remotely</span>, color <span class="op">=</span> <span class="va">education_clean</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/scales.html">scale_color_cori</a></span><span class="op">(</span>guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html" class="external-link">scale_x_date</a></span><span class="op">(</span></span>
+<span>    date_breaks <span class="op">=</span> <span class="st">"3 months"</span>,</span>
+<span>    date_labels <span class="op">=</span>  <span class="st">"%b '%y"</span>,</span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.01</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span></span>
+<span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.65</span><span class="op">)</span>,</span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="co"># Add the direct labels as a second axis</span></span>
+<span>    sec.axis <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/sec_axis.html" class="external-link">sec_axis</a></span><span class="op">(</span></span>
+<span>      trans <span class="op">=</span> <span class="op">~</span><span class="va">.</span><span class="op">*</span><span class="fl">1</span>,</span>
+<span>      breaks <span class="op">=</span> <span class="va">line_values</span>,</span>
+<span>      labels <span class="op">=</span> <span class="va">line_labels</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_cori.html">theme_cori</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    <span class="co"># Remove the legend</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>    <span class="co"># Add ticks to the x-axis</span></span>
+<span>    axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#d0d2ce"</span><span class="op">)</span>,</span>
+<span>    axis.ticks.length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">4</span>, <span class="st">'pt'</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Percent of workers able to work from home"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"By education level (May 2020 - December 2021)"</span>,</span>
+<span>    x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: Bureau of Labor Statistics"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="cookbook_files/figure-html/unnamed-chunk-13-1.png" width="100%"></p>
+<hr>
+</div>
+<div class="section level3">
+<h3 id="maps">Maps<a class="anchor" aria-label="anchor" href="#maps"></a>
+</h3>
+<p>Choropleth</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># We'll make a map highlighting cori communities</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cori_communities</span><span class="op">)</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cori_communities</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Load county geometry</span></span>
+<span><span class="va">counties</span> <span class="op">&lt;-</span> <span class="fu">tigris</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tigris/man/counties.html" class="external-link">counties</a></span><span class="op">(</span>cb <span class="op">=</span> <span class="cn">TRUE</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dta</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
+<span>    <span class="va">cori_communities</span>,</span>
+<span>    <span class="va">counties</span>,</span>
+<span>    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"geoid_co"</span> <span class="op">=</span> <span class="st">"GEOID"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">STATEFP</span> <span class="op">&lt;</span> <span class="st">"60"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="co"># Shift Alaska and Hawaii underneath the lower 48</span></span>
+<span>  <span class="fu">tigris</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tigris/man/shift_geometry.html" class="external-link">shift_geometry</a></span><span class="op">(</span>geoid_column <span class="op">=</span> <span class="st">"geoid"</span>, position <span class="op">=</span> <span class="st">"below"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: None of your features are in Alaska, Hawaii, or Puerto Rico, so no geometries will be shifted.</span></span>
+<span><span class="co">#&gt; Transforming your object's CRS to 'ESRI:102003'</span></span>
+<span></span>
+<span><span class="co"># Load in states geometry</span></span>
+<span><span class="va">states</span> <span class="op">&lt;-</span> <span class="fu">tigris</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tigris/man/states.html" class="external-link">states</a></span><span class="op">(</span>cb <span class="op">=</span> <span class="cn">TRUE</span>, year <span class="op">=</span> <span class="fl">2010</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">STATE</span> <span class="op">&lt;</span> <span class="st">"60"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">tigris</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tigris/man/shift_geometry.html" class="external-link">shift_geometry</a></span><span class="op">(</span>geoid_column <span class="op">=</span> <span class="st">"STATE"</span>, position <span class="op">=</span> <span class="st">"below"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Most of the time the default limits for the data will work, but if you want scope the limits</span></span>
+<span><span class="co"># of the map window you can take the following steps</span></span>
+<span></span>
+<span><span class="co"># 1) Specify the lower left and upper right corners in WGS84 </span></span>
+<span><span class="va">us_limits_wgs84</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/sfc.html" class="external-link">st_sfc</a></span><span class="op">(</span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st.html" class="external-link">st_point</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">120</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>, <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st.html" class="external-link">st_point</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">65</span>, <span class="fl">35</span><span class="op">)</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
+<span><span class="co"># 2) Convert to Albers</span></span>
+<span><span class="va">us_limits_albers</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">us_limits_wgs84</span>, crs <span class="op">=</span> <span class="fl">5070</span><span class="op">)</span></span>
+<span><span class="co"># 3) Pull new coordinates in Albers</span></span>
+<span><span class="va">us_limits_coord</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html" class="external-link">st_coordinates</a></span><span class="op">(</span><span class="va">us_limits_albers</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">state_abbr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="co"># State background</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">states</span>, fill <span class="op">=</span> <span class="st">"#d0d2ce"</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">.0</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="co"># State lines</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">states</span>, fill <span class="op">=</span> <span class="st">"transparent"</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_cori_map.html">theme_cori_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span></span>
+<span>    xlim <span class="op">=</span> <span class="va">us_limits_coord</span><span class="op">[</span>,<span class="st">'X'</span><span class="op">]</span>,</span>
+<span>    ylim <span class="op">=</span> <span class="va">us_limits_coord</span><span class="op">[</span>,<span class="st">'Y'</span><span class="op">]</span>,</span>
+<span>    datum <span class="op">=</span> <span class="fl">5070</span>,</span>
+<span>    expand <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    <span class="co"># Hide legend of different states</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"none"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Counties with CORI communities"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"2019"</span>,</span>
+<span>    y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    caption <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="cookbook_files/figure-html/unnamed-chunk-15-1.png" width="100%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -475,7 +546,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>

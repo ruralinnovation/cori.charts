@@ -61,6 +61,12 @@
     <loc>https://ruralinnovation.github.io/cori.charts/reference/theme_cori.html</loc>
   </url>
   <url>
+    <loc>https://ruralinnovation.github.io/cori.charts/reference/theme_cori_horizontal_bars.html</loc>
+  </url>
+  <url>
+    <loc>https://ruralinnovation.github.io/cori.charts/reference/theme_cori_map.html</loc>
+  </url>
+  <url>
     <loc>https://ruralinnovation.github.io/cori.charts/reference/update_cori_geom_defaults.html</loc>
   </url>
 </urlset>
