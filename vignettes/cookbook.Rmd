@@ -396,6 +396,7 @@ dta <- dta %>%
     geoid_st = stringr::str_sub(geoid, 1, 2)
   ) %>%
   dplyr::filter(geoid_st < "60") %>%
+  # Shift Alaska and Hawaii underneath the lower 48
   tigris::shift_geometry(geoid_column = "geoid", position = "below")
 
 # Load in states geometry
@@ -404,12 +405,18 @@ states <- tigris::states(cb = TRUE, year = 2010) %>%
   sf::st_as_sf() %>%
   tigris::shift_geometry(geoid_column = "STATE", position = "below")
 
+# Break out our color scale into 3 levels
 fill_scale <- c(">1.5% share" = "#A3E2B5", ">=0.5% share" = "#456E66", "<0.5% share" = "#16343E")
 
-# Specify points in WGS84
+
+# Most of the time the default limits for the data will work, but if you want scope the limits
+# of the map window you can take the following steps
+
+# 1) Specify the lower left and upper right corners in WGS84 
 us_limits_wgs84 <- sf::st_sfc(sf::st_point(c(-120, 0)), sf::st_point(c(-65, 35)), crs = 4326)
-# Convert to Albers
+# 2) Convert to Albers
 us_limits_albers <- sf::st_transform(us_limits_wgs84, crs = 5070)
+# 3) Pull new coordinates in Albers
 us_limits_coord <- sf::st_coordinates(us_limits_albers)
 
 dta %>%
@@ -417,20 +424,12 @@ dta %>%
   geom_sf(color = "red", size = 0.0) + 
   geom_sf(data = states, fill = "transparent", color = "white", size = .1) +
   scale_fill_manual(values = fill_scale) +
-  theme_cori() +
+  theme_cori_choropleth() +
   coord_sf(
     xlim = us_limits_coord[,'X'],
     ylim = us_limits_coord[,'Y'],
     datum = 5070,
     expand = FALSE
-  ) +
-  ggplot2::theme(
-    axis.text.x = element_blank(),
-    axis.text.y = element_blank(),
-    axis.ticks = element_blank(),
-    rect = element_blank(),
-    panel.grid.major = element_blank(),
-    axis.line.x.bottom = element_blank()
   ) +
   ggplot2::labs(
     title = "Distribution of computer and math jobs",

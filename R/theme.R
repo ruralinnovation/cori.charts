@@ -107,3 +107,31 @@ theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 1
 
   ret
 }
+
+
+#' @rdname theme_cori
+#' @export
+#'
+theme_cori_choropleth <- function(base_family = "Montserrat", base_size = 12) {
+
+  ret <- theme_cori(
+    base_family = base_family,
+    base_size = base_size
+  )
+
+  # Hide x and y text
+  ret$axis.text.x = ggplot2::element_blank()
+  ret$axis.text.y = ggplot2::element_blank()
+
+  # Hide ticks
+  ret$axis.ticks = ggplot2::element_blank()
+
+  # Remove background rectangle
+  ret$rect = ggplot2::element_blank()
+  ret$panel.grid.major = ggplot2::element_blank()
+
+  # Remove bottom line
+  ret$axis.line.x.bottom = ggplot2::element_blank()
+
+  ret
+}
