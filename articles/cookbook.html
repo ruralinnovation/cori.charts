@@ -493,64 +493,67 @@
 <span><span class="co">#&gt; use options("rgdal_show_exportToProj4_warnings"="none") before loading sp or rgdal.</span></span>
 <span><span class="va">counties</span> <span class="op">&lt;-</span> <span class="fu">tigris</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tigris/man/counties.html" class="external-link">counties</a></span><span class="op">(</span>cb <span class="op">=</span> <span class="cn">TRUE</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># dta &lt;- dplyr::left_join(</span></span>
-<span><span class="co">#     cori_communities,</span></span>
-<span><span class="co">#     counties,</span></span>
-<span><span class="co">#     by = c("geoid_co" = "GEOID")</span></span>
-<span><span class="co">#   ) %&gt;%</span></span>
-<span><span class="co">#   dplyr::filter(STATEFP &lt; "60") %&gt;%</span></span>
-<span><span class="co">#   sf::st_as_sf() %&gt;%</span></span>
-<span><span class="co">#   # If you have data for Alaska or Hawaii you'll want to</span></span>
-<span><span class="co">#   # shift Alaska and Hawaii underneath the lower 48</span></span>
-<span><span class="co">#   tigris::shift_geometry(geoid_column = "geoid", position = "below")</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># # Load in states geometry</span></span>
-<span><span class="co"># states &lt;- tigris::states(cb = TRUE, year = 2010) %&gt;%</span></span>
-<span><span class="co">#   dplyr::filter(STATE &lt; "60") %&gt;%</span></span>
-<span><span class="co">#   sf::st_as_sf() %&gt;%</span></span>
-<span><span class="co">#   tigris::shift_geometry(geoid_column = "STATE", position = "below")</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># # Most of the time the default limits for the data will work,</span></span>
-<span><span class="co"># # but if you want scope the limits</span></span>
-<span><span class="co"># # of the map window you can take the following steps</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># # 1) Specify the lower left and upper right corners in WGS84 </span></span>
-<span><span class="co"># us_limits_wgs84 &lt;- sf::st_sfc(</span></span>
-<span><span class="co">#   sf::st_point(c(-120, 0)),</span></span>
-<span><span class="co">#   sf::st_point(c(-65, 35)),</span></span>
-<span><span class="co">#   crs = 4326</span></span>
-<span><span class="co"># )</span></span>
-<span><span class="co"># # 2) Convert to Albers</span></span>
-<span><span class="co"># us_limits_albers &lt;- sf::st_transform(us_limits_wgs84, crs = 5070)</span></span>
-<span><span class="co"># # 3) Pull new coordinates in Albers</span></span>
-<span><span class="co"># us_limits_coord &lt;- sf::st_coordinates(us_limits_albers)</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># dta %&gt;%</span></span>
-<span><span class="co">#   ggplot(aes(fill = state_abbr)) + </span></span>
-<span><span class="co">#   # State background</span></span>
-<span><span class="co">#   geom_sf(data = states, fill = "#d0d2ce", color = "white", size = .0) +</span></span>
-<span><span class="co">#   geom_sf(color = "red", size = 0.0) + </span></span>
-<span><span class="co">#   # State lines</span></span>
-<span><span class="co">#   geom_sf(data = states, fill = "transparent", color = "white", size = .1) +</span></span>
-<span><span class="co">#   theme_cori_map() +</span></span>
-<span><span class="co">#   coord_sf(</span></span>
-<span><span class="co">#     xlim = us_limits_coord[,'X'],</span></span>
-<span><span class="co">#     ylim = us_limits_coord[,'Y'],</span></span>
-<span><span class="co">#     datum = 5070,</span></span>
-<span><span class="co">#     expand = FALSE</span></span>
-<span><span class="co">#   ) +</span></span>
-<span><span class="co">#   ggplot2::theme(</span></span>
-<span><span class="co">#     # Hide legend of different states</span></span>
-<span><span class="co">#     legend.position = "none"</span></span>
-<span><span class="co">#   ) +</span></span>
-<span><span class="co">#   ggplot2::labs(</span></span>
-<span><span class="co">#     title = "Counties with CORI communities",</span></span>
-<span><span class="co">#     subtitle = "2019",</span></span>
-<span><span class="co">#     y = NULL,</span></span>
-<span><span class="co">#     x = NULL,</span></span>
-<span><span class="co">#     caption = NULL</span></span>
-<span><span class="co">#   )</span></span></code></pre></div>
+<span><span class="va">dta</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
+<span>    <span class="va">cori_communities</span>,</span>
+<span>    <span class="va">counties</span>,</span>
+<span>    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"geoid_co"</span> <span class="op">=</span> <span class="st">"GEOID"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">STATEFP</span> <span class="op">&lt;</span> <span class="st">"60"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="co"># If you have data for Alaska or Hawaii you'll want to</span></span>
+<span>  <span class="co"># shift Alaska and Hawaii underneath the lower 48</span></span>
+<span>  <span class="fu">tigris</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tigris/man/shift_geometry.html" class="external-link">shift_geometry</a></span><span class="op">(</span>geoid_column <span class="op">=</span> <span class="st">"geoid"</span>, position <span class="op">=</span> <span class="st">"below"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: None of your features are in Alaska, Hawaii, or Puerto Rico, so no geometries will be shifted.</span></span>
+<span><span class="co">#&gt; Transforming your object's CRS to 'ESRI:102003'</span></span>
+<span></span>
+<span><span class="co"># Load in states geometry</span></span>
+<span><span class="va">states</span> <span class="op">&lt;-</span> <span class="fu">tigris</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tigris/man/states.html" class="external-link">states</a></span><span class="op">(</span>cb <span class="op">=</span> <span class="cn">TRUE</span>, year <span class="op">=</span> <span class="fl">2010</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">STATE</span> <span class="op">&lt;</span> <span class="st">"60"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">tigris</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tigris/man/shift_geometry.html" class="external-link">shift_geometry</a></span><span class="op">(</span>geoid_column <span class="op">=</span> <span class="st">"STATE"</span>, position <span class="op">=</span> <span class="st">"below"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Most of the time the default limits for the data will work,</span></span>
+<span><span class="co"># but if you want scope the limits</span></span>
+<span><span class="co"># of the map window you can take the following steps</span></span>
+<span></span>
+<span><span class="co"># 1) Specify the lower left and upper right corners in WGS84</span></span>
+<span><span class="va">us_limits_wgs84</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/sfc.html" class="external-link">st_sfc</a></span><span class="op">(</span></span>
+<span>  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st.html" class="external-link">st_point</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">120</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st.html" class="external-link">st_point</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">65</span>, <span class="fl">35</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  crs <span class="op">=</span> <span class="fl">4326</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># 2) Convert to Albers</span></span>
+<span><span class="va">us_limits_albers</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">us_limits_wgs84</span>, crs <span class="op">=</span> <span class="fl">5070</span><span class="op">)</span></span>
+<span><span class="co"># 3) Pull new coordinates in Albers</span></span>
+<span><span class="va">us_limits_coord</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html" class="external-link">st_coordinates</a></span><span class="op">(</span><span class="va">us_limits_albers</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">state_abbr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># State background</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">states</span>, fill <span class="op">=</span> <span class="st">"#d0d2ce"</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">.0</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># State lines</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">states</span>, fill <span class="op">=</span> <span class="st">"transparent"</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_cori_map.html">theme_cori_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span></span>
+<span>    xlim <span class="op">=</span> <span class="va">us_limits_coord</span><span class="op">[</span>,<span class="st">'X'</span><span class="op">]</span>,</span>
+<span>    ylim <span class="op">=</span> <span class="va">us_limits_coord</span><span class="op">[</span>,<span class="st">'Y'</span><span class="op">]</span>,</span>
+<span>    datum <span class="op">=</span> <span class="fl">5070</span>,</span>
+<span>    expand <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    <span class="co"># Hide legend of different states</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"none"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Counties with CORI communities"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"2019"</span>,</span>
+<span>    y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    caption <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="cookbook_files/figure-html/unnamed-chunk-15-1.png" width="100%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
