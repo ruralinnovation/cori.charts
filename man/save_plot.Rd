@@ -24,6 +24,8 @@ save_plot(
 
 \item{chart_height}{The height in px of the chart}
 
+\item{add_logo}{Boolean that determines if a logo is included or not}
+
 \item{logo_path}{Path to the logo. Defaults to hosted Full CORI Black logo}
 
 \item{logo_position}{Combination of top/bottom and right/left. Defaults to top right.}
