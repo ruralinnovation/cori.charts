@@ -44,6 +44,8 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(stringr)
+library(sf)
+library(rgdal)
 ```
 
 ## Load your data
@@ -381,8 +383,6 @@ data(cori_communities)
 ```{r, results='hide'}
 
 # Load county geometry
-library(sf)
-library(rgdal)
 counties <- tigris::counties(cb = TRUE, year = 2019)
 
 dta <- dplyr::left_join(
