@@ -6,6 +6,8 @@
 #' @param logo_scale Scale logo to 1/10 width of plot
 #'
 #' @return magick image
+#'
+#' @export
 add_logo <- function(
   plot_path,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Full-Logo_CORI_Black.svg",
@@ -69,6 +71,7 @@ add_logo <- function(
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
 #' @param logo_scale Scale logo to 1/10 width of plot
 #'
+#' @export
 save_plot <- function(
   fig,
   export_path,
