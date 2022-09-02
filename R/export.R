@@ -1,8 +1,8 @@
 #' Add CORI logo to an image
 #'
 #' @param plot_path file path to the chart/plot/graphic
-#' @param logo_position Combination of top/bottom and right/left. Defaults to top right.
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
+#' @param logo_position Combination of top/bottom and right/left. Defaults to top right.
 #' @param logo_scale Scale logo to 1/10 width of plot
 #'
 #' @return magick image
@@ -67,6 +67,7 @@ add_logo <- function(
 #' @param export_path file path for the exported plot
 #' @param chart_width The width in px of the chart
 #' @param chart_height The height in px of the chart
+#' @param add_logo Boolean that determines if a logo is included or not
 #' @param logo_position Combination of top/bottom and right/left. Defaults to top right.
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
 #' @param logo_scale Scale logo to 1/10 width of plot
