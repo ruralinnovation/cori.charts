@@ -99,7 +99,7 @@ save_plot <- function(
       logo_scale = logo_scale
     )
 
-    image_write(
+    magick::image_write(
       fig_with_logo,
       path = export_path
     )
