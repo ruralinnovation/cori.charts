@@ -36,7 +36,8 @@ Suggests:
     tidyr,
     sysfonts,
     showtext,
-    curl
+    curl,
+    magick
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
