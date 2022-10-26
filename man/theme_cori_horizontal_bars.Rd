@@ -4,10 +4,10 @@
 \alias{theme_cori_horizontal_bars}
 \title{A \link{ggplot2} theme for the Center on Rural Innovation (CORI) style}
 \usage{
-theme_cori_horizontal_bars(base_family = "Montserrat", base_size = 12)
+theme_cori_horizontal_bars(base_family = "Lato", base_size = 12)
 }
 \arguments{
-\item{base_family}{Font family that CORI employs, defaults to  "Montserrat"}
+\item{base_family}{Font family that CORI employs, defaults to  "Lato"}
 
 \item{base_size}{Base text font size, defaults to 12}
 }

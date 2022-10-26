@@ -3,13 +3,13 @@
 #' `theme_cori()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide.
 #'
-#' @param base_family Font family that CORI employs, defaults to  "Montserrat"
+#' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori
 #' @export
 #'
-theme_cori <- function(base_family = "Montserrat", base_size = 12) {
+theme_cori <- function(base_family = "Lato", base_size = 12) {
 
   gray <- "#d0d2ce"
   dark_gray <- "#8e8e8e"
@@ -104,13 +104,13 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
 #' `theme_cori_horizontal_bars()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide for horizontal bar charts
 #'
-#' @param base_family Font family that CORI employs, defaults to  "Montserrat"
+#' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori_horizontal_bars
 #' @export
 #'
-theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 12) {
+theme_cori_horizontal_bars <- function(base_family = "Lato", base_size = 12) {
   ret <- theme_cori(
     base_family = base_family,
     base_size = base_size
@@ -131,13 +131,13 @@ theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 1
 #' `theme_cori_map()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide for maps (choropleth or dot density)
 #'
-#' @param base_family Font family that CORI employs, defaults to  "Montserrat"
+#' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori_map
 #' @export
 #'
-theme_cori_map <- function(base_family = "Montserrat", base_size = 12) {
+theme_cori_map <- function(base_family = "Lato", base_size = 12) {
 
   ret <- theme_cori(
     base_family = base_family,
