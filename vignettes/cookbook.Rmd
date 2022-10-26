@@ -44,8 +44,8 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(stringr)
-library(sf)
-library(rgdal)
+# library(sf)
+# library(rgdal)
 ```
 
 ## Load your data
@@ -382,67 +382,67 @@ data(cori_communities)
 
 ```{r, results='hide'}
 
-# Load county geometry
-counties <- tigris::counties(cb = TRUE, year = 2019)
-
-dta <- dplyr::left_join(
-    cori_communities,
-    counties,
-    by = c("geoid_co" = "GEOID")
-  ) %>%
-  dplyr::filter(STATEFP < "60") %>%
-  sf::st_as_sf() %>%
-  # If you have data for Alaska or Hawaii you'll want to
-  # shift Alaska and Hawaii underneath the lower 48
-  tigris::shift_geometry(geoid_column = "geoid", position = "below")
-
-# Load in states geometry
-states <- tigris::states(cb = TRUE, year = 2010) %>%
-  dplyr::filter(STATE < "60") %>%
-  sf::st_as_sf() %>%
-  tigris::shift_geometry(geoid_column = "STATE", position = "below")
-
-
-# Most of the time the default limits for the data will work,
-# but if you want scope the limits
-# of the map window you can take the following steps
-
-# 1) Specify the lower left and upper right corners in WGS84
-us_limits_wgs84 <- sf::st_sfc(
-  sf::st_point(c(-120, 0)),
-  sf::st_point(c(-65, 35)),
-  crs = 4326
-)
-# 2) Convert to Albers
-us_limits_albers <- sf::st_transform(us_limits_wgs84, crs = 5070)
-# 3) Pull new coordinates in Albers
-us_limits_coord <- sf::st_coordinates(us_limits_albers)
-
-dta %>%
-  ggplot(aes(fill = state_abbr)) +
-  # State background
-  geom_sf(data = states, fill = "#d0d2ce", color = "white", size = .0) +
-  geom_sf(color = "red", size = 0.0) +
-  # State lines
-  geom_sf(data = states, fill = "transparent", color = "white", size = .1) +
-  theme_cori_map() +
-  coord_sf(
-    xlim = us_limits_coord[,'X'],
-    ylim = us_limits_coord[,'Y'],
-    datum = 5070,
-    expand = FALSE
-  ) +
-  ggplot2::theme(
-    # Hide legend of different states
-    legend.position = "none"
-  ) +
-  ggplot2::labs(
-    title = "Counties with CORI communities",
-    subtitle = "2019",
-    y = NULL,
-    x = NULL,
-    caption = NULL
-  )
+# # Load county geometry
+# counties <- tigris::counties(cb = TRUE, year = 2019)
+# 
+# dta <- dplyr::left_join(
+#     cori_communities,
+#     counties,
+#     by = c("geoid_co" = "GEOID")
+#   ) %>%
+#   dplyr::filter(STATEFP < "60") %>%
+#   sf::st_as_sf() %>%
+#   # If you have data for Alaska or Hawaii you'll want to
+#   # shift Alaska and Hawaii underneath the lower 48
+#   tigris::shift_geometry(geoid_column = "geoid", position = "below")
+# 
+# # Load in states geometry
+# states <- tigris::states(cb = TRUE, year = 2010) %>%
+#   dplyr::filter(STATE < "60") %>%
+#   sf::st_as_sf() %>%
+#   tigris::shift_geometry(geoid_column = "STATE", position = "below")
+# 
+# 
+# # Most of the time the default limits for the data will work,
+# # but if you want scope the limits
+# # of the map window you can take the following steps
+# 
+# # 1) Specify the lower left and upper right corners in WGS84
+# us_limits_wgs84 <- sf::st_sfc(
+#   sf::st_point(c(-120, 0)),
+#   sf::st_point(c(-65, 35)),
+#   crs = 4326
+# )
+# # 2) Convert to Albers
+# us_limits_albers <- sf::st_transform(us_limits_wgs84, crs = 5070)
+# # 3) Pull new coordinates in Albers
+# us_limits_coord <- sf::st_coordinates(us_limits_albers)
+# 
+# dta %>%
+#   ggplot(aes(fill = state_abbr)) +
+#   # State background
+#   geom_sf(data = states, fill = "#d0d2ce", color = "white", size = .0) +
+#   geom_sf(color = "red", size = 0.0) +
+#   # State lines
+#   geom_sf(data = states, fill = "transparent", color = "white", size = .1) +
+#   theme_cori_map() +
+#   coord_sf(
+#     xlim = us_limits_coord[,'X'],
+#     ylim = us_limits_coord[,'Y'],
+#     datum = 5070,
+#     expand = FALSE
+#   ) +
+#   ggplot2::theme(
+#     # Hide legend of different states
+#     legend.position = "none"
+#   ) +
+#   ggplot2::labs(
+#     title = "Counties with CORI communities",
+#     subtitle = "2019",
+#     y = NULL,
+#     x = NULL,
+#     caption = NULL
+#   )
 
 ```
 
