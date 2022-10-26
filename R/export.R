@@ -12,7 +12,7 @@ add_logo <- function(
   plot_path,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
-  logo_scale = 10
+  logo_scale = 5
 ) {
 
   # Requires magick R Package https://github.com/ropensci/magick

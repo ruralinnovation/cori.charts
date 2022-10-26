@@ -43,14 +43,19 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     margin = ggplot2::margin(r = 10)
   )
   ret$axis.line.x <- ggplot2::element_line(color = gray, linetype = "solid")
-  ret$axis.text.x <- ggplot2::element_text(hjust = 0.5, size = 10.5, color = black)
+  ret$axis.text.x <- ggplot2::element_text(
+    hjust = 0.5,
+    size = 10.5,
+    color = black,
+    margin = ggplot2::margin(r = 4)
+  )
   ret$axis.text.y <- ggplot2::element_text(hjust = 1, size = 10.5, color = black)
 
   # Plot Attributes
   ret$plot.title <- ggplot2::element_text(
     size = 18,
     hjust = 0,
-    face = "bold",
+    face = "plain",
     margin = ggplot2::margin(b = 10),
     color = black,
     family = "TT Hoves"
@@ -60,16 +65,17 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
   ret$plot.subtitle <- ggplot2::element_text(
     size = 12,
     hjust = 0,
+    face = "italic",
     margin = ggplot2::margin(b = 12),
     color = black,
     family = "TT Hoves"
   )
 
   ret$plot.caption <- ggplot2::element_text(
-    color = dark_gray,
+    color = black,
     size = 10.5,
     hjust = 0,
-    margin = ggplot2::margin(t = 25, b = 0)
+    margin = ggplot2::margin(t = 15, b = 0)
   )
   ret$plot.caption.position <-  "plot"
 
@@ -114,6 +120,8 @@ theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 1
   ret$panel.grid.major.y <- ggplot2::element_blank()
   ret$panel.grid.major.x = ggplot2::element_line(colour = "#d0d2ce", size = .3)
   ret$axis.line.x.bottom = ggplot2::element_blank()
+  ret$panel.grid.major.x = ggplot2::element_blank()
+  ret$axis.line.y = ggplot2::element_line(color = "black", size = .1)
 
   ret
 }
