@@ -10,7 +10,7 @@ save_plot(
   chart_width = 640,
   chart_height = 450,
   add_logo = TRUE,
-  logo_path = "https://rwjf-public.s3.amazonaws.com/Full-Logo_CORI_Black.svg",
+  logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
   logo_scale = 10
 )

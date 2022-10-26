@@ -52,7 +52,8 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     hjust = 0,
     face = "bold",
     margin = ggplot2::margin(b = 10),
-    color = black
+    color = black,
+    family = "TT Hoves"
   )
   ret$plot.title.position <- "plot"
 
@@ -60,7 +61,8 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     size = 12,
     hjust = 0,
     margin = ggplot2::margin(b = 12),
-    color = black
+    color = black,
+    family = "TT Hoves"
   )
 
   ret$plot.caption <- ggplot2::element_text(

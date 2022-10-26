@@ -6,7 +6,7 @@
 \usage{
 add_logo(
   plot_path,
-  logo_path = "https://rwjf-public.s3.amazonaws.com/Full-Logo_CORI_Black.svg",
+  logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
   logo_scale = 10
 )
