@@ -8,7 +8,7 @@ add_logo(
   plot_path,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
-  logo_scale = 5
+  logo_scale = 16
 )
 }
 \arguments{
