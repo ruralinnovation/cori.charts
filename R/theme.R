@@ -3,13 +3,13 @@
 #' `theme_cori()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide.
 #'
-#' @param base_family Font family that CORI employs, defaults to  "Montserrat"
+#' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori
 #' @export
 #'
-theme_cori <- function(base_family = "Montserrat", base_size = 12) {
+theme_cori <- function(base_family = "Lato", base_size = 12) {
 
   gray <- "#d0d2ce"
   dark_gray <- "#8e8e8e"
@@ -43,31 +43,34 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
     margin = ggplot2::margin(r = 10)
   )
   ret$axis.line.x <- ggplot2::element_line(color = gray, linetype = "solid")
-  ret$axis.text.x <- ggplot2::element_text(hjust = 0.5, size = 10.5, color = black)
-  ret$axis.text.y <- ggplot2::element_text(hjust = 1, size = 10.5, color = black)
+  ret$axis.text.x <- ggplot2::element_text(hjust = 0.5, size = 10, color = black)
+  ret$axis.text.y <- ggplot2::element_text(hjust = 1, size = 10, color = black, margin = margin(r = 4))
 
   # Plot Attributes
   ret$plot.title <- ggplot2::element_text(
-    size = 18,
+    size = 20,
     hjust = 0,
-    face = "bold",
-    margin = ggplot2::margin(b = 10),
-    color = black
+    face = "plain",
+    margin = ggplot2::margin(b = 8),
+    color = black,
+    family = "TT Hoves"
   )
   ret$plot.title.position <- "plot"
 
   ret$plot.subtitle <- ggplot2::element_text(
     size = 12,
     hjust = 0,
-    margin = ggplot2::margin(b = 12),
-    color = black
+    margin = ggplot2::margin(b = 14),
+    color = black,
+    family = "TT Hoves",
+    face = "italic"
   )
 
   ret$plot.caption <- ggplot2::element_text(
-    color = dark_gray,
-    size = 10.5,
+    color = black,
+    size = 11,
     hjust = 0,
-    margin = ggplot2::margin(t = 25, b = 0)
+    margin = ggplot2::margin(t = 10, b = 0)
   )
   ret$plot.caption.position <-  "plot"
 
@@ -96,13 +99,13 @@ theme_cori <- function(base_family = "Montserrat", base_size = 12) {
 #' `theme_cori_horizontal_bars()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide for horizontal bar charts
 #'
-#' @param base_family Font family that CORI employs, defaults to  "Montserrat"
+#' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori_horizontal_bars
 #' @export
 #'
-theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 12) {
+theme_cori_horizontal_bars <- function(base_family = "Lato", base_size = 12) {
   ret <- theme_cori(
     base_family = base_family,
     base_size = base_size
@@ -110,8 +113,9 @@ theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 1
 
   # show only vertical lines
   ret$panel.grid.major.y <- ggplot2::element_blank()
-  ret$panel.grid.major.x = ggplot2::element_line(colour = "#d0d2ce", size = .3)
+  ret$panel.grid.major.x = ggplot2::element_blank()
   ret$axis.line.x.bottom = ggplot2::element_blank()
+  ret$axis.line.y = element_line(color = "black", size = .1)
 
   ret
 }
@@ -121,13 +125,13 @@ theme_cori_horizontal_bars <- function(base_family = "Montserrat", base_size = 1
 #' `theme_cori_map()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide for maps (choropleth or dot density)
 #'
-#' @param base_family Font family that CORI employs, defaults to  "Montserrat"
+#' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori_map
 #' @export
 #'
-theme_cori_map <- function(base_family = "Montserrat", base_size = 12) {
+theme_cori_map <- function(base_family = "Lato", base_size = 12) {
 
   ret <- theme_cori(
     base_family = base_family,
