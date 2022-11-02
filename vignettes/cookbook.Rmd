@@ -34,13 +34,13 @@ library(showtext)
 sysfonts::font_add_google("Lato")
 
 # Loads TT Hoves (has to be installed on your computer)
-font_add(
-  "TT Hoves", 
-  regular = "TypeType - TT Hoves Regular.ttf",
-  bold = "TypeType - TT Hoves Bold.ttf",
-  italic = "TypeType - TT Hoves Italic.ttf",
-  bolditalic = "TypeType - TT Hoves Bold Italic.ttf"
-)
+# font_add(
+#   "TT Hoves", 
+#   regular = "TypeType - TT Hoves Regular.ttf",
+#   bold = "TypeType - TT Hoves Bold.ttf",
+#   italic = "TypeType - TT Hoves Italic.ttf",
+#   bolditalic = "TypeType - TT Hoves Bold Italic.ttf"
+# )
 
 # Ensures that any newly opened graphics devices will use showtext to draw text
 showtext_auto()
@@ -116,6 +116,11 @@ cori_poverty %>%
   # Override any defaults styles using the ggplot2::theme() function AFTER
   # calling theme_cori_horizontal_bars()
   ggplot2::theme(
+    # Set title fonts to Lato, as TT Hoves is unavailable
+    # Where possible, use TT Hoves for titles (default)
+    plot.title = element_text(family = "Lato"),
+    plot.subtitle = element_text(family = "Lato"),
+    # Remove x gridlines
     panel.grid.major.x = element_blank()
   ) +
   # Provide Title, subtitle, etc.
@@ -180,7 +185,13 @@ grouped_bar_data %>%
     y = NULL,
     caption = "Source: U.S. Census Bureau"
   ) +
-  theme_cori_horizontal_bars()
+  theme_cori_horizontal_bars() +
+  theme(
+    # Set title fonts to Lato, as TT Hoves is unavailable
+    # Where possible, use TT Hoves for titles (default)
+    plot.title = element_text(family = "Lato"),
+    plot.subtitle = element_text(family = "Lato")
+  )
 ```
 
 Without data labels
@@ -202,7 +213,13 @@ grouped_bar_data %>%
     y = NULL,
     caption = "Source: U.S. Census Bureau"
   ) +
-  theme_cori_horizontal_bars()
+  theme_cori_horizontal_bars() +
+  theme(
+    # Set title fonts to Lato, as TT Hoves is unavailable
+    # Where possible, use TT Hoves for titles (default)
+    plot.title = element_text(family = "Lato"),
+    plot.subtitle = element_text(family = "Lato")
+  )
 ```
 
 ----  
@@ -247,7 +264,13 @@ bullet_chart_data %>%
     y = NULL,
     caption = "Source: ACS 5-year estimates"
   ) +
-  theme_cori_horizontal_bars()
+  theme_cori_horizontal_bars() +
+  theme(
+    # Set title fonts to Lato, as TT Hoves is unavailable
+    # Where possible, use TT Hoves for titles (default)
+    plot.title = element_text(family = "Lato"),
+    plot.subtitle = element_text(family = "Lato")
+  )
 ```
 
 ----  
@@ -308,7 +331,9 @@ line_chart_data %>%
     legend.direction = "vertical",
     # Add ticks to the x-axis
     axis.ticks.x = element_line(color = "#d0d2ce"),
-    axis.ticks.length = unit(4, 'pt')
+    axis.ticks.length = unit(4, 'pt'),
+    plot.title = element_text(family = "Lato"),
+    plot.subtitle = element_text(family = "Lato")
   ) +
   # In order for a legend on the right to render properly,
   # you need to specify that byrow = TRUE
@@ -365,7 +390,9 @@ direct_label_data %>%
     legend.position = "none",
     # Add ticks to the x-axis
     axis.ticks.x = element_line(color = "#d0d2ce"),
-    axis.ticks.length = unit(4, 'pt')
+    axis.ticks.length = unit(4, 'pt'),
+    plot.title = element_text(family = "Lato"),
+    plot.subtitle = element_text(family = "Lato")
   ) +
   labs(
     title = "Percent of workers able to work from home",
