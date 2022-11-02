@@ -24,14 +24,14 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 ```
 
-## Install Montserrat
+## Install Lato
 
 ```{r, message=FALSE, warning = FALSE}
 library(sysfonts)
 library(showtext)
 
-# Loads Montserrat from the google font repository and adds it to sysfonts
-sysfonts::font_add_google("Montserrat")
+# Loads Lato from the google font repository and adds it to sysfonts
+sysfonts::font_add_google("Lato")
 # Ensures that any newly opened graphics devices will use showtext to draw text
 showtext_auto()
 ```
@@ -89,8 +89,8 @@ cori_poverty %>%
     ),
     # Provide spacing between the data label and the bar position
     hjust = -.1,
-    # Data labels need to have their font family explicitly set to "Montserrat"
-    family = "Montserrat"
+    # Data labels need to have their font family explicitly set to "Lato"
+    family = "Lato"
   ) +
   ggplot2::scale_x_continuous(
     # labels determines whether tick labels are shown
@@ -152,7 +152,7 @@ grouped_bar_data %>%
     # are aligned with their appropriate bar
     position = position_dodge2(width = 0.9, reverse = FALSE),
     hjust = -.1,
-    family = "Montserrat"
+    family = "Lato"
   ) +
   scale_fill_cori(reverse = TRUE) +
   scale_x_continuous(
@@ -220,7 +220,7 @@ bullet_chart_data %>%
     data = dplyr::filter(bullet_chart_data, year == "2019"),
     aes(x = percent_below_poverty, label = scales::percent(percent_below_poverty, accuracy = 1)),
     hjust = 1.3,
-    family = "Montserrat",
+    family = "Lato",
     color = "white"
   ) +
   scale_fill_cori(reverse = TRUE) +
