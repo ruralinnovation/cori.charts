@@ -44,7 +44,7 @@ add_logo <- function(
 
   if (logo_position == "top right") {
     x_pos = plot_width - logo_width - 0.02 * plot_width
-    y_pos = 0.02 * plot_height
+    y_pos = 0.02 * plot_width
   } else if (logo_position == "top left") {
     x_pos = 0.01 * plot_width
     y_pos = 0.01 * plot_height
