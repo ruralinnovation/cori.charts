@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   # Chart settings
-  fig.retina = 2,
+  #fig.retina = 2,
   fig.width = 6,
   fig.asp = .75,
   fig.show = "hold",
