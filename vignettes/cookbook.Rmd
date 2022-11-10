@@ -173,7 +173,7 @@ grouped_bar_data %>%
     family = "Lato",
     fontface = "bold"
   ) +
-  scale_fill_cori(reverse = TRUE) +
+  scale_fill_cori(palette = "ctg2tlpu", reverse = TRUE) +
   scale_x_continuous(
     # Axis labels are redundant to the data labels,
     # so we don't display them by setting labels = NULL
@@ -201,7 +201,7 @@ Without data labels
 grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
   geom_col(position = "dodge") +
-  scale_fill_cori(reverse = TRUE) +
+  scale_fill_cori(palette = "ctg2buor", reverse = TRUE) +
   scale_x_continuous(
     # Add back axis labels to provide context
     # because we aren't displaying data labels
@@ -255,7 +255,7 @@ bullet_chart_data %>%
     color = "white",
     fontface = "bold"
   ) +
-  scale_fill_cori(reverse = TRUE) +
+  scale_fill_cori(palette = "ctg2buor", reverse = TRUE) +
   scale_x_continuous(
     labels = scales::label_percent(accuracy = 1),
     expand = expansion(mult = c(0, .1))
@@ -315,7 +315,7 @@ line_chart_data %>%
   ggplot(
        aes(date, percent_working_remotely, color = education_clean)) +
   geom_line() +
-  scale_color_cori(guide = guide_legend(reverse = TRUE)) +
+  scale_color_cori(palette = "ctg4mid", guide = guide_legend(reverse = TRUE)) +
   scale_x_date(
     date_breaks = "6 months",
     date_labels =  "%b '%y",
@@ -370,7 +370,7 @@ direct_label_data %>%
   ggplot(
        aes(date, percent_working_remotely, color = education_clean)) +
   geom_line() +
-  scale_color_cori(guide = guide_legend(reverse = TRUE)) +
+  scale_color_cori(palette = "ctg2tlpu", guide = guide_legend(reverse = TRUE)) +
   scale_x_date(
     date_breaks = "6 months",
     date_labels =  "%b '%y",

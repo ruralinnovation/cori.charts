@@ -12,12 +12,38 @@
 #' @export
 #'
 cori_colors <- c(
-  `Emerald` = "#018362", `Bright Mint` = "#A3E1B5",
+  # Greens
+  `Dark Green` = "#16343E",
+  `Emerald` = "#018362",
+  `Bright Mint` = "#A3E1B5",
+  # Yellow
   `Bright Gold` = "#FFE474",
-  `RIN Orange` = "#E64F2B", `Mid Orange` = "#FA804B", `Light Orange` = "#FECEB8",
-  `RIN Blue` = "#234FBF", `Mid Blue` = "#3E80EA", `Light Blue` = "#B4CEF9",
-  `RII Purple` = "#48326A", `Mid Purple` = "#7658A2", `Light Purple` = "#CBBEDC",
-  `CIF Mid Blue` = "#02BCCB"
+  # Oranges
+  `RIN Orange` = "#E64F2B",
+  `Dark Orange` = "#890005",
+  `Mid Orange` = "#F08250",
+  `Light Orange` = "#FFF6D2",
+  # Blues
+  `RIN Blue` = "#234FBF",
+  `Dark Blue` = "#280050",
+  `Mid Blue` = "#3F8EE6",
+  `Light Blue` = "#E5F9F3",
+  # Purples
+  `RII Purple` = "#48326A",
+  `RAP Purple` = "#753984",
+  `Dark Purple` = "#211448",
+  `Mid Purple` = "#BA578C",
+  `Light Purple` = "#FCF2EE",
+  # Teals
+  `CIF Teal` = "#259299",
+  `CIF Mid Teal` = "#06BCCB",
+  `Dark Teal` = "#061E46",
+  `Mid Teal` = "#65ACA5",
+  `Light Teal` = "#F2FBEC",
+  # Accents
+  `CORI Cream` = "#FBF8E9",
+  `CORI Gray` = "#D0D2CE",
+  `Nearly Black` = "#121E22"
 )
 
 #' @rdname colors
@@ -38,15 +64,19 @@ cori_cols <- function(...) {
 #'
 cori_palettes <- list(
   "ctg2gn" = cori_cols("Emerald", "Bright Mint"),
-  "ctg2or" = cori_cols("RIN Orange", "Light Orange"),
-  "ctg2pu" = cori_cols("RII Purple", "Light Purple"),
-  "ctg2bu" = cori_cols("RIN Blue", "Light Blue"),
+  "ctg2or" = cori_cols("Dark Orange", "Light Orange"),
+  "ctg2pu" = cori_cols("Dark Purple", "Light Purple"),
+  "ctg2bu" = cori_cols("Dark Blue", "Light Blue"),
   "ctg7" = cori_cols(
-    "Emerald", "Bright Mint",
-    "Bright Gold",
-    "Mid Orange", "Mid Blue",
-    "Mid Purple", "CIF Mid Blue"
-  )
+    "Dark Teal", "Emerald", "Bright Gold",
+    "RIN Orange", "RISI Blue",
+    "CIF Mid Teal", "RII Mid Purple"
+  ),
+  "ctg4mid" = cori_cols(
+    "Mid Blue", "Mid Orange", "Mid Purple", "Mid Teal"
+  ),
+  "ctg2tlpu" = cori_cols("Mid Teal", "Mid Purple"),
+  "ctg2buor" = cori_cols("Mid Blue", "Mid Orange")
 )
 
 #' @param palette Character name of palette in [cori_palettes]
