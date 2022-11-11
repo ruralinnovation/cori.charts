@@ -24,7 +24,7 @@ cori_colors <- c(
   `Mid Orange` = "#F08250",
   `Light Orange` = "#FFF6D2",
   # Blues
-  `RIN Blue` = "#234FBF",
+  `RISI Blue` = "#234FBF",
   `Dark Blue` = "#280050",
   `Mid Blue` = "#3F8EE6",
   `Light Blue` = "#E5F9F3",
@@ -74,7 +74,7 @@ cori_palettes <- list(
     "RIN Orange",
     "RISI Blue",
     "CIF Mid Teal",
-    "RII Mid Purple"
+    "RII Purple"
   ),
   "ctg4mid" = cori_cols(
     "Mid Blue", "Mid Orange", "Mid Purple", "Mid Teal"

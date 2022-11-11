@@ -24,7 +24,9 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 ```
 
-## Install Lato
+## Setup
+
+### Install Lato
 
 ```{r, message=FALSE, warning = FALSE}
 library(sysfonts)
@@ -48,7 +50,7 @@ showtext_auto()
 showtext_opts(dpi = 300)
 ```
 
-## Load required libraries
+### Load required libraries
 
 ```{r, message = FALSE, warning = FALSE}
 library(cori.charts)
@@ -58,7 +60,7 @@ library(tidyr)
 library(stringr)
 ```
 
-## Load your data
+### Load your data
 
 We will be using a dataset which gives the population with an income below the 
 poverty level in the last 12 months for a subset of RIN communities.
@@ -410,3 +412,47 @@ direct_label_data %>%
     caption = "Source: Bureau of Labor Statistics"
   )
 ```
+
+----  
+
+## Color selection
+
+### Available colors
+
+Commonly used colors from our [branding guidelines](https://company-50664.frontify.com/d/pz3pn2mB4FgP/center-for-rural-innovation-cori#/mapping-data-visualization/sequential-mapping-color-palettes) can be easily accessed using `cori.charts`. To specify a color, simply access the `cori_colors` list with the name of the color (e.g., `cori_colors["Emerald"]`)
+
+### Color palettes
+
+Several default color palettes are also provided. If you call `scale_color_cori` or `scale_fill_cori` without specifying the `palette` argument it defaults to Emerald and Bright Mint:
+
+```{r, fig.asp = 1}
+pal <- cori_palettes["ctg2gn"]
+scales::show_col(unname(unlist(pal)))
+```
+
+This default palette is not always the best choice, depending on your data's format.
+
+If you are comparing two categories (e.g., Rural vs. Nonrural), I recommend using either the Mid Teal and Mid Purple palette
+```{r, fig.asp = 1}
+pal <- cori_palettes["ctg2tlpu"]
+scales::show_col(unname(unlist(pal)))
+```
+
+or the Mid Blue and Mid Orange palette.
+```{r, fig.asp = 1}
+pal <- cori_palettes["ctg2buor"]
+scales::show_col(unname(unlist(pal)))
+```
+
+If you want to show four categories, I recommend using the 4 category Mid Color palette.
+```{r, fig.asp = 1}
+pal <- cori_palettes["ctg4mid"]
+scales::show_col(unname(unlist(pal)))
+```
+
+While there is a 7 category palette, I would think carefully before going beyond four categories in any graphic.
+```{r, fig.asp = 1}
+pal <- cori_palettes["ctg7"]
+scales::show_col(unname(unlist(pal)))
+```
+
