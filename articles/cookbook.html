@@ -88,8 +88,11 @@
     
     
 <div class="section level2">
-<h2 id="install-lato">Install Lato<a class="anchor" aria-label="anchor" href="#install-lato"></a>
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h2>
+<div class="section level3">
+<h3 id="install-lato">Install Lato<a class="anchor" aria-label="anchor" href="#install-lato"></a>
+</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/sysfonts" class="external-link">sysfonts</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext" class="external-link">showtext</a></span><span class="op">)</span></span>
@@ -111,9 +114,9 @@
 <span><span class="co"># Sets default density per inch for exports</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html" class="external-link">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="load-required-libraries">Load required libraries<a class="anchor" aria-label="anchor" href="#load-required-libraries"></a>
-</h2>
+<div class="section level3">
+<h3 id="load-required-libraries">Load required libraries<a class="anchor" aria-label="anchor" href="#load-required-libraries"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ruralinnovation/cori.charts" class="external-link">cori.charts</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -121,9 +124,9 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="load-your-data">Load your data<a class="anchor" aria-label="anchor" href="#load-your-data"></a>
-</h2>
+<div class="section level3">
+<h3 id="load-your-data">Load your data<a class="anchor" aria-label="anchor" href="#load-your-data"></a>
+</h3>
 <p>We will be using a dataset which gives the population with an income
 below the poverty level in the last 12 months for a subset of RIN
 communities.</p>
@@ -141,6 +144,7 @@ communities.</p>
 <span><span class="co">#&gt; $ estimate_below_poverty_level_2014 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15746, 8102, 10597, 15238, 18284, 83…</span></span>
 <span><span class="co">#&gt; $ estimate_below_poverty_level_2019 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13063, 7513, 9833, 14545, 16330, 731…</span></span></code></pre></div>
 <p>Now we are ready to begin charting!</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="chart-recipes">Chart Recipes<a class="anchor" aria-label="anchor" href="#chart-recipes"></a>
@@ -511,6 +515,56 @@ directly label the line endpoints</p>
 <span>    caption <span class="op">=</span> <span class="st">"Source: Bureau of Labor Statistics"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="cookbook_files/figure-html/unnamed-chunk-13-1.png" width="100%"></p>
+<hr>
+</div>
+</div>
+<div class="section level2">
+<h2 id="color-selection">Color selection<a class="anchor" aria-label="anchor" href="#color-selection"></a>
+</h2>
+<div class="section level3">
+<h3 id="available-colors">Available colors<a class="anchor" aria-label="anchor" href="#available-colors"></a>
+</h3>
+<p>Commonly used colors from our <a href="https://company-50664.frontify.com/d/pz3pn2mB4FgP/center-for-rural-innovation-cori#/mapping-data-visualization/sequential-mapping-color-palettes" class="external-link">branding
+guidelines</a> can be easily accessed using <code>cori.charts</code>. To
+specify a color, simply access the <code>cori_colors</code> list with
+the name of the color (e.g., <code>cori_colors["Emerald"]</code>)</p>
+</div>
+<div class="section level3">
+<h3 id="color-palettes">Color palettes<a class="anchor" aria-label="anchor" href="#color-palettes"></a>
+</h3>
+<p>Several default color palettes are also provided. If you call
+<code>scale_color_cori</code> or <code>scale_fill_cori</code> without
+specifying the <code>palette</code> argument it defaults to Emerald and
+Bright Mint:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="va">cori_palettes</span><span class="op">[</span><span class="st">"ctg2gn"</span><span class="op">]</span></span>
+<span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">pal</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="cookbook_files/figure-html/unnamed-chunk-14-1.png" width="100%"></p>
+<p>This default palette is not always the best choice, depending on your
+data’s format.</p>
+<p>If you are comparing two categories (e.g., Rural vs. Nonrural), I
+recommend using either the Mid Teal and Mid Purple palette</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="va">cori_palettes</span><span class="op">[</span><span class="st">"ctg2tlpu"</span><span class="op">]</span></span>
+<span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">pal</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="cookbook_files/figure-html/unnamed-chunk-15-1.png" width="100%"></p>
+<p>or the Mid Blue and Mid Orange palette.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="va">cori_palettes</span><span class="op">[</span><span class="st">"ctg2buor"</span><span class="op">]</span></span>
+<span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">pal</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="cookbook_files/figure-html/unnamed-chunk-16-1.png" width="100%"></p>
+<p>If you want to show four categories, I recommend using the 4 category
+Mid Color palette.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="va">cori_palettes</span><span class="op">[</span><span class="st">"ctg4mid"</span><span class="op">]</span></span>
+<span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">pal</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="cookbook_files/figure-html/unnamed-chunk-17-1.png" width="100%"></p>
+<p>While there is a 7 category palette, I would think carefully before
+going beyond four categories in any graphic.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="va">cori_palettes</span><span class="op">[</span><span class="st">"ctg7"</span><span class="op">]</span></span>
+<span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">pal</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="cookbook_files/figure-html/unnamed-chunk-18-1.png" width="100%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
