@@ -68,9 +68,13 @@ cori_palettes <- list(
   "ctg2pu" = cori_cols("Dark Purple", "Light Purple"),
   "ctg2bu" = cori_cols("Dark Blue", "Light Blue"),
   "ctg7" = cori_cols(
-    "Dark Green", "Emerald", "Bright Gold",
-    "RIN Orange", "RISI Blue",
-    "CIF Mid Teal", "RII Mid Purple"
+    "Dark Green",
+    "Emerald",
+    "Bright Gold",
+    "RIN Orange",
+    "RISI Blue",
+    "CIF Mid Teal",
+    "RII Mid Purple"
   ),
   "ctg4mid" = cori_cols(
     "Mid Blue", "Mid Orange", "Mid Purple", "Mid Teal"
