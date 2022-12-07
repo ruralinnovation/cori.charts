@@ -43,8 +43,8 @@ add_logo <- function(
   # Using 0.01 for 1% - aesthetic padding
 
   if (logo_position == "top right") {
-    x_pos = plot_width - logo_width - 0.02 * plot_width
-    y_pos = 0.02 * plot_width
+    x_pos = plot_width - logo_width - 0.01 * plot_width
+    y_pos = 0.01 * plot_width
   } else if (logo_position == "top left") {
     x_pos = 0.01 * plot_width
     y_pos = 0.01 * plot_height
@@ -81,7 +81,7 @@ save_plot <- function(
   add_logo = TRUE,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
-  logo_scale = 10
+  logo_scale = 16
 ) {
 
   ggplot2::ggsave(
