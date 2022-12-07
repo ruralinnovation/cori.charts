@@ -12,7 +12,7 @@ save_plot(
   add_logo = TRUE,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
-  logo_scale = 16
+  logo_scale = 19
 )
 }
 \arguments{
