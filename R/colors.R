@@ -66,6 +66,7 @@ cori_palettes <- list(
   "ctg2gn" = cori_cols("Emerald", "Bright Mint"),
   "ctg2or" = cori_cols("Dark Orange", "Light Orange"),
   "ctg2pu" = cori_cols("Dark Purple", "Light Purple"),
+  "ctg2pualt" = cori_cols("Dark Purple", "Mid Purple"),
   "ctg2bu" = cori_cols("Dark Blue", "Light Blue"),
   "ctg7" = cori_cols(
     "Dark Green",
