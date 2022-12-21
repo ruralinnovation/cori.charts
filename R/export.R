@@ -71,6 +71,8 @@ add_logo <- function(
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
 #' @param x_pos_scale Position scale factor as a percentage of x range
 #' @param y_pos_scale Position scale factor as a percentage of the y range
+#' @param chart_width The width in px of the chart
+#' @param chart_height The height in px of the chart
 #'
 #' @return ggplot figure with logo
 #'
@@ -80,7 +82,9 @@ save_with_logo_svg <- function(
   export_path,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   x_pos_scale = .9975,
-  y_pos_scale = 1.195
+  y_pos_scale = 1.195,
+  chart_width = 640,
+  chart_height = 450
 ) {
 
   cori_logo_svg <- magick::image_read_svg(logo_path, width = 400)

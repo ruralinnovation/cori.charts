@@ -9,7 +9,9 @@ save_with_logo_svg(
   export_path,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   x_pos_scale = 0.9975,
-  y_pos_scale = 1.195
+  y_pos_scale = 1.195,
+  chart_width = 640,
+  chart_height = 450
 )
 }
 \arguments{
@@ -22,6 +24,10 @@ save_with_logo_svg(
 \item{x_pos_scale}{Position scale factor as a percentage of x range}
 
 \item{y_pos_scale}{Position scale factor as a percentage of the y range}
+
+\item{chart_width}{The width in px of the chart}
+
+\item{chart_height}{The height in px of the chart}
 }
 \value{
 ggplot figure with logo
