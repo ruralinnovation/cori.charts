@@ -90,10 +90,10 @@ save_with_logo_svg <- function(
     interpolate=TRUE,
     x = 1, y = 1,
     just = c('right', 'bottom'),
-    height = unit(37, 'pt')
+    height = grid::unit(37, 'pt')
   )
 
-  fig_params <- ggplot_build(fig)
+  fig_params <- ggplot2::ggplot_build(fig)
 
   y_range <- fig_params$layout$panel_params[[1]]$y.range
   x_range <- fig_params$layout$panel_params[[1]]$x.range
@@ -117,7 +117,7 @@ save_with_logo_svg <- function(
   x_position <- x_pos_scale * x_max
 
   fig_with_logo <- fig +
-    annotation_custom(img, xmin=x_position, xmax=x_position, ymin=y_position, ymax=y_position)
+    ggplot2::annotation_custom(img, xmin=x_position, xmax=x_position, ymin=y_position, ymax=y_position)
 
   ggplot2::ggsave(
     export_path,
