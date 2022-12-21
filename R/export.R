@@ -61,9 +61,13 @@ add_logo <- function(
 
 }
 
-#' Add CORI logo ggplot figure in an SVG-friendly way
+#' Add CORI logo to ggplot figure in an SVG-friendly way, then export
+#' @description Specialty function for adding a CORI logo to a ggplot figure
+#' in a way that can be exported as an SVG. You MUST set clip to "off" in a
+#' coordinate function for this function to work.
 #'
 #' @param fig ggplot2 figure
+#' @param export_path file path for the exported plot
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
 #' @param x_pos_scale Position scale factor as a percentage of x range
 #' @param y_pos_scale Position scale factor as a percentage of the y range
@@ -71,8 +75,9 @@ add_logo <- function(
 #' @return ggplot figure with logo
 #'
 #' @export
-add_logo_svg <- function(
+save_with_logo_svg <- function(
   fig,
+  export_path,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   x_pos_scale = .9975,
   y_pos_scale = 1.195
@@ -93,6 +98,15 @@ add_logo_svg <- function(
   y_range <- fig_params$layout$panel_params[[1]]$y.range
   x_range <- fig_params$layout$panel_params[[1]]$x.range
 
+  # For maps, which have different object structure
+  if (is.null(y_range)) {
+    y_range <- fig_params$layout$panel_params[[1]]$y_range
+  }
+
+  if (is.null(x_range)) {
+    x_range <- fig_params$layout$panel_params[[1]]$x_range
+  }
+
   y_max <- y_range[[2]]
   x_max <- x_range[[2]]
 
@@ -103,10 +117,15 @@ add_logo_svg <- function(
   x_position <- x_pos_scale * x_max
 
   fig_with_logo <- fig +
-    coord_cartesian(clip = "off") +
     annotation_custom(img, xmin=x_position, xmax=x_position, ymin=y_position, ymax=y_position)
 
-  return(fig_with_logo)
+  ggplot2::ggsave(
+    export_path,
+    plot = fig_with_logo,
+    bg = "white",
+    width = (chart_width/72),
+    height = (chart_height/72)
+  )
 
 }
 
@@ -133,45 +152,26 @@ save_plot <- function(
   logo_scale = 20
 ) {
 
-  file_format = stringr::str_sub(export_path, -3) %>%
-    stringr::str_to_lower()
+  ggplot2::ggsave(
+    export_path,
+    plot = fig,
+    bg = "white",
+    width = (chart_width/72),
+    height = (chart_height/72)
+  )
 
-  # Specialty add logo function for SVG friendly export
-  if (file_format == "svg" & add_logo == TRUE) {
-
-    fig_with_logo <- add_logo_svg(fig)
-
-    ggplot2::ggsave(
+  if (add_logo == TRUE) {
+    fig_with_logo <- add_logo(
       export_path,
-      plot = fig_with_logo,
-      bg = "white",
-      width = (chart_width/72),
-      height = (chart_height/72)
+      logo_path = logo_path,
+      logo_position = logo_position,
+      logo_scale = logo_scale
     )
 
-  }
-  else {
-
-    ggplot2::ggsave(
-      export_path,
-      plot = fig,
-      bg = "white",
-      width = (chart_width/72),
-      height = (chart_height/72)
+    magick::image_write(
+      fig_with_logo,
+      path = export_path
     )
-
-    if (add_logo == TRUE) {
-      fig_with_logo <- add_logo(
-        export_path,
-        logo_path = logo_path,
-        logo_position = logo_position,
-        logo_scale = logo_scale
-      )
-
-      magick::image_write(
-        fig_with_logo,
-        path = export_path
-      )
-    }
   }
+
 }
