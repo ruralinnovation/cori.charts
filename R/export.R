@@ -114,9 +114,6 @@ save_with_logo_svg <- function(
   y_max <- y_range[[2]]
   x_max <- x_range[[2]]
 
-  y_pos_scale <- 1.195
-  x_pos_scale <- .9975
-
   y_position <- y_pos_scale * y_max
   x_position <- x_pos_scale * x_max
 
