@@ -61,6 +61,55 @@ add_logo <- function(
 
 }
 
+#' Add CORI logo ggplot figure in an SVG-friendly way
+#'
+#' @param fig ggplot2 figure
+#' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
+#' @param x_pos_scale Position scale factor as a percentage of x range
+#' @param y_pos_scale Position scale factor as a percentage of the y range
+#'
+#' @return ggplot figure with logo
+#'
+#' @export
+add_logo_svg <- function(
+  fig,
+  logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
+  x_pos_scale = .9975,
+  y_pos_scale = 1.195
+) {
+
+  cori_logo_svg <- magick::image_read_svg(logo_path, width = 400)
+
+  img <- grid::rasterGrob(
+    cori_logo_svg,
+    interpolate=TRUE,
+    x = 1, y = 1,
+    just = c('right', 'bottom'),
+    height = unit(37, 'pt')
+  )
+
+  fig_params <- ggplot_build(fig)
+
+  y_range <- fig_params$layout$panel_params[[1]]$y.range
+  x_range <- fig_params$layout$panel_params[[1]]$x.range
+
+  y_max <- y_range[[2]]
+  x_max <- x_range[[2]]
+
+  y_pos_scale <- 1.195
+  x_pos_scale <- .9975
+
+  y_position <- y_pos_scale * y_max
+  x_position <- x_pos_scale * x_max
+
+  fig_with_logo <- fig +
+    coord_cartesian(clip = "off") +
+    annotation_custom(img, xmin=x_position, xmax=x_position, ymin=y_position, ymax=y_position)
+
+  return(fig_with_logo)
+
+}
+
 #' Save a plot with CORI defaults
 #'
 #' @param fig The ggplot2 figure
@@ -84,26 +133,45 @@ save_plot <- function(
   logo_scale = 20
 ) {
 
-  ggplot2::ggsave(
-    export_path,
-    plot = fig,
-    bg = "white",
-    width = (chart_width/72),
-    height = (chart_height/72)
-  )
+  file_format = stringr::str_sub(export_path, -3) %>%
+    stringr::str_to_lower()
 
-  if (add_logo == TRUE) {
-    fig_with_logo <- add_logo(
+  # Specialty add logo function for SVG friendly export
+  if (file_format == "svg" & add_logo == TRUE) {
+
+    fig_with_logo <- add_logo_svg(fig)
+
+    ggplot2::ggsave(
       export_path,
-      logo_path = logo_path,
-      logo_position = logo_position,
-      logo_scale = logo_scale
+      plot = fig_with_logo,
+      bg = "white",
+      width = (chart_width/72),
+      height = (chart_height/72)
     )
 
-    magick::image_write(
-      fig_with_logo,
-      path = export_path
-    )
   }
+  else {
 
+    ggplot2::ggsave(
+      export_path,
+      plot = fig,
+      bg = "white",
+      width = (chart_width/72),
+      height = (chart_height/72)
+    )
+
+    if (add_logo == TRUE) {
+      fig_with_logo <- add_logo(
+        export_path,
+        logo_path = logo_path,
+        logo_position = logo_position,
+        logo_scale = logo_scale
+      )
+
+      magick::image_write(
+        fig_with_logo,
+        path = export_path
+      )
+    }
+  }
 }
