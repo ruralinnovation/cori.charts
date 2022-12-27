@@ -98,10 +98,10 @@ cori_poverty %>%
         # accuracy determines what number to round to (e.g., accuracy = 0.01 will show 2 decimal places)
         accuracy = 1,
         # big.mark determines the character used between every 3 digits to separate thousands
-        big.mark = ",",
-        fontface = "bold"
+        big.mark = ","
       )
     ),
+    fontface = "bold",
     # Provide spacing between the data label and the bar position
     hjust = -.2,
     # Data labels need to have their font family explicitly set to "Lato"

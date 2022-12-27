@@ -11,7 +11,8 @@ save_with_logo_svg(
   x_pos_scale = 0.9975,
   y_pos_scale = 1.195,
   chart_width = 640,
-  chart_height = 450
+  chart_height = 450,
+  background = "white"
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ save_with_logo_svg(
 \item{chart_width}{The width in px of the chart}
 
 \item{chart_height}{The height in px of the chart}
+
+\item{background}{Color of the background in the image export}
 }
 \value{
 ggplot figure with logo

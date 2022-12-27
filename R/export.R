@@ -73,6 +73,7 @@ add_logo <- function(
 #' @param y_pos_scale Position scale factor as a percentage of the y range
 #' @param chart_width The width in px of the chart
 #' @param chart_height The height in px of the chart
+#' @param background Color of the background in the image export
 #'
 #' @return ggplot figure with logo
 #'
@@ -84,7 +85,8 @@ save_with_logo_svg <- function(
   x_pos_scale = .9975,
   y_pos_scale = 1.195,
   chart_width = 640,
-  chart_height = 450
+  chart_height = 450,
+  background = "white"
 ) {
 
   cori_logo_svg <- magick::image_read_svg(logo_path, width = 400)
@@ -123,7 +125,7 @@ save_with_logo_svg <- function(
   ggplot2::ggsave(
     export_path,
     plot = fig_with_logo,
-    bg = "white",
+    bg = background,
     width = (chart_width/72),
     height = (chart_height/72)
   )
@@ -140,6 +142,7 @@ save_with_logo_svg <- function(
 #' @param logo_position Combination of top/bottom and right/left. Defaults to top right.
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
 #' @param logo_scale Scale logo to 1/10 width of plot
+#' @param background Color of the background in the image export
 #'
 #' @export
 save_plot <- function(
@@ -150,13 +153,14 @@ save_plot <- function(
   add_logo = TRUE,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
-  logo_scale = 20
+  logo_scale = 20,
+  background = "white"
 ) {
 
   ggplot2::ggsave(
     export_path,
     plot = fig,
-    bg = "white",
+    bg = background,
     width = (chart_width/72),
     height = (chart_height/72)
   )

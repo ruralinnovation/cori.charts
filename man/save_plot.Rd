@@ -12,7 +12,8 @@ save_plot(
   add_logo = TRUE,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
-  logo_scale = 20
+  logo_scale = 20,
+  background = "white"
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ save_plot(
 \item{logo_position}{Combination of top/bottom and right/left. Defaults to top right.}
 
 \item{logo_scale}{Scale logo to 1/10 width of plot}
+
+\item{background}{Color of the background in the image export}
 }
 \description{
 Save a plot with CORI defaults
