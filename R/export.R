@@ -127,7 +127,8 @@ save_with_logo_svg <- function(
     plot = fig_with_logo,
     bg = background,
     width = (chart_width/72),
-    height = (chart_height/72)
+    height = (chart_height/72),
+    units = "in"
   )
 
 }
@@ -162,7 +163,8 @@ save_plot <- function(
     plot = fig,
     bg = background,
     width = (chart_width/72),
-    height = (chart_height/72)
+    height = (chart_height/72),
+    units = "in"
   )
 
   if (add_logo == TRUE) {
