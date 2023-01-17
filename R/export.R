@@ -71,8 +71,10 @@ add_logo <- function(
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
 #' @param x_pos_scale Position scale factor as a percentage of x range
 #' @param y_pos_scale Position scale factor as a percentage of the y range
-#' @param chart_width The width in px of the chart
-#' @param chart_height The height in px of the chart
+#' @param chart_width The width in "in" of the chart
+#' @param chart_height The height in "in" of the chart
+#' @param units One of "in", "cm", "mm", or "px"
+#' @param img_scale = Multiplicative scaling factor
 #' @param background Color of the background in the image export
 #'
 #' @return ggplot figure with logo
@@ -84,8 +86,10 @@ save_with_logo_svg <- function(
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   x_pos_scale = .9975,
   y_pos_scale = 1.195,
-  chart_width = 640,
-  chart_height = 450,
+  chart_width = 8.888889,
+  chart_height = 6.25,
+  units = "in",
+  img_scale = 1,
   background = "white"
 ) {
 
@@ -126,9 +130,10 @@ save_with_logo_svg <- function(
     export_path,
     plot = fig_with_logo,
     bg = background,
-    width = (chart_width/72),
-    height = (chart_height/72),
-    units = "in"
+    width = chart_width,
+    height = chart_height,
+    units = "in",
+    scale = img_scale
   )
 
 }
@@ -137,24 +142,28 @@ save_with_logo_svg <- function(
 #'
 #' @param fig The ggplot2 figure
 #' @param export_path file path for the exported plot
-#' @param chart_width The width in px of the chart
-#' @param chart_height The height in px of the chart
+#' @param chart_width The width in "in" of the chart
+#' @param chart_height The height in "in" of the chart
 #' @param add_logo Boolean that determines if a logo is included or not
 #' @param logo_position Combination of top/bottom and right/left. Defaults to top right.
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
-#' @param logo_scale Scale logo to 1/10 width of plot
+#' @param logo_scale Scale logo to 1/logo_scale width of plot
+#' @param img_scale Multiplicative scaling factor
+#' @param units One of "in", "cm", "mm", or "px"
 #' @param background Color of the background in the image export
 #'
 #' @export
 save_plot <- function(
   fig,
   export_path,
-  chart_width = 640,
-  chart_height = 450,
+  chart_width = 8.888889,
+  chart_height = 6.25,
   add_logo = TRUE,
-  logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
+  logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_scale = 20,
+  img_scale = 1,
+  units = "in",
   background = "white"
 ) {
 
@@ -162,9 +171,10 @@ save_plot <- function(
     export_path,
     plot = fig,
     bg = background,
-    width = (chart_width/72),
-    height = (chart_height/72),
-    units = "in"
+    width = chart_width,
+    height = chart_height,
+    units = "in",
+    scale = img_scale
   )
 
   if (add_logo == TRUE) {

@@ -7,12 +7,14 @@
 save_plot(
   fig,
   export_path,
-  chart_width = 640,
-  chart_height = 450,
+  chart_width = 8.888889,
+  chart_height = 6.25,
   add_logo = TRUE,
-  logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
+  logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_scale = 20,
+  img_scale = 1,
+  units = "in",
   background = "white"
 )
 }
@@ -21,17 +23,21 @@ save_plot(
 
 \item{export_path}{file path for the exported plot}
 
-\item{chart_width}{The width in px of the chart}
+\item{chart_width}{The width in "in" of the chart}
 
-\item{chart_height}{The height in px of the chart}
+\item{chart_height}{The height in "in" of the chart}
 
 \item{add_logo}{Boolean that determines if a logo is included or not}
 
-\item{logo_path}{Path to the logo. Defaults to hosted Full CORI Black logo}
-
 \item{logo_position}{Combination of top/bottom and right/left. Defaults to top right.}
 
-\item{logo_scale}{Scale logo to 1/10 width of plot}
+\item{logo_path}{Path to the logo. Defaults to hosted Full CORI Black logo}
+
+\item{logo_scale}{Scale logo to 1/logo_scale width of plot}
+
+\item{img_scale}{Multiplicative scaling factor}
+
+\item{units}{One of "in", "cm", "mm", or "px"}
 
 \item{background}{Color of the background in the image export}
 }

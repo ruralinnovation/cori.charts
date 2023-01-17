@@ -10,8 +10,10 @@ save_with_logo_svg(
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   x_pos_scale = 0.9975,
   y_pos_scale = 1.195,
-  chart_width = 640,
-  chart_height = 450,
+  chart_width = 8.888889,
+  chart_height = 6.25,
+  units = "in",
+  img_scale = 1,
   background = "white"
 )
 }
@@ -26,9 +28,13 @@ save_with_logo_svg(
 
 \item{y_pos_scale}{Position scale factor as a percentage of the y range}
 
-\item{chart_width}{The width in px of the chart}
+\item{chart_width}{The width in "in" of the chart}
 
-\item{chart_height}{The height in px of the chart}
+\item{chart_height}{The height in "in" of the chart}
+
+\item{units}{One of "in", "cm", "mm", or "px"}
+
+\item{img_scale}{= Multiplicative scaling factor}
 
 \item{background}{Color of the background in the image export}
 }
