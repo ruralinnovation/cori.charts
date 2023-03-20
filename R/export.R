@@ -24,7 +24,7 @@ add_logo <- function(
 
   # read in raw images
   plot <- magick::image_read(plot_path)
-  logo_raw <- magick::image_read(logo_path)
+  logo_raw <- magick::image_read_svg(logo_path)
 
   # get dimensions of plot for scaling
   plot_height <- magick::image_info(plot)$height
