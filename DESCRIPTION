@@ -26,7 +26,8 @@ Imports:
     grid,
     png,
     rlang,
-    magick
+    magick,
+    rsvg
 Suggests: 
     dplyr,
     knitr,
