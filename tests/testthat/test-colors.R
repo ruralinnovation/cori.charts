@@ -1,5 +1,5 @@
 test_that("Colors have expected length", {
-  expect_equal(length(cori_colors), 25)
+  expect_equal(length(cori_colors), 26)
 })
 
 test_that("Can generate palette", {
@@ -8,7 +8,7 @@ test_that("Can generate palette", {
   pal3 <- cori_pal("ctg2or")
 
   # Interpolated palette
-  expect_equal(pal3(2), unname(cori_colors[c(6, 8)]))
+  expect_equal(pal3(2), unname(cori_colors[c(7, 9)]))
   # Reverse test
   expect_equal(pal2(3), pal1(3)[3:1])
 })
