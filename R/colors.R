@@ -16,6 +16,7 @@ cori_colors <- c(
   `Dark Green` = "#16343E",
   `Emerald` = "#018362",
   `Bright Mint` = "#A3E1B5",
+  `Mid Green` = "#74A88D",
   # Yellow
   `Bright Gold` = "#FFE474",
   # Oranges
@@ -64,6 +65,7 @@ cori_cols <- function(...) {
 #'
 cori_palettes <- list(
   "ctg2gn" = cori_cols("Emerald", "Bright Mint"),
+  "ctg2gnalt" = cori_cols("Mid Green", "Bright Mint"),
   "ctg2or" = cori_cols("Dark Orange", "Light Orange"),
   "ctg2pu" = cori_cols("Dark Purple", "Light Purple"),
   "ctg2pualt" = cori_cols("Dark Purple", "Mid Purple"),
