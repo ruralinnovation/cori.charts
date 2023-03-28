@@ -17,6 +17,9 @@ cori_colors <- c(
   `Emerald` = "#018362",
   `Bright Mint` = "#A3E1B5",
   `Light Green` = "#74A88D",
+  `Starting Green` = "#F0F9E8",
+  `Middle Green` = "#7DBAA3",
+  `Ending Green` = "#16343E",
   # Yellow
   `Bright Gold` = "#FFE474",
   # Oranges
@@ -70,6 +73,7 @@ cori_palettes <- list(
   "ctg2pu" = cori_cols("Dark Purple", "Light Purple"),
   "ctg2pualt" = cori_cols("Dark Purple", "Mid Purple"),
   "ctg2bu" = cori_cols("Dark Blue", "Light Blue"),
+  "ctg3gn" = cori_cols("Starting Green", "Middle Green", "Ending Green"),
   "ctg7" = cori_cols(
     "Dark Green",
     "Emerald",

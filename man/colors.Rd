@@ -8,9 +8,9 @@
 \alias{cori_pal}
 \title{Functions for handling CORI colors}
 \format{
-An object of class \code{character} of length 26.
+An object of class \code{character} of length 29.
 
-An object of class \code{list} of length 10.
+An object of class \code{list} of length 11.
 }
 \usage{
 cori_colors
