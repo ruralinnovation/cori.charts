@@ -10,7 +10,7 @@
 \format{
 An object of class \code{character} of length 29.
 
-An object of class \code{list} of length 11.
+An object of class \code{list} of length 12.
 }
 \usage{
 cori_colors
