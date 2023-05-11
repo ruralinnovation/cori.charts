@@ -14,7 +14,7 @@
 cori_colors <- c(
   # Greens
   `Dark Green` = "#16343E",
-  `Emerald` = "#018362",
+  `Emerald` = "#00825B",
   `Bright Mint` = "#A3E1B5",
   `Light Green` = "#74A88D",
   `Starting Green` = "#F0F9E8",
@@ -47,7 +47,19 @@ cori_colors <- c(
   # Accents
   `CORI Cream` = "#FBF8E9",
   `CORI Gray` = "#D0D2CE",
-  `Nearly Black` = "#121E22"
+  `Nearly Black` = "#121E22",
+  # Style Guide Colors
+  # Note: Emerald is defined above
+  `Pink` = "#C24C93",
+  `Cobalt` = "#234FBF",
+  `Sky Blue` = "#3A9EBD",
+  `Fire` = "#E64E2E",
+  `Purple` = "#755BA3",
+  `Red` = "#BA3434",
+  `Squash` = "#DF7B22",
+  `Gray` = "#D9DBDE",
+  `White` = "#FFFFFF",
+  `Cream` = "#FAF7E8"
 )
 
 #' @rdname colors
@@ -88,7 +100,8 @@ cori_palettes <- list(
   ),
   "ctg2tlpu" = cori_cols("Mid Teal", "Mid Purple"),
   "ctg2buor" = cori_cols("Mid Blue", "Mid Orange"),
-  "ctg5viridis_cori" = cori_cols("Dark Purple", "Mid Blue", "CIF Teal", "Emerald", "Bright Gold")
+  "ctg5viridis_cori" = cori_cols("Dark Purple", "Mid Blue", "CIF Teal", "Emerald", "Bright Gold"),
+  "ctg2ruralnonrural" = cori_cols("Squash", "Sky Blue")
 )
 
 #' @param palette Character name of palette in [cori_palettes]

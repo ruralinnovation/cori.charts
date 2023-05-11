@@ -1,5 +1,5 @@
 test_that("Colors have expected length", {
-  expect_equal(length(cori_colors), 29)
+  expect_equal(length(cori_colors), 39)
 })
 
 test_that("Can generate palette", {
