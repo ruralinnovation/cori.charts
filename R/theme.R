@@ -173,24 +173,67 @@ theme_cori_map <- function(base_family = "Lato", base_size = 12) {
 #'
 theme_cori_presentation <- function(base_family = "Lato", base_size = 12) {
 
+  gray <- "#d0d2ce"
+  dark_gray <- "#8e8e8e"
+  black <- "#121E22"
+
   ret <- theme_cori(
     base_family = base_family,
     base_size = base_size
   )
 
   # Increase font sizes for easier viewing in slide deck
-  ret$plot.title <- ggplot2::element_text(size = 32)
-  ret$plot.subtitle <- ggplot2::element_text(size = 20)
-  ret$plot.caption <- ggplot2::element_text(size = 16)
+  ret$plot.title <- ggplot2::element_text(
+    size = 32,
+    hjust = 0,
+    face = "plain",
+    margin = ggplot2::margin(b = 10),
+    color = black,
+    family = "TT Hoves"
+  )
 
-  ret$axis.title.x <- ggplot2::element_text(size = 16)
-  ret$axis.title.y <- ggplot2::element_text(size = 16)
+  ret$plot.subtitle <- ggplot2::element_text(
+    size = 20,
+    hjust = 0,
+    face = "italic",
+    margin = ggplot2::margin(b = 12),
+    color = black,
+    family = "TT Hoves"
+  )
 
-  ret$axis.text.x <- ggplot2::element_text(size = 16)
-  ret$axis.text.x <- ggplot2::element_text(size = 16)
+  ret$plot.caption <- ggplot2::element_text(
+    color = black,
+    size = 16,
+    hjust = 0,
+    margin = ggplot2::margin(t = 15, b = 0)
+  )
+
+  ret$axis.title.x <- ggplot2::element_text(
+    margin = ggplot2::margin(t = 10),
+    hjust = 0.5,
+    size = 16
+  )
+  ret$axis.title.y <- ggplot2::element_text(
+    hjust = 0.5,
+    angle = 90,
+    margin = ggplot2::margin(r = 10),
+    size = 16
+  )
+
+  ret$axis.text.x <- ggplot2::element_text(
+    hjust = 0.5,
+    size = 16,
+    color = black,
+    margin = ggplot2::margin(r = 4)
+  )
+  ret$axis.text.y <- ggplot2::element_text(
+    hjust = 1,
+    size = 16,
+    color = black
+  )
 
   ret$legend.key.size <- ggplot2::unit(16, "pt")
-  ret$legend.text <- ggplot2::element_text(size = 16)
+  ret$legend.text <- ggplot2::element_text(size = 16, vjust = 0.5, color = "#121E22")
 
   ret
 
@@ -209,24 +252,67 @@ theme_cori_presentation <- function(base_family = "Lato", base_size = 12) {
 #'
 theme_cori_map_presentation <- function(base_family = "Lato", base_size = 12) {
 
+  gray <- "#d0d2ce"
+  dark_gray <- "#8e8e8e"
+  black <- "#121E22"
+
   ret <- theme_cori_map(
     base_family = base_family,
     base_size = base_size
   )
 
   # Increase font sizes for easier viewing in slide deck
-  ret$plot.title <- ggplot2::element_text(size = 32)
-  ret$plot.subtitle <- ggplot2::element_text(size = 20)
-  ret$plot.caption <- ggplot2::element_text(size = 16)
+  ret$plot.title <- ggplot2::element_text(
+    size = 32,
+    hjust = 0,
+    face = "plain",
+    margin = ggplot2::margin(b = 10),
+    color = black,
+    family = "TT Hoves"
+  )
 
-  ret$axis.title.x <- ggplot2::element_text(size = 16)
-  ret$axis.title.y <- ggplot2::element_text(size = 16)
+  ret$plot.subtitle <- ggplot2::element_text(
+    size = 20,
+    hjust = 0,
+    face = "italic",
+    margin = ggplot2::margin(b = 12),
+    color = black,
+    family = "TT Hoves"
+  )
 
-  ret$axis.text.x <- ggplot2::element_text(size = 16)
-  ret$axis.text.x <- ggplot2::element_text(size = 16)
+  ret$plot.caption <- ggplot2::element_text(
+    color = black,
+    size = 16,
+    hjust = 0,
+    margin = ggplot2::margin(t = 15, b = 0)
+  )
+
+  ret$axis.title.x <- ggplot2::element_text(
+    margin = ggplot2::margin(t = 10),
+    hjust = 0.5,
+    size = 16
+  )
+  ret$axis.title.y <- ggplot2::element_text(
+    hjust = 0.5,
+    angle = 90,
+    margin = ggplot2::margin(r = 10),
+    size = 16
+  )
+
+  ret$axis.text.x <- ggplot2::element_text(
+    hjust = 0.5,
+    size = 16,
+    color = black,
+    margin = ggplot2::margin(r = 4)
+  )
+  ret$axis.text.y <- ggplot2::element_text(
+    hjust = 1,
+    size = 16,
+    color = black
+  )
 
   ret$legend.key.size <- ggplot2::unit(16, "pt")
-  ret$legend.text <- ggplot2::element_text(size = 16)
+  ret$legend.text <- ggplot2::element_text(size = 16, vjust = 0.5, color = "#121E22")
 
   ret
 
