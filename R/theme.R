@@ -261,6 +261,22 @@ theme_cori_map_presentation <- function(base_family = "Lato", base_size = 12) {
     base_size = base_size
   )
 
+  # Mapping styles
+
+  # Hide x and y text
+  ret$axis.text.x = ggplot2::element_blank()
+  ret$axis.text.y = ggplot2::element_blank()
+
+  # Hide ticks
+  ret$axis.ticks = ggplot2::element_blank()
+
+  # Remove background rectangle
+  ret$rect = ggplot2::element_blank()
+  ret$panel.grid.major = ggplot2::element_blank()
+
+  # Remove bottom line
+  ret$axis.line.x.bottom = ggplot2::element_blank()
+
   # Increase font sizes for easier viewing in slide deck
   ret$plot.title <- ggplot2::element_text(
     size = 32,
