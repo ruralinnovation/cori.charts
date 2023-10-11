@@ -160,3 +160,38 @@ theme_cori_map <- function(base_family = "Lato", base_size = 12) {
 
   ret
 }
+
+#' A [ggplot2] theme for the Center on Rural Innovation (CORI) style
+#'
+#' `theme_cori_map()` provides a [ggplot2] theme formatted for presentations
+#'
+#' @param base_family Font family that CORI employs, defaults to  "Lato"
+#' @param base_size Base text font size, defaults to 12
+#'
+#' @rdname theme_cori_presentation
+#' @export
+#'
+theme_cori_presentation <- function(base_family = "Lato", base_size = 12) {
+
+  ret <- theme_cori(
+    base_family = base_family,
+    base_size = base_size
+  )
+
+  # Increase font sizes for easier viewing in slide deck
+  ret$plot.title <- ggplot2::element_text(size = 32)
+  ret$plot.subtitle <- ggplot2::element_text(size = 20)
+  ret$plot.caption <- ggplot2::element_text(size = 16)
+
+  ret$axis.title.x <- ggplot2::element_text(size = 16)
+  ret$axis.title.y <- ggplot2::element_text(size = 16)
+
+  ret$axis.text.x <- ggplot2::element_text(size = 16)
+  ret$axis.text.x <- ggplot2::element_text(size = 16)
+
+  ret$legend.key.size <- ggplot2::unit(16, "pt")
+  ret$legend.text <- ggplot2::element_text(size = 16)
+
+  ret
+
+}
