@@ -163,7 +163,7 @@ theme_cori_map <- function(base_family = "Lato", base_size = 12) {
 
 #' A [ggplot2] theme for the Center on Rural Innovation (CORI) style
 #'
-#' `theme_cori_map()` provides a [ggplot2] theme formatted for presentations
+#' `theme_cori_presentation()` provides a [ggplot2] theme formatted for presentations
 #'
 #' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
