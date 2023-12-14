@@ -26,7 +26,8 @@ theme_cori <- function(base_family = "Lato", base_size = 12) {
   ret$panel.grid.minor.y <- ggplot2::element_blank()
   ret$panel.grid.major.y <- ggplot2::element_line(
     linetype = "solid",
-    color = gray
+    color = gray,
+    linewidth = .25
   )
   ret$panel.background = ggplot2::element_blank()
 
