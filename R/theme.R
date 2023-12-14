@@ -25,7 +25,7 @@ theme_cori <- function(base_family = "Lato", base_size = 12) {
   ret$panel.grid.minor.x <- ggplot2::element_blank()
   ret$panel.grid.minor.y <- ggplot2::element_blank()
   ret$panel.grid.major.y <- ggplot2::element_line(
-    linetype = "dashed",
+    linetype = "solid",
     color = gray
   )
   ret$panel.background = ggplot2::element_blank()
@@ -43,11 +43,12 @@ theme_cori <- function(base_family = "Lato", base_size = 12) {
     margin = ggplot2::margin(r = 10)
   )
   ret$axis.line.x <- ggplot2::element_line(color = gray, linetype = "solid")
+  ret$axis.ticks.length.x = ggplot2::unit(6, "pt")
   ret$axis.text.x <- ggplot2::element_text(
     hjust = 0.5,
     size = 10.5,
     color = black,
-    margin = ggplot2::margin(r = 4)
+    margin = ggplot2::margin(t = 2)
   )
   ret$axis.text.y <- ggplot2::element_text(hjust = 1, size = 10.5, color = black)
 
@@ -121,7 +122,7 @@ theme_cori_horizontal_bars <- function(base_family = "Lato", base_size = 12) {
   ret$panel.grid.major.x = ggplot2::element_line(colour = "#d0d2ce", size = .3)
   ret$axis.line.x.bottom = ggplot2::element_blank()
   ret$panel.grid.major.x = ggplot2::element_blank()
-  ret$axis.line.y = ggplot2::element_line(color = "black", size = .1)
+  ret$axis.line.y = ggplot2::element_blank()
 
   ret
 }
