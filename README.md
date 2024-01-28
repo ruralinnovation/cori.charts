@@ -10,10 +10,7 @@
 
 The goal of cori.charts is to make the process of creating
 publication-ready graphics and charts at the [Center for Rural
-Innovation](https://ruralinnovation.us/) as easy as possible. Check out
-[the
-guidelines](https://www.figma.com/file/gaAFFK9UHvs4baFXDlOKKR/CORI-Design-Guideline?node-id=51%3A264),
-and then get started.
+Innovation](https://ruralinnovation.us/) as easy as possible.
 
 ## Installation
 
