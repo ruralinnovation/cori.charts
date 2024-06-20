@@ -5,6 +5,7 @@
 \alias{cori_font}
 \alias{tthoves_install}
 \alias{tthoves_test}
+\alias{load_fonts}
 \title{Test, import, and register TT Hoves font}
 \format{
 An object of class \code{character} of length 1.
@@ -15,6 +16,8 @@ cori_font
 tthoves_install()
 
 tthoves_test()
+
+load_fonts()
 }
 \description{
 You need to install the TT Hoves font locally to use the CORI theming.

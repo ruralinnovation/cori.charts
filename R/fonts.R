@@ -42,3 +42,28 @@ tthoves_test <- function() {
     ))
   }
 }
+
+#' @rdname fonts
+#' @export
+#'
+load_fonts <- function() {
+
+  # Loads Lato from the google font repository and adds it to sysfonts
+  sysfonts::font_add_google("Lato")
+
+  # Loads TT Hoves (has to be installed on your computer)
+  sysfonts::font_add(
+    "TT Hoves",
+    regular = "TypeType - TT Hoves Regular.ttf",
+    bold = "TypeType - TT Hoves Bold.ttf",
+    italic = "TypeType - TT Hoves Italic.ttf",
+    bolditalic = "TypeType - TT Hoves Bold Italic.ttf"
+  )
+
+  # Ensures that any newly opened graphics devices will use showtext to draw text
+  showtext::showtext_auto()
+  # Sets default density per inch for exports
+  showtext::showtext_opts(dpi = 300)
+
+}
+
