@@ -3,13 +3,14 @@
 #' `theme_cori()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide.
 #'
+#' @param title_family Font family that CORI employs for titles, defaults to  "Lato"
 #' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori
 #' @export
 #'
-theme_cori <- function(base_family = "Lato", base_size = 12) {
+theme_cori <- function(title_family = "Lato", base_family = "Lato", base_size = 12) {
 
   gray <- "#d0d2ce"
   dark_gray <- "#8e8e8e"
@@ -60,7 +61,7 @@ theme_cori <- function(base_family = "Lato", base_size = 12) {
     face = "plain",
     margin = ggplot2::margin(b = 10),
     color = black,
-    family = "TT Hoves"
+    family = title_family
   )
   ret$plot.title.position <- "plot"
 
@@ -70,7 +71,7 @@ theme_cori <- function(base_family = "Lato", base_size = 12) {
     face = "italic",
     margin = ggplot2::margin(b = 12),
     color = black,
-    family = "TT Hoves"
+    family = title_family
   )
 
   ret$plot.caption <- ggplot2::element_text(
@@ -106,14 +107,16 @@ theme_cori <- function(base_family = "Lato", base_size = 12) {
 #' `theme_cori_horizontal_bars()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide for horizontal bar charts
 #'
+#' @param title_family Font family that CORI employs for titles, defaults to  "Lato"
 #' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori_horizontal_bars
 #' @export
 #'
-theme_cori_horizontal_bars <- function(base_family = "Lato", base_size = 12) {
+theme_cori_horizontal_bars <- function(title_family = "Lato", base_family = "Lato", base_size = 12) {
   ret <- theme_cori(
+    title_family = title_family,
     base_family = base_family,
     base_size = base_size
   )
@@ -133,15 +136,17 @@ theme_cori_horizontal_bars <- function(base_family = "Lato", base_size = 12) {
 #' `theme_cori_map()` provides a [ggplot2] theme formatted according to the CORI
 #' style guide for maps (choropleth or dot density)
 #'
+#' @param title_family Font family that CORI employs for titles, defaults to  "Lato"
 #' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori_map
 #' @export
 #'
-theme_cori_map <- function(base_family = "Lato", base_size = 12) {
+theme_cori_map <- function(title_family = "Lato", base_family = "Lato", base_size = 12) {
 
   ret <- theme_cori(
+    title_family = title_family,
     base_family = base_family,
     base_size = base_size
   )
@@ -167,19 +172,21 @@ theme_cori_map <- function(base_family = "Lato", base_size = 12) {
 #'
 #' `theme_cori_presentation()` provides a [ggplot2] theme formatted for presentations
 #'
+#' @param title_family Font family that CORI employs for titles, defaults to  "Lato"
 #' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori_presentation
 #' @export
 #'
-theme_cori_presentation <- function(base_family = "Lato", base_size = 12) {
+theme_cori_presentation <- function(title_family = "Lato", base_family = "Lato", base_size = 12) {
 
   gray <- "#d0d2ce"
   dark_gray <- "#8e8e8e"
   black <- "#121E22"
 
   ret <- theme_cori(
+    title_family = title_family,
     base_family = base_family,
     base_size = base_size
   )
@@ -191,7 +198,7 @@ theme_cori_presentation <- function(base_family = "Lato", base_size = 12) {
     face = "plain",
     margin = ggplot2::margin(b = 10),
     color = black,
-    family = "TT Hoves"
+    family = title_family
   )
 
   ret$plot.subtitle <- ggplot2::element_text(
@@ -200,7 +207,7 @@ theme_cori_presentation <- function(base_family = "Lato", base_size = 12) {
     face = "italic",
     margin = ggplot2::margin(b = 12),
     color = black,
-    family = "TT Hoves"
+    family = title_family
   )
 
   ret$plot.caption <- ggplot2::element_text(
@@ -246,19 +253,21 @@ theme_cori_presentation <- function(base_family = "Lato", base_size = 12) {
 #' `theme_cori_map_presentation()` provides a [ggplot2] theme formatted for maps
 #' used in presentations
 #'
+#' @param title_family Font family that CORI employs for titles, defaults to  "Lato"
 #' @param base_family Font family that CORI employs, defaults to  "Lato"
 #' @param base_size Base text font size, defaults to 12
 #'
 #' @rdname theme_cori_map_presentation
 #' @export
 #'
-theme_cori_map_presentation <- function(base_family = "Lato", base_size = 12) {
+theme_cori_map_presentation <- function(title_family = "Lato", base_family = "Lato", base_size = 12) {
 
   gray <- "#d0d2ce"
   dark_gray <- "#8e8e8e"
   black <- "#121E22"
 
   ret <- theme_cori_map(
+    title_family = title_family,
     base_family = base_family,
     base_size = base_size
   )
@@ -270,7 +279,7 @@ theme_cori_map_presentation <- function(base_family = "Lato", base_size = 12) {
     face = "plain",
     margin = ggplot2::margin(b = 10),
     color = black,
-    family = "TT Hoves"
+    family = title_family
   )
 
   ret$plot.subtitle <- ggplot2::element_text(
@@ -279,7 +288,7 @@ theme_cori_map_presentation <- function(base_family = "Lato", base_size = 12) {
     face = "italic",
     margin = ggplot2::margin(b = 12),
     color = black,
-    family = "TT Hoves"
+    family = title_family
   )
 
   ret$plot.caption <- ggplot2::element_text(

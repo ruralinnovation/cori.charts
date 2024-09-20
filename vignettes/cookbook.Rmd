@@ -26,28 +26,12 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 ## Setup
 
-### Install Lato
+### Load fonts into your environment
 
 ```{r, message=FALSE, warning = FALSE}
-library(sysfonts)
-library(showtext)
 
-# Loads Lato from the google font repository and adds it to sysfonts
-sysfonts::font_add_google("Lato")
+cori.charts::load_fonts()
 
-# Loads TT Hoves (has to be installed on your computer)
-# font_add(
-#   "TT Hoves", 
-#   regular = "TypeType - TT Hoves Regular.ttf",
-#   bold = "TypeType - TT Hoves Bold.ttf",
-#   italic = "TypeType - TT Hoves Italic.ttf",
-#   bolditalic = "TypeType - TT Hoves Bold Italic.ttf"
-# )
-
-# Ensures that any newly opened graphics devices will use showtext to draw text
-showtext_auto()
-# Sets default density per inch for exports
-showtext_opts(dpi = 300)
 ```
 
 ### Load required libraries

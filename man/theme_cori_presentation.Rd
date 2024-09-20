@@ -4,9 +4,15 @@
 \alias{theme_cori_presentation}
 \title{A \link{ggplot2} theme for the Center on Rural Innovation (CORI) style}
 \usage{
-theme_cori_presentation(base_family = "Lato", base_size = 12)
+theme_cori_presentation(
+  title_family = "Lato",
+  base_family = "Lato",
+  base_size = 12
+)
 }
 \arguments{
+\item{title_family}{Font family that CORI employs for titles, defaults to  "Lato"}
+
 \item{base_family}{Font family that CORI employs, defaults to  "Lato"}
 
 \item{base_size}{Base text font size, defaults to 12}

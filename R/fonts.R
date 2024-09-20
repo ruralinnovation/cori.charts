@@ -51,6 +51,9 @@ load_fonts <- function() {
   # Loads Lato from the google font repository and adds it to sysfonts
   sysfonts::font_add_google("Lato")
 
+  # Load Bitter
+  sysfonts::font_add_google("Bitter")
+
   # Loads TT Hoves (has to be installed on your computer)
   sysfonts::font_add(
     "TT Hoves",
