@@ -28,9 +28,26 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 ### Load fonts into your environment
 
-```{r, message=FALSE, warning = FALSE}
+```{r, message=FALSE, warning = FALSE, eval=FALSE}
+
+# For easily loading Lato, Bitter, and TT Hoves (TT Hoves needs to be installed locally)
+# you can use the following utility function
 
 cori.charts::load_fonts()
+
+```
+
+
+```{r, message=FALSE, warning = FALSE,}
+
+# Otherwise, I recommend loading fonts using the sysfonts library
+
+# Loads Lato from the google font repository and adds it to sysfonts
+sysfonts::font_add_google("Lato")
+# Ensures that any newly opened graphics devices will use showtext to draw text
+showtext::showtext_auto()
+# Sets default density per inch for exports
+showtext::showtext_opts(dpi = 300)
 
 ```
 
