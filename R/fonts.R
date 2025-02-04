@@ -44,9 +44,11 @@ tthoves_test <- function() {
 }
 
 #' @rdname fonts
+#'
+#' @param load_TT_Hoves Boolean to determine if TT Hoves should be loaded from a local fontbook. Defaults to FALSE.
 #' @export
 #'
-load_fonts <- function() {
+load_fonts <- function(load_TT_Hoves = FALSE) {
 
   # Loads Lato from the google font repository and adds it to sysfonts
   sysfonts::font_add_google("Lato")
@@ -54,14 +56,18 @@ load_fonts <- function() {
   # Load Bitter
   sysfonts::font_add_google("Bitter")
 
-  # Loads TT Hoves (has to be installed on your computer)
-  sysfonts::font_add(
-    "TT Hoves",
-    regular = "TypeType - TT Hoves Regular.ttf",
-    bold = "TypeType - TT Hoves Bold.ttf",
-    italic = "TypeType - TT Hoves Italic.ttf",
-    bolditalic = "TypeType - TT Hoves Bold Italic.ttf"
-  )
+  if (load_TT_Hoves == TRUE) {
+
+    # Loads TT Hoves (has to be installed on your computer)
+    sysfonts::font_add(
+      "TT Hoves",
+      regular = "TypeType - TT Hoves Regular.ttf",
+      bold = "TypeType - TT Hoves Bold.ttf",
+      italic = "TypeType - TT Hoves Italic.ttf",
+      bolditalic = "TypeType - TT Hoves Bold Italic.ttf"
+    )
+
+  }
 
   # Ensures that any newly opened graphics devices will use showtext to draw text
   showtext::showtext_auto()

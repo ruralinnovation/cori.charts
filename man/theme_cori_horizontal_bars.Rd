@@ -7,7 +7,7 @@
 theme_cori_horizontal_bars(
   title_family = "Lato",
   base_family = "Lato",
-  base_size = 12
+  base_size = 15
 )
 }
 \arguments{
