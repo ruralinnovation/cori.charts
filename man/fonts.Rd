@@ -17,7 +17,10 @@ tthoves_install()
 
 tthoves_test()
 
-load_fonts()
+load_fonts(load_TT_Hoves = FALSE)
+}
+\arguments{
+\item{load_TT_Hoves}{Boolean to determine if TT Hoves should be loaded from a local fontbook. Defaults to FALSE.}
 }
 \description{
 You need to install the TT Hoves font locally to use the CORI theming.
