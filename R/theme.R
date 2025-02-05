@@ -56,7 +56,7 @@ theme_cori <- function(title_family = "Lato", base_family = "Lato", base_size = 
     hjust = 1,
     size = base_size,
     color = black,
-    margin = margin(r = 4)
+    margin = ggplot2::margin(r = 4)
   )
 
   ret$axis.ticks.length.y.right = ggplot2::unit(0, "pt")
@@ -65,8 +65,9 @@ theme_cori <- function(title_family = "Lato", base_family = "Lato", base_size = 
   ret$plot.title <- ggplot2::element_text(
     size = 20,
     hjust = 0,
-    face = "plain",
-    margin = ggplot2::margin(b = 10),
+    face = "bold",
+    lineheight = 1.1,
+    margin = ggplot2::margin(b = 16),
     color = black,
     family = title_family
   )
@@ -76,7 +77,8 @@ theme_cori <- function(title_family = "Lato", base_family = "Lato", base_size = 
     size = 16,
     hjust = 0,
     face = "italic",
-    margin = ggplot2::margin(b = 12),
+    lineheight = 1.1,
+    margin = ggplot2::margin(b = 16),
     color = black,
     family = title_family
   )
@@ -85,7 +87,8 @@ theme_cori <- function(title_family = "Lato", base_family = "Lato", base_size = 
     color = black,
     size = 13,
     hjust = 0,
-    margin = ggplot2::margin(t = 15, b = 0)
+    margin = ggplot2::margin(t = 15, b = 0),
+    lineheight = 1.1
   )
   ret$plot.caption.position <-  "plot"
 
