@@ -28,7 +28,8 @@ Imports:
     rlang,
     magick,
     showtext,
-    sysfonts
+    sysfonts,
+    googlesheets4
 Suggests: 
     dplyr,
     knitr,

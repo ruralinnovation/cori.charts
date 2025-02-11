@@ -192,3 +192,97 @@ save_plot <- function(
   }
 
 }
+
+
+#' Pull chart text from Google Sheet and format it
+#'
+#' This function retrieves chart-related text from a Google Sheet and formats it.
+#' It assumes that the spreadsheet contains the following columns: `viz_id`, `title`, `subtitle`, `source`, `note`, `x`, and `y`.
+#'
+#' @param sheet_id Character. The Google Sheets ID.
+#' @param viz_unique_id Character. The unique visualization ID in the sheet.
+#' @param title_wrap Integer. Character width for wrapping the title. Default is 150.
+#' @param subtitle_wrap Integer. Character width for wrapping the subtitle. Default is 150.
+#' @param caption_wrap Integer. Character width for wrapping the source and notes. Default is 80.
+#'
+#' @return A named list with elements: `title`, `subtitle` (if available), `x` (if available), `y` (if available), and `caption` (if available).
+#' @export
+#' @importFrom rlang .data
+#' @importFrom googlesheets4 read_sheet
+get_chart_text_from_gsheet <- function(
+    sheet_id,
+    viz_unique_id,
+    title_wrap = 150,
+    subtitle_wrap = 150,
+    caption_wrap = 80
+) {
+
+  chart_entry <- googlesheets4::read_sheet(sheet_id) |>
+    dplyr::filter(.data$viz_id == viz_unique_id)
+
+  title <- chart_entry |>
+    dplyr::pull(title) |>
+    dplyr::nth(1) |>
+    stringr::str_wrap(width = title_wrap)
+
+  subtitle = chart_entry |>
+    dplyr::pull(subtitle) |>
+    dplyr::nth(1)
+
+  x <- chart_entry |> dplyr::pull(x) |> dplyr::nth(1)
+  y <- chart_entry |> dplyr::pull(y) |> dplyr::nth(1)
+
+  source <- chart_entry |>
+    dplyr::pull(source) |>
+    dplyr::nth(1) |>
+    stringr::str_wrap(width = caption_wrap)
+
+  note <- chart_entry |>
+    dplyr::pull(note) |>
+    dplyr::nth(1) |>
+    stringr::str_wrap(width = caption_wrap)
+
+  if (is.na(source) & !is.na(note)) {
+    caption <- note
+  }
+  else if (!is.na(source) & is.na(note)) {
+    caption <- source
+  }
+  else if (is.na(source) & is.na(note)) {
+    caption <- NA
+  }
+  else {
+    caption <- paste(source, note, sep ="\n")
+  }
+
+  chart_text <- list(
+    "title" = title,
+    "x" = NULL,
+    "y" = NULL
+  )
+
+  if (!is.null(subtitle)) {
+    if (!is.na(subtitle)) {
+      subtitle <- subtitle |>
+        stringr::str_wrap(width = subtitle_wrap)
+
+      chart_text <- c(chart_text, "subtitle" = subtitle)
+    }
+  }
+
+  if (!is.na(x)) {
+    chart_text[["x"]] <- x
+  }
+
+  if (!is.na(y)) {
+    chart_text[["y"]] <- y
+  }
+
+  if (!is.na(caption)) {
+    chart_text <- c(chart_text, "caption" = caption)
+  }
+
+  return(chart_text)
+}
+
+
