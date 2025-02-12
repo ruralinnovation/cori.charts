@@ -45,6 +45,11 @@ theme_cori <- function(title_family = "Lato", base_family = "Lato", base_size = 
     margin = ggplot2::margin(r = 10)
   )
   ret$axis.line.x <- ggplot2::element_blank()
+  axis.ticks.x = ggplot2::element_line(
+    color = gray,
+    linewidth = .25,
+    linetype = "solid"
+  )
   ret$axis.ticks.length.x = ggplot2::unit(10, "pt")
   ret$axis.text.x <- ggplot2::element_text(
     hjust = 0.5,
@@ -125,6 +130,7 @@ theme_cori <- function(title_family = "Lato", base_family = "Lato", base_size = 
 #' @export
 #'
 theme_cori_horizontal_bars <- function(title_family = "Lato", base_family = "Lato", base_size = 15) {
+
   ret <- theme_cori(
     title_family = title_family,
     base_family = base_family,
@@ -133,10 +139,40 @@ theme_cori_horizontal_bars <- function(title_family = "Lato", base_family = "Lat
 
   # show only vertical lines
   ret$panel.grid.major.y <- ggplot2::element_blank()
-  ret$panel.grid.major.x = ggplot2::element_line(colour = "#d0d2ce", size = .3)
+  ret$panel.grid.major.x = ggplot2::element_line(
+    color = "#d0d2ce",
+    linewidth = .25,
+    linetype = "solid"
+  )
   ret$axis.line.x.bottom = ggplot2::element_blank()
   ret$panel.grid.major.x = ggplot2::element_blank()
   ret$axis.line.y = ggplot2::element_blank()
+
+  ret
+}
+
+#' A [ggplot2] theme for the Center on Rural Innovation (CORI) style
+#'
+#' `theme_cori_line()` provides a [ggplot2] theme formatted according to the CORI
+#' style guide for line charts
+#'
+#' @param title_family Font family that CORI employs for titles, defaults to  "Lato"
+#' @param base_family Font family that CORI employs, defaults to  "Lato"
+#' @param base_size Base text font size, defaults to 12
+#'
+#' @rdname theme_cori_line
+#' @export
+#'
+theme_cori_line <- function(title_family = "Lato", base_family = "Lato", base_size = 15) {
+
+  ret <- theme_cori(
+    title_family = title_family,
+    base_family = base_family,
+    base_size = base_size
+  )
+
+  # show only vertical lines
+  ret$axis.text.y.right <- ggplot2::element_text(margin = ggplot2::margin(l = 4))
 
   ret
 }
