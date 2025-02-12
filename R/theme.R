@@ -30,7 +30,7 @@ theme_cori <- function(title_family = "Lato", base_family = "Lato", base_size = 
     color = gray,
     linewidth = .25
   )
-  ret$panel.background = ggplot2::element_blank()
+  ret$panel.background <- ggplot2::element_blank()
 
   # Axis Attributes
   ret$axis.title <- ggplot2::element_text(face = "italic")
@@ -50,7 +50,7 @@ theme_cori <- function(title_family = "Lato", base_family = "Lato", base_size = 
     linewidth = .25,
     linetype = "solid"
   )
-  ret$axis.ticks.length.x = ggplot2::unit(10, "pt")
+  ret$axis.ticks.length.x <- ggplot2::unit(10, "pt")
   ret$axis.text.x <- ggplot2::element_text(
     hjust = 0.5,
     size = base_size,
@@ -139,15 +139,15 @@ theme_cori_horizontal_bars <- function(title_family = "Lato", base_family = "Lat
 
   # show only vertical lines
   ret$panel.grid.major.y <- ggplot2::element_blank()
-  ret$panel.grid.major.x = ggplot2::element_line(
+  ret$panel.grid.major.x <- ggplot2::element_line(
     color = "#d0d2ce",
     linewidth = .25,
     linetype = "solid"
   )
-  ret$axis.line.x.bottom = ggplot2::element_blank()
-  ret$axis.text.x = ggplot2::element_blank()
-  ret$panel.grid.major.x = ggplot2::element_blank()
-  ret$axis.line.y = ggplot2::element_blank()
+  ret$axis.line.x.bottom <- ggplot2::element_blank()
+  ret$axis.text.x <- ggplot2::element_blank()
+  ret$panel.grid.major.x <- ggplot2::element_blank()
+  ret$axis.line.y <- ggplot2::element_blank()
 
   ret
 }
@@ -199,18 +199,18 @@ theme_cori_map <- function(title_family = "Lato", base_family = "Lato", base_siz
   )
 
   # Hide x and y text
-  ret$axis.text.x = ggplot2::element_blank()
-  ret$axis.text.y = ggplot2::element_blank()
+  ret$axis.text.x <- ggplot2::element_blank()
+  ret$axis.text.y <- ggplot2::element_blank()
 
   # Hide ticks
-  ret$axis.ticks = ggplot2::element_blank()
+  ret$axis.ticks <- ggplot2::element_blank()
 
   # Remove background rectangle
-  ret$rect = ggplot2::element_blank()
-  ret$panel.grid.major = ggplot2::element_blank()
+  ret$rect <- ggplot2::element_blank()
+  ret$panel.grid.major <- ggplot2::element_blank()
 
   # Remove bottom line
-  ret$axis.line.x.bottom = ggplot2::element_blank()
+  ret$axis.line.x.bottom <- ggplot2::element_blank()
 
   ret
 }
