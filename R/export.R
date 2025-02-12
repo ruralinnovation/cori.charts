@@ -229,8 +229,16 @@ get_chart_text_from_gsheet <- function(
     dplyr::pull(subtitle) |>
     dplyr::nth(1)
 
-  x <- chart_entry |> dplyr::pull(x) |> dplyr::nth(1)
-  y <- chart_entry |> dplyr::pull(y) |> dplyr::nth(1)
+  x <- NA
+  y <- NA
+
+  if ("x" %in% colnames(chart_entry)) {
+    x <- chart_entry |> dplyr::pull(x) |> dplyr::nth(1)
+  }
+
+  if ("y" %in% colnames(chart_entry)) {
+    y <- chart_entry |> dplyr::pull(y) |> dplyr::nth(1)
+  }
 
   source <- chart_entry |>
     dplyr::pull(source) |>
