@@ -145,6 +145,7 @@ theme_cori_horizontal_bars <- function(title_family = "Lato", base_family = "Lat
     linetype = "solid"
   )
   ret$axis.line.x.bottom = ggplot2::element_blank()
+  ret$axis.text.x = ggplot2::element_blank()
   ret$panel.grid.major.x = ggplot2::element_blank()
   ret$axis.line.y = ggplot2::element_blank()
 
