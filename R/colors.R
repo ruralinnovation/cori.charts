@@ -101,7 +101,7 @@ cori_palettes <- list(
   "ctg2tlpu" = cori_cols("Mid Teal", "Mid Purple"),
   "ctg2buor" = cori_cols("Mid Blue", "Mid Orange"),
   "ctg5viridis_cori" = cori_cols("Dark Purple", "Mid Blue", "CIF Teal", "Emerald", "Bright Gold"),
-  "ctg2ruralnonrural" = cori_cols("Squash", "Sky Blue")
+  "ctg2ruralnonrural" = cori_cols("Emerald", "Dark Purple")
 )
 
 #' @param palette Character name of palette in [cori_palettes]
