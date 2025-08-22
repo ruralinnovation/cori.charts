@@ -3,7 +3,7 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   cookbook: cookbook.html
-last_built: 2025-08-22T18:12Z
+last_built: 2025-08-22T18:23Z
 urls:
   reference: https://ruralinnovation.github.io/cori.charts/reference
   article: https://ruralinnovation.github.io/cori.charts/articles
