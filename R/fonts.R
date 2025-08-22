@@ -1,78 +1,21 @@
-#' Test, import, and register TT Hoves font
+#' Functions for working with CORI fonts
 #'
-#' You need to install the TT Hoves font locally to use the CORI theming.
-#'
-#' - `tthoves_test()` tests to see if the TT Hoves font is imported and
-#' registered.
-#' - `tthoves_install()` registers the TT Hoves font for use in R.
-#'
-#' @examples
-#' cori_font
-#' try(tthoves_test())
 #' @rdname fonts
+#'
+#' @param fonts Character vector of Google font names to load.
 #' @export
 #'
-cori_font <- "TT Hoves"
-
-#' @rdname fonts
-#' @export
-#'
-
-tthoves_install <- function() {
-  if (sum(grepl(cori_font, extrafont::fonts())) > 0) {
-    "TT Hoves font is already imported and registered."
-  } else {
-    extrafont::font_import(pattern = "TT Hoves")
-    extrafont::loadfonts()
-    tthoves_test()
+load_fonts <- function(fonts = c("Lato", "Bitter")) {
+  
+  # Loop over each font and add from Google
+  for (f in fonts) {
+    sysfonts::font_add_google(f)
   }
-}
-
-#' @rdname fonts
-#' @export
-#'
-tthoves_test <- function() {
-  if (sum(grepl(cori_font, extrafont::fonts())) > 0) {
-    rlang::inform("TT Hoves font is imported and registered.")
-  } else {
-    rlang::abort(c(
-      "TT Hoves font is not imported and registered.",
-      "Install the font on your computer.",
-      "Import and register using `tthoves_install()`."
-    ))
-  }
-}
-
-#' @rdname fonts
-#'
-#' @param load_TT_Hoves Boolean to determine if TT Hoves should be loaded from a local fontbook. Defaults to FALSE.
-#' @export
-#'
-load_fonts <- function(load_TT_Hoves = FALSE) {
-
-  # Loads Lato from the google font repository and adds it to sysfonts
-  sysfonts::font_add_google("Lato")
-
-  # Load Bitter
-  sysfonts::font_add_google("Bitter")
-
-  if (load_TT_Hoves == TRUE) {
-
-    # Loads TT Hoves (has to be installed on your computer)
-    sysfonts::font_add(
-      "TT Hoves",
-      regular = "TypeType - TT Hoves Regular.ttf",
-      bold = "TypeType - TT Hoves Bold.ttf",
-      italic = "TypeType - TT Hoves Italic.ttf",
-      bolditalic = "TypeType - TT Hoves Bold Italic.ttf"
-    )
-
-  }
-
+  
   # Ensures that any newly opened graphics devices will use showtext to draw text
   showtext::showtext_auto()
   # Sets default density per inch for exports
   showtext::showtext_opts(dpi = 300)
-
 }
+
 

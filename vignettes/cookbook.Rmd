@@ -28,26 +28,10 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 ### Load fonts into your environment
 
-```{r, message=FALSE, warning = FALSE, eval=FALSE}
-
-# For easily loading Lato, Bitter, and TT Hoves (TT Hoves needs to be installed locally)
-# you can use the following utility function
-
+```{r, message=FALSE, warning = FALSE}
+# For easily loading default Lato and Bitter fonts
+# but you can specify other fonts too
 cori.charts::load_fonts()
-
-```
-
-
-```{r, message=FALSE, warning = FALSE,}
-
-# Otherwise, I recommend loading fonts using the sysfonts library
-
-# Loads Lato from the google font repository and adds it to sysfonts
-sysfonts::font_add_google("Lato")
-# Ensures that any newly opened graphics devices will use showtext to draw text
-showtext::showtext_auto()
-# Sets default density per inch for exports
-showtext::showtext_opts(dpi = 300)
 
 ```
 
@@ -59,6 +43,11 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(stringr)
+library(here)
+
+# I like to use the `here` package for working with file paths
+i_am("vignettes/cookbook.Rmd")
+
 ```
 
 ### Load your data
@@ -78,7 +67,7 @@ Now we are ready to begin charting!
 ### Horizontal Bar Chart
 
 ```{r}
-cori_poverty %>%
+fig <- cori_poverty %>%
   ggplot2::ggplot(
     aes(
       estimate_below_poverty_level_2019,
@@ -96,9 +85,11 @@ cori_poverty %>%
       # number format (e.g., percent, dollar, etc.)
       label = scales::number(
         estimate_below_poverty_level_2019,
-        # accuracy determines what number to round to (e.g., accuracy = 0.01 will show 2 decimal places)
+        # accuracy determines what number to round to 
+        # (e.g., accuracy = 0.01 will show 2 decimal places)
         accuracy = 1,
-        # big.mark determines the character used between every 3 digits to separate thousands
+        # big.mark determines the character used between 
+        # every 3 digits to separate thousands
         big.mark = ","
       )
     ),
@@ -117,16 +108,6 @@ cori_poverty %>%
   ) +
   # Call the horizontal bar theme to pull in default CORI theming
   theme_cori_horizontal_bars() +
-  # Override any defaults styles using the ggplot2::theme() function AFTER
-  # calling theme_cori_horizontal_bars()
-  ggplot2::theme(
-    # Set title fonts to Lato, as TT Hoves is unavailable
-    # Where possible, use TT Hoves for titles (default)
-    plot.title = element_text(family = "Lato"),
-    plot.subtitle = element_text(family = "Lato"),
-    # Remove x gridlines
-    panel.grid.major.x = element_blank()
-  ) +
   # Provide Title, subtitle, etc.
   ggplot2::labs(
     title = "Population living below the poverty level",
@@ -135,7 +116,21 @@ cori_poverty %>%
     x = NULL,
     caption = "Source: ACS 5-year estimates (2019)"
   )
+
+# Always design a viz off a saved export
+# Fixed dimensions are so important when designing!
+cori.charts::save_plot(
+  fig,
+  here("vignettes/images/pop_below_pov_level.png")
+)
+
 ```
+
+<img
+  alt="Chart displaying poverty rates across communities"
+  src="images/pop_below_pov_level.png"
+  style="width:100%;"
+/>
 
 ----  
 
@@ -161,9 +156,8 @@ grouped_bar_data <- cori_poverty %>%
 glimpse(grouped_bar_data)
 ```
 
-With data labels
 ```{r}
-grouped_bar_data %>%
+fig <- grouped_bar_data %>%
   ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
   geom_col(position = "dodge") +
   # Add in data labels
@@ -190,42 +184,23 @@ grouped_bar_data %>%
     y = NULL,
     caption = "Source: U.S. Census Bureau"
   ) +
-  theme_cori_horizontal_bars() +
-  theme(
-    # Set title fonts to Lato, as TT Hoves is unavailable
-    # Where possible, use TT Hoves for titles (default)
-    plot.title = element_text(family = "Lato"),
-    plot.subtitle = element_text(family = "Lato")
-  )
+  theme_cori_horizontal_bars()
+
+cori.charts::save_plot(
+  fig,
+  here("vignettes/images/grouped_bar_pop_below_pov_level.png"),
+  # Adjust the height as needed, but avoid changing 
+  # chart_width to prevent inconsistent scaling
+  chart_height = 8
+)
+
 ```
 
-Without data labels
-```{r}
-grouped_bar_data %>%
-  ggplot(aes(percent_below_poverty, rin_community, fill = year)) +
-  geom_col(position = "dodge") +
-  scale_fill_cori(palette = "ctg2buor", reverse = TRUE) +
-  scale_x_continuous(
-    # Add back axis labels to provide context
-    # because we aren't displaying data labels
-    labels = scales::label_percent(accuracy = 1),
-    expand = expansion(mult = c(0, .1))
-  ) +
-  labs(
-    title = "Share of population below poverty level",
-    subtitle = "For select CORI communities",
-    x = NULL,
-    y = NULL,
-    caption = "Source: U.S. Census Bureau"
-  ) +
-  theme_cori_horizontal_bars() +
-  theme(
-    # Set title fonts to Lato, as TT Hoves is unavailable
-    # Where possible, use TT Hoves for titles (default)
-    plot.title = element_text(family = "Lato"),
-    plot.subtitle = element_text(family = "Lato")
-  )
-```
+<img
+  alt="Grouped bar chart displaying poverty rates across communities"
+  src="images/grouped_bar_pop_below_pov_level.png"
+  style="width:100%;"
+/>
 
 ----  
 
@@ -245,14 +220,17 @@ glimpse(bullet_chart_data)
 ```
 
 ```{r, warning = FALSE, message=FALSE}
-bullet_chart_data %>%
+fig <- bullet_chart_data %>%
   ggplot(aes(x = percent_below_poverty, y = rin_community, fill = year)) +
   # Determine the width using the "width" column we created above
   geom_col(width = bullet_chart_data$width) +
   # Add data labels for the later time period only
   geom_text(
     data = dplyr::filter(bullet_chart_data, year == "2019"),
-    aes(x = percent_below_poverty, label = scales::percent(percent_below_poverty, accuracy = 1)),
+    aes(
+      x = percent_below_poverty,
+      label = scales::percent(percent_below_poverty, accuracy = 1)
+    ),
     hjust = 1.3,
     family = "Lato",
     color = "white",
@@ -270,14 +248,23 @@ bullet_chart_data %>%
     y = NULL,
     caption = "Source: ACS 5-year estimates"
   ) +
-  theme_cori_horizontal_bars() +
-  theme(
-    # Set title fonts to Lato, as TT Hoves is unavailable
-    # Where possible, use TT Hoves for titles (default)
-    plot.title = element_text(family = "Lato"),
-    plot.subtitle = element_text(family = "Lato")
-  )
+  theme_cori_horizontal_bars()
+
+cori.charts::save_plot(
+  fig,
+  here("vignettes/images/bullet_chart_pov_level.png"),
+  chart_height = 8,
+  # Logo can be turned off if needed
+  add_logo = FALSE
+)
+
 ```
+
+<img
+  alt="Bullet chart displaying poverty rates across communities and years"
+  src="images/bullet_chart_pov_level.png"
+  style="width:100%;"
+/>
 
 ----  
 
@@ -314,10 +301,11 @@ Simple line chart with right-hand legend
 # update the geom defaults before plotting
 update_cori_geom_defaults()
 
-line_chart_data %>%
+fig <- line_chart_data %>%
   ggplot(
        aes(date, percent_working_remotely, color = education_clean)) +
-  geom_line() +
+  # A thicker line usually looks best
+  geom_line(linewidth = 1.5) +
   scale_color_cori(palette = "ctg4mid", guide = guide_legend(reverse = TRUE)) +
   scale_x_date(
     date_breaks = "6 months",
@@ -335,22 +323,41 @@ line_chart_data %>%
     # but with long names it can be easier to display the legend on the right
     legend.position = "right",
     legend.direction = "vertical",
+    # Add spacing between keys
+    legend.key.spacing.y = unit(12, "pt"),
     # Add ticks to the x-axis
-    axis.ticks.x = element_line(color = "#d0d2ce"),
-    axis.ticks.length = unit(4, 'pt'),
-    plot.title = element_text(family = "Lato"),
-    plot.subtitle = element_text(family = "Lato")
+    axis.ticks.x = element_line(color = "#d0d2ce", linewidth = .25),
+    axis.ticks.length = unit(8, 'pt'),
+    # Add margin to separate tick and text
+    axis.text.x = element_text(margin = margin(t = 2)),
   ) +
   # In order for a legend on the right to render properly,
   # you need to specify that byrow = TRUE
   guides(color = guide_legend(byrow = TRUE)) +
-  labs(title = "Percent of workers able to work from home",
-       subtitle = "By education level (May 2020 - December 2021)",
-       x = NULL,
-       y = NULL,
-       caption = "Source: Bureau of Labor Statistics")
+  labs(
+    title = "Percent of workers able to work from home",
+    subtitle = "By education level (May 2020 - December 2021)",
+    x = NULL,
+    y = NULL,
+    caption = "Source: Bureau of Labor Statistics"
+  )
+
+cori.charts::save_plot(
+  fig,
+  here("vignettes/images/line_chart_remote_worker_a.png"),
+  chart_height = 6
+)
+
 ```
-If your lines are spaced further apart, you can use a secondary axis to directly label the line endpoints
+
+<img
+  alt="Line chart showing remote work access by education level"
+  src="images/line_chart_remote_worker_a.png"
+  style="width:100%;"
+/>
+
+Better yet, if your lines are spaced further apart, 
+you can use a secondary axis to directly label the line endpoints
 ```{r, fig.asp=2/3}
 # Let's filter to just two lines to simplify the chart
 direct_label_data <- line_chart_data %>%
@@ -369,10 +376,11 @@ line_values <- direct_label_data %>%
   dplyr::arrange(desc(percent_working_remotely)) %>%
   pull(percent_working_remotely)
 
-direct_label_data %>%
+fig <- direct_label_data %>%
   ggplot(
-       aes(date, percent_working_remotely, color = education_clean)) +
-  geom_line() +
+    aes(date, percent_working_remotely, color = education_clean)
+  ) +
+  geom_line(linewidth = 1.5) +
   scale_color_cori(palette = "ctg2tlpu", guide = guide_legend(reverse = TRUE)) +
   scale_x_date(
     date_breaks = "6 months",
@@ -385,7 +393,7 @@ direct_label_data %>%
     expand = expansion(mult = c(0, .1)),
     # Add the direct labels as a second axis
     sec.axis = sec_axis(
-      trans = ~.*1,
+      transform = ~.*1,
       breaks = line_values,
       labels = line_labels
     )
@@ -395,15 +403,12 @@ direct_label_data %>%
     # Remove the legend
     legend.position = "none",
     # Add ticks to the x-axis
-    axis.ticks.x = element_line(color = "#d0d2ce"),
+    axis.ticks.x = element_line(color = "#d0d2ce", linewidth = .25),
     axis.ticks.length = unit(8, 'pt'),
     # Add margin to separate tick and text
     axis.text.x = element_text(margin = margin(t = 2)),
-    # Specify title font. Use TT Hoves if possible
-    plot.title = element_text(family = "Lato"),
-    plot.subtitle = element_text(family = "Lato"),
     # Adjust the space between the line and the line label
-    axis.ticks.length.y.right = unit(1, "pt")
+    axis.ticks.length.y.right = unit(2, "pt")
   ) +
   labs(
     title = "Percent of workers able to work from home",
@@ -412,7 +417,72 @@ direct_label_data %>%
     y = NULL,
     caption = "Source: Bureau of Labor Statistics"
   )
+
+cori.charts::save_plot(
+  fig,
+  here("vignettes/images/line_chart_remote_worker_direct_labels.png"),
+  chart_height = 6
+)
+
 ```
+
+<img
+  alt="Line chart showing remote work access by education level"
+  src="images/line_chart_remote_worker_direct_labels.png"
+  style="width:100%;"
+/>
+
+----  
+
+### Scatter Charts
+
+```{r}
+
+data("cori_employment")
+
+fig <- cori_employment %>%
+  ggplot(aes(x = estimate_employed_2019, y = estimate_pop_2019)) +
+  geom_point(color = cori_colors["Emerald"], size = 5, alpha = 0.5) +
+  geom_smooth(method = "lm", color = cori_colors["RISI Blue"], se = FALSE) + 
+  scale_x_continuous(
+    expand = expansion(mult = c(0.05, 0.05)),
+    labels = scales::label_number(accuracy = 1, big.mark = ",")
+  ) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0.1, 0.1)),
+    labels = scales::label_number(accuracy = 1, big.mark = ",")
+  ) +
+  labs(
+    title = "Employment vs. population",
+    subtitle = "2019 estimates",
+    x = "Employment",
+    y = "Population",
+    caption = "Source: 2019 ACS 5-year estimates"
+  ) +
+  theme_cori() +
+  theme(
+    # Add back X panel
+    panel.grid.major.x = element_line(color = "#d0d2ce", linewidth = .25),
+    axis.ticks.x = element_line(color = "#d0d2ce", linewidth = .25),
+    axis.ticks.length = unit(8, 'pt'),
+    # Add margin to separate tick and text
+    axis.text.x = element_text(margin = margin(t = 6))
+  )
+
+cori.charts::save_plot(
+  fig,
+  here("vignettes/images/scatter_employment_vs_pop.png"),
+  chart_height = 6
+)
+
+```
+
+<img
+  alt="Scatter chart showing relationship between employment and population"
+  src="images/scatter_employment_vs_pop.png"
+  style="width:100%;"
+/>
+
 
 ----  
 
@@ -431,9 +501,18 @@ pal <- cori_palettes["ctg2gn"]
 scales::show_col(unname(unlist(pal)))
 ```
 
-This default palette is not always the best choice, depending on your data's format.
+This default palette is not always the best choice. The 
+best color palette will depend on your data's format and content.
 
-If you are comparing two categories (e.g., Rural vs. Nonrural), I recommend using either the Mid Teal and Mid Purple palette
+If you are comparing rural and nonrural, using our Rural vs Nonrural palette. 
+Rural is Emerald and nonrural is Dark Purple.
+```{r, fig.asp = 1}
+pal <- cori_palettes["ctg2ruralnonrural"]
+scales::show_col(unname(unlist(pal)))
+```
+
+If you are comparing two categories, I also recommend using 
+the Mid Teal and Mid Purple palette
 ```{r, fig.asp = 1}
 pal <- cori_palettes["ctg2tlpu"]
 scales::show_col(unname(unlist(pal)))
