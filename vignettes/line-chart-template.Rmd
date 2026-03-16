@@ -1,0 +1,173 @@
+---
+title: "Line Chart Template"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Line Chart Template}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# CORI Line Chart Template
+
+A checklist of every code chunk needed to produce a standard CORI line chart
+using `theme_cori_precise`. Sections marked **[optional]** are situational.
+
+---
+
+## 1. Libraries
+
+```r
+library(tidyverse)
+library(cori.charts)
+library(ragg)
+library(svglite)
+
+load_fonts()
+```
+
+---
+
+## 2. Data prep
+
+Your chart-specific data wrangling. Output should be a tidy data frame
+(`chart_dta`) with one row per line per x-value.
+
+**Required columns:**
+- x column (e.g. `year`, or a `Date`)
+- y column (e.g. `avg_pci_index`, `value`)
+- category/group column (e.g. `category`) — used for color and line labels
+
+---
+
+## 3. Build the figure
+
+```r
+fig <- chart_dta %>%
+  ggplot(aes(x = year, y = value, color = category, group = category)) +
+
+  # [optional] Dashed baseline for indexed charts (e.g. indexed to 100%)
+  geom_hline(yintercept = 1, color = "white", linewidth = 1) +       # hides solid gridline at baseline
+  geom_hline(yintercept = 1, linewidth = 0.5, linetype = "dashed",   # draws dashed baseline
+             color = "#d0d2ce") +
+
+  # [optional] Shaded annotation period (e.g. recession, COVID)
+  annotate("rect",
+           xmin = 2007, xmax = 2009,    # adjust to your period
+           ymin = -Inf, ymax = Inf,     # or use data-specific y limits
+           fill = "grey90", alpha = 0.5) +
+
+  # Chart lines
+  geom_line(linewidth = 1) +
+
+  # Y axis — adjust limits, labels, and breaks to your data
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.05)),
+    limits = c(NA, NA),                              # set explicit limits if needed
+    labels = scales::label_percent(accuracy = 1)     # or label_number(), label_dollar(), etc.
+  ) +
+
+  # X axis — set inside set_chart_limits() below; only add labels/breaks here
+  scale_x_continuous(
+    labels = scales::label_number(accuracy = 1, big.mark = ""),
+    n.breaks = 5
+  ) +
+
+  # Colors — match values to your category column
+  scale_color_manual(values = c(
+    "Category A" = "#00835D",
+    "Category B" = "#211448",
+    "Category C" = "#808080"
+  )) +
+
+  # Theme — always include; type can be "line", "bar", "scatter", "map"
+  theme_cori_precise(type = "line") +
+
+  # Per-chart overrides — margin and legend are the most common
+  theme(
+    plot.margin    = margin(13, 60, 13, 13, "pt"),   # increase right (2nd value) if labels clip
+    legend.position = "none"                          # remove if using a legend instead of labels
+  ) +
+
+  # Direct line labels — replace with legend if lines are too close to label
+  label_lines(
+    data      = chart_dta,
+    x_col     = year,
+    y_col     = value,
+    label_col = category,
+    color_col = category,   # remove if you want black labels
+    min_gap   = 0.05        # in data units; increase if labels overlap
+  ) +
+
+  # Titles
+  labs(
+    title    = "Title goes here",
+    subtitle = "Y-axis description goes here (italic, acts as y-axis label)",
+    x        = NULL,
+    y        = NULL,
+    caption  = "Source: ..."
+  ) +
+
+  # Gridline truncation — always include for line charts; keeps grid from overshooting data
+  set_chart_limits(chart_dta, x_col = year)
+```
+
+---
+
+## 4. Export
+
+```r
+# Produces both PNG and SVG at report width (6.5") by default
+save_chart(fig, "export/my_chart_name", preset = "report")
+
+# For PowerPoint slides (4.75" wide)
+save_chart(fig, "export/my_chart_name", preset = "slide")
+
+# PNG only, no logo
+save_chart(fig, "export/my_chart_name", preset = "report",
+           formats = "png", add_logo = FALSE)
+
+# Custom aspect ratio (default is 0.625; taller = higher value)
+save_chart(fig, "export/my_chart_name", preset = "report", aspect_ratio = 0.75)
+```
+
+---
+
+## Optional overrides for one-off adjustments
+
+Only use these when the baked-in defaults don't work for a specific chart.
+Add a custom `spec` object and pass it to all three functions:
+
+```r
+spec <- cori_chart_spec(
+  font_title    = 11,   # pt
+  font_subtitle = 9,
+  font_axis     = 8,
+  font_label    = 9,
+  font_caption  = 8,
+  font_legend   = 9,
+  tick_length   = 4,    # pt
+  gridline_width = 0.25 # mm
+)
+
+fig + theme_cori_precise(type = "line", spec = spec)
+     label_lines(..., spec = spec)
+save_chart(fig, "export/my_chart", preset = "report", spec = spec)
+```
+
+---
+
+## Quick reference: what lives where
+
+| Decision | Where to change it |
+|---|---|
+| Font sizes (all charts) | `cori_chart_spec()` defaults in `theme_cori_precise.R` |
+| Canvas width | `cori_chart_spec()` `width_report` / `width_slide` |
+| Tick length, gridline weight | `cori_chart_spec()` defaults |
+| Line colors | `scale_color_manual()` in chart script |
+| Line stroke width | `geom_line(linewidth = ...)` in chart script |
+| Label spacing | `label_lines(min_gap = ...)` in chart script |
+| Right margin (label clipping) | `theme(plot.margin = ...)` in chart script |
+| Aspect ratio for one chart | `save_chart(aspect_ratio = ...)` |
+| Y axis scale / breaks | `scale_y_continuous()` in chart script |
+
+

@@ -32,7 +32,7 @@ devtools::install_github("ruralinnovation/cori.charts")
 
 ## Examples
 
-Check out the vignette for a [cookbook of CORI-themed plots](https://ruralinnovation.github.io/cori.charts/articles/cookbook.html)!
+Check out the vignette for a [cookbook of CORI-themed plots](https://ruralinnovation.github.io/cori.charts/articles/cookbook.html) and a [line chart template](https://ruralinnovation.github.io/cori.charts/articles/line-chart-template.html).
 
 ## Code organization
 
