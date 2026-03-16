@@ -16,9 +16,14 @@
 # Why physically-locked units matter:
 #   The existing theme uses base_size = 15 as a relative multiplier, which
 #   means the same size value produces different physical output at different
-#   canvas dimensions. By converting all sizes to points via ggplot2::.pt and
-#   setting all line widths in mm, these functions produce identical physical
+#   canvas dimensions. By setting all element_text() sizes directly in points
+#   and all line widths in mm, these functions produce identical physical
 #   output regardless of canvas size. A 8pt label is always 8pt.
+#
+#   Note on ggplot2 size units:
+#   - element_text(size = x) takes x directly in points — no conversion needed
+#   - geom_text(size = x) uses ggplot2 internal units — requires x / .pt to
+#     convert from points to the correct display size
 #
 # Dependencies to add to DESCRIPTION if not already present:
 #   ragg, svglite
@@ -88,13 +93,13 @@ cori_chart_spec <- function(
     width_slide     = 4.75,
     dpi             = 300,
     aspect_ratio    = 0.625,
-    font_title      = 13,
-    font_subtitle   = 10,
+    font_title      = 11,
+    font_subtitle   = 9,
     font_axis       = 8,
     font_axis_title = 8,
-    font_caption    = 7,
-    font_label      = 8,
-    font_legend     = 8,
+    font_caption    = 8,
+    font_label      = 9,
+    font_legend     = 9,
     tick_length     = 4,
     gridline_width  = 0.25,
     axis_line_width = 0.4
@@ -127,8 +132,8 @@ cori_chart_spec <- function(
 #' A precision extension of the existing CORI themes. Calls the appropriate
 #' base theme (\code{theme_cori_line}, \code{theme_cori_horizontal_bars}, etc.)
 #' then overrides all size and width values with physically-locked units:
-#' font sizes in true points (via \code{ggplot2::.pt}), line widths in mm,
-#' and tick lengths as explicit \code{unit()} calls.
+#' font sizes directly in points (element_text takes points natively),
+#' line widths in mm, and tick lengths as explicit \code{unit()} calls.
 #'
 #' This means a 8pt axis label is always 8pt regardless of canvas dimensions,
 #' eliminating the need for post-export Figma corrections.
@@ -178,16 +183,15 @@ theme_cori_precise <- function(
     stop("type must be one of: 'line', 'bar', 'scatter', 'map'")
   )
   
-  # All sizes below use / ggplot2::.pt to convert points to ggplot2's
-  # internal size unit. This is the key that locks physical output size.
-  pt <- ggplot2::.pt
-  
+  # element_text(size = x) takes x directly in points — no conversion needed.
+  # This is different from geom_text(size = x) which uses internal ggplot2
+  # units and requires division by .pt to convert from points.
   precision_overrides <- ggplot2::theme(
     
     # --- Plot titles ---------------------------------------------------------
     plot.title = ggplot2::element_text(
       family     = title_family,
-      size       = spec$font_title / pt,
+      size       = spec$font_title,
       face       = "bold",
       color      = black,
       hjust      = 0,
@@ -199,7 +203,7 @@ theme_cori_precise <- function(
     # Subtitle is italic, used as y-axis descriptor per CORI convention
     plot.subtitle = ggplot2::element_text(
       family     = title_family,
-      size       = spec$font_subtitle / pt,
+      size       = spec$font_subtitle,
       face       = "italic",
       color      = black,
       hjust      = 0,
@@ -209,7 +213,7 @@ theme_cori_precise <- function(
     
     plot.caption = ggplot2::element_text(
       family     = base_family,
-      size       = spec$font_caption / pt,
+      size       = spec$font_caption,
       color      = black,
       hjust      = 0,
       lineheight = 1.2,
@@ -217,9 +221,12 @@ theme_cori_precise <- function(
     ),
     plot.caption.position = "plot",
     
+    # Right margin is wider to give line labels room to breathe.
+    # font_title * 5 (~65pt at default 13pt title) accommodates most labels.
+    # Override per-chart with theme(plot.margin = ...) if labels still clip.
     plot.margin = ggplot2::margin(
       t = spec$font_title,
-      r = spec$font_title * 3,  # extra right margin for line labels
+      r = spec$font_title * 5,
       b = spec$font_title,
       l = spec$font_title,
       unit = "pt"
@@ -228,32 +235,32 @@ theme_cori_precise <- function(
     # --- Axis text -----------------------------------------------------------
     axis.text.x = ggplot2::element_text(
       family = base_family,
-      size   = spec$font_axis / pt,
+      size   = spec$font_axis,
       color  = black,
       hjust  = 0.5,
       margin = ggplot2::margin(t = 3)
     ),
     axis.text.y = ggplot2::element_text(
       family = base_family,
-      size   = spec$font_axis / pt,
+      size   = spec$font_axis,
       color  = black,
       hjust  = 1,
       margin = ggplot2::margin(r = 3)
     ),
     axis.text.y.right = ggplot2::element_text(
       family = base_family,
-      size   = spec$font_axis / pt,
+      size   = spec$font_axis,
       color  = black,
       hjust  = 0,
       margin = ggplot2::margin(l = 6)
     ),
     
     # --- Axis titles ---------------------------------------------------------
-    # Note: per CORI convention, y-axis title is usually NULL and the subtitle
+    # Per CORI convention, y-axis title is usually NULL and the subtitle
     # is used instead. axis.title is kept here for charts that do use it.
     axis.title.x = ggplot2::element_text(
       family = base_family,
-      size   = spec$font_axis_title / pt,
+      size   = spec$font_axis_title,
       face   = "italic",
       color  = black,
       hjust  = 0.5,
@@ -261,7 +268,7 @@ theme_cori_precise <- function(
     ),
     axis.title.y = ggplot2::element_text(
       family = base_family,
-      size   = spec$font_axis_title / pt,
+      size   = spec$font_axis_title,
       face   = "italic",
       color  = black,
       hjust  = 0.5,
@@ -281,19 +288,17 @@ theme_cori_precise <- function(
     
     # --- Gridlines -----------------------------------------------------------
     # Gridline width is set in mm for physical consistency.
-    # Horizontal gridlines (y) shown by default for line/scatter.
-    # theme_cori_horizontal_bars base already swaps these; we preserve that.
     panel.grid.major.y = ggplot2::element_line(
       color     = gray,
       linewidth = spec$gridline_width,
       linetype  = "solid"
     ),
-    panel.grid.minor   = ggplot2::element_blank(),
+    panel.grid.minor = ggplot2::element_blank(),
     
     # --- Legend --------------------------------------------------------------
     legend.text = ggplot2::element_text(
       family = base_family,
-      size   = spec$font_legend / pt,
+      size   = spec$font_legend,
       color  = black,
       vjust  = 0.5
     ),
@@ -393,13 +398,15 @@ set_chart_limits <- function(data, x_col, label_offset = 0, left_expand = 0, ...
 #' vertical nudging to prevent overlapping labels when lines converge at
 #' similar y-values.
 #'
-#' This packages the manual label-spacing pattern (filtering to max x,
-#' building a \code{min_gap} loop, then calling \code{geom_text}) into a
-#' single reusable \code{+} layer. Font size and family are read from the
-#' spec so they stay consistent across all charts without per-chart overrides.
+#' Labels are always positioned at their corresponding line's final y value.
+#' The \code{min_gap} nudge only activates when two labels would otherwise
+#' overlap — if lines are well-separated, all labels sit exactly at their
+#' endpoints and \code{min_gap} has no effect.
 #'
-#' The \code{min_gap} argument is left explicit because it is in data units
-#' and therefore varies by chart depending on the y-axis scale.
+#' Font size and family are read from the spec so they stay consistent across
+#' all charts without per-chart overrides. Note: geom_text uses ggplot2
+#' internal size units, so font_label is divided by \code{.pt} internally to
+#' convert from points to the correct display size.
 #'
 #' @param data A data frame containing the chart data (the same data passed
 #'   to \code{ggplot()}).
@@ -469,8 +476,10 @@ label_lines <- function(
     }
   }
   
-  # Build aes: conditionally include color mapping
-  if (!is.null(color_col) && color_str != "NULL") {
+  # Build aes: conditionally include color mapping.
+  # Check the string only — avoids evaluating color_col as a bare variable
+  # name in the calling environment where it would not be found.
+  if (color_str != "NULL") {
     mapping <- ggplot2::aes(
       x     = .data[[x_str]],
       y     = .data[["label_y"]],
@@ -485,6 +494,9 @@ label_lines <- function(
     )
   }
   
+  # geom_text size uses ggplot2 internal units, so font_label must be
+  # divided by .pt to convert from points to the correct display size.
+  # This is different from element_text() which takes points directly.
   ggplot2::geom_text(
     data        = label_data,
     mapping     = mapping,
@@ -556,15 +568,15 @@ label_lines <- function(
 save_chart <- function(
     fig,
     path,
-    preset       = "report",
-    formats      = c("png", "svg"),
-    add_logo     = TRUE,
+    preset        = "report",
+    formats       = c("png", "svg"),
+    add_logo      = TRUE,
     logo_position = "top right",
-    logo_path    = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
-    logo_scale   = 20,
-    aspect_ratio = NULL,
-    spec         = NULL,
-    background   = "white"
+    logo_path     = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
+    logo_scale    = 20,
+    aspect_ratio  = NULL,
+    spec          = NULL,
+    background    = "white"
 ) {
   if (is.null(spec)) spec <- cori_chart_spec()
   
@@ -615,10 +627,10 @@ save_chart <- function(
     svg_path <- paste0(path, ".svg")
     
     svglite::svglite(
-      file       = svg_path,
-      width      = width,
-      height     = height,
-      bg         = background
+      file   = svg_path,
+      width  = width,
+      height = height,
+      bg     = background
     )
     print(fig)
     grDevices::dev.off()
