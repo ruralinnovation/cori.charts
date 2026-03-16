@@ -225,10 +225,10 @@ theme_cori_precise <- function(
     # font_title * 5 (~65pt at default 13pt title) accommodates most labels.
     # Override per-chart with theme(plot.margin = ...) if labels still clip.
     plot.margin = ggplot2::margin(
-      t = spec$font_title,
+      t = 13,
       r = spec$font_title * 5,
-      b = spec$font_title,
-      l = spec$font_title,
+      b = 13,
+      l = 13,
       unit = "pt"
     ),
     
