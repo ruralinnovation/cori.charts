@@ -102,7 +102,8 @@ cori_chart_spec <- function(
     font_legend     = 9,
     tick_length     = 4,
     gridline_width  = 0.25,
-    axis_line_width = 0.4
+    axis_line_width = 0.4,
+    line_width      = 1.5
 ) {
   list(
     width_report    = width_report,
@@ -118,7 +119,8 @@ cori_chart_spec <- function(
     font_legend     = font_legend,
     tick_length     = tick_length,
     gridline_width  = gridline_width,
-    axis_line_width = axis_line_width
+    axis_line_width = axis_line_width,
+    line_width      = line_width
   )
 }
 
@@ -186,7 +188,8 @@ theme_cori_precise <- function(
       font_legend     = 9,
       tick_length     = 4,
       gridline_width  = 0.25,
-      axis_line_width = 0.4
+      axis_line_width = 0.4,
+      line_width      = 1.5
     ),
     slide = cori_chart_spec(
       width_report    = 6.5,
@@ -202,13 +205,17 @@ theme_cori_precise <- function(
       font_legend     = 9,
       tick_length     = 4,
       gridline_width  = 0.25,
-      axis_line_width = 0.4
+      axis_line_width = 0.4,
+      line_width      = 1
     )
   )
 
   # If no spec provided, use preset default
   if (is.null(spec)) spec <- preset_specs[[preset]]
-  
+
+  # Set default line width for line geoms based on spec
+  ggplot2::update_geom_defaults("line", list(linewidth = spec$line_width))
+
   black <- "#121E22"
   gray  <- "#d0d2ce"
   
@@ -635,7 +642,8 @@ save_chart <- function(
       font_legend     = 9,
       tick_length     = 4,
       gridline_width  = 0.25,
-      axis_line_width = 0.4
+      axis_line_width = 0.4,
+      line_width      = 1.5
     ),
     slide = cori_chart_spec(
       width_report    = 6.5,
@@ -651,7 +659,8 @@ save_chart <- function(
       font_legend     = 9,
       tick_length     = 4,
       gridline_width  = 0.25,
-      axis_line_width = 0.4
+      axis_line_width = 0.4,
+      line_width      = 1
     )
   )
 
