@@ -43,7 +43,7 @@ spec <- cori_chart_spec(
   width_slide = 4.75,       # inches
   dpi = 300,
   aspect_ratio = 0.625,     # report preset; slide preset = 0.65
-  font_title = 11,          # points
+  font_title = 12,          # points (report); slide = 11
   font_subtitle = 9,
   font_axis = 8,
   font_caption = 8,         # report; slide preset = 6
