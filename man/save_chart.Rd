@@ -48,7 +48,7 @@ Default: 20.}
 If NULL, uses \code{spec$aspect_ratio}. Default: NULL.}
 
 \item{spec}{A spec list from \code{cori_chart_spec()}. If NULL, uses
-package defaults.}
+preset-specific defaults (report or slide).}
 
 \item{background}{Character. Background color. Default: \code{"white"}.}
 }

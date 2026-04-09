@@ -6,6 +6,7 @@
 \usage{
 theme_cori_precise(
   type = "line",
+  preset = "report",
   spec = NULL,
   title_family = "Lato",
   base_family = "Lato"
@@ -16,8 +17,12 @@ theme_cori_precise(
 which gridlines are shown. One of \code{"line"}, \code{"bar"},
 \code{"scatter"}, or \code{"map"}. Default: \code{"line"}.}
 
-\item{spec}{A spec list from \code{cori_chart_spec()}. If NULL, uses package
-defaults.}
+\item{preset}{Character. Chart output preset. One of \code{"report"}
+(6.5" width, font_caption = 8) or \code{"slide"} (4.75" width,
+font_caption = 6). Default: \code{"report"}.}
+
+\item{spec}{A spec list from \code{cori_chart_spec()}. If NULL, uses
+preset-specific defaults (report or slide).}
 
 \item{title_family}{Character. Font family for title and subtitle.
 Default: \code{"Lato"}.}
@@ -45,7 +50,7 @@ the y-axis rather than a rotated axis title.
 }
 \examples{
 fig + theme_cori_precise(type = "line")
-fig + theme_cori_precise(type = "bar")
+fig + theme_cori_precise(type = "bar", preset = "slide")
 fig + theme_cori_precise(type = "scatter")
 fig + theme_cori_precise(type = "line", spec = cori_chart_spec(font_axis = 7))
 }

@@ -145,8 +145,11 @@ cori_chart_spec <- function(
 #' @param type Character. Chart type, controls which base theme is called and
 #'   which gridlines are shown. One of \code{"line"}, \code{"bar"},
 #'   \code{"scatter"}, or \code{"map"}. Default: \code{"line"}.
-#' @param spec A spec list from \code{cori_chart_spec()}. If NULL, uses package
-#'   defaults.
+#' @param preset Character. Chart output preset. One of \code{"report"}
+#'   (6.5" width, font_caption = 8) or \code{"slide"} (4.75" width,
+#'   font_caption = 6). Default: \code{"report"}.
+#' @param spec A spec list from \code{cori_chart_spec()}. If NULL, uses
+#'   preset-specific defaults (report or slide).
 #' @param title_family Character. Font family for title and subtitle.
 #'   Default: \code{"Lato"}.
 #' @param base_family Character. Font family for all other text.
@@ -157,16 +160,54 @@ cori_chart_spec <- function(
 #'
 #' @examples
 #' fig + theme_cori_precise(type = "line")
-#' fig + theme_cori_precise(type = "bar")
+#' fig + theme_cori_precise(type = "bar", preset = "slide")
 #' fig + theme_cori_precise(type = "scatter")
 #' fig + theme_cori_precise(type = "line", spec = cori_chart_spec(font_axis = 7))
 theme_cori_precise <- function(
     type         = "line",
+    preset       = "report",
     spec         = NULL,
     title_family = "Lato",
     base_family  = "Lato"
 ) {
-  if (is.null(spec)) spec <- cori_chart_spec()
+  # Define preset-specific spec defaults
+  preset_specs <- list(
+    report = cori_chart_spec(
+      width_report    = 6.5,
+      width_slide     = 4.75,
+      dpi             = 300,
+      aspect_ratio    = 0.625,
+      font_title      = 11,
+      font_subtitle   = 9,
+      font_axis       = 8,
+      font_axis_title = 8,
+      font_caption    = 8,
+      font_label      = 9,
+      font_legend     = 9,
+      tick_length     = 4,
+      gridline_width  = 0.25,
+      axis_line_width = 0.4
+    ),
+    slide = cori_chart_spec(
+      width_report    = 6.5,
+      width_slide     = 4.75,
+      dpi             = 300,
+      aspect_ratio    = 0.65,
+      font_title      = 11,
+      font_subtitle   = 9,
+      font_axis       = 8,
+      font_axis_title = 8,
+      font_caption    = 6,
+      font_label      = 9,
+      font_legend     = 9,
+      tick_length     = 4,
+      gridline_width  = 0.25,
+      axis_line_width = 0.4
+    )
+  )
+
+  # If no spec provided, use preset default
+  if (is.null(spec)) spec <- preset_specs[[preset]]
   
   black <- "#121E22"
   gray  <- "#d0d2ce"
@@ -549,7 +590,7 @@ label_lines <- function(
 #' @param aspect_ratio Numeric. Override the aspect ratio from the spec.
 #'   If NULL, uses \code{spec$aspect_ratio}. Default: NULL.
 #' @param spec A spec list from \code{cori_chart_spec()}. If NULL, uses
-#'   package defaults.
+#'   preset-specific defaults (report or slide).
 #' @param background Character. Background color. Default: \code{"white"}.
 #'
 #' @return Invisibly returns the file path(s) written.
@@ -578,7 +619,44 @@ save_chart <- function(
     spec          = NULL,
     background    = "white"
 ) {
-  if (is.null(spec)) spec <- cori_chart_spec()
+  # Define preset-specific spec defaults
+  preset_specs <- list(
+    report = cori_chart_spec(
+      width_report    = 6.5,
+      width_slide     = 4.75,
+      dpi             = 300,
+      aspect_ratio    = 0.625,
+      font_title      = 11,
+      font_subtitle   = 9,
+      font_axis       = 8,
+      font_axis_title = 8,
+      font_caption    = 8,
+      font_label      = 9,
+      font_legend     = 9,
+      tick_length     = 4,
+      gridline_width  = 0.25,
+      axis_line_width = 0.4
+    ),
+    slide = cori_chart_spec(
+      width_report    = 6.5,
+      width_slide     = 4.75,
+      dpi             = 300,
+      aspect_ratio    = 0.65,
+      font_title      = 11,
+      font_subtitle   = 9,
+      font_axis       = 8,
+      font_axis_title = 8,
+      font_caption    = 6,
+      font_label      = 9,
+      font_legend     = 9,
+      tick_length     = 4,
+      gridline_width  = 0.25,
+      axis_line_width = 0.4
+    )
+  )
+
+  # If no spec provided, use preset default
+  if (is.null(spec)) spec <- preset_specs[[preset]]
   
   # Resolve canvas dimensions
   width <- switch(
