@@ -8,10 +8,10 @@ We've added a new precision theming system to `cori.charts` that eliminates the 
 1. Create chart in R (with relative font sizes, arbitrary gridline widths)
 2. Export PNG
 3. Open in Figma and manually adjust:
-   - Font sizes to exact points (8pt, 9pt, 11pt)
+   - Gridline length
    - Gridline and axis stroke widths (0.25mm, 0.4mm)
    - Axis tick lengths (4pt)
-   - Chart dimensions and aspect ratios
+   - Data labels to be left-alignted spaced out correctly
 4. Export final PNG from Figma
 
 ### New Workflow
@@ -42,11 +42,11 @@ spec <- cori_chart_spec(
   width_report = 6.5,       # inches
   width_slide = 4.75,       # inches
   dpi = 300,
-  aspect_ratio = 0.625,     # height = width * aspect_ratio
+  aspect_ratio = 0.625,     # report preset; slide preset = 0.65
   font_title = 11,          # points
   font_subtitle = 9,
   font_axis = 8,
-  font_caption = 8,
+  font_caption = 8,         # report; slide preset = 6
   font_label = 9,
   font_legend = 9,
   tick_length = 4,          # points
