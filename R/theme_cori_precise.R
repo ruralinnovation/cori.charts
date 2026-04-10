@@ -465,12 +465,15 @@ set_chart_limits <- function(data, x_col, label_offset = 0, left_expand = 0, ...
 #'   the \code{color} aesthetic in your \code{aes()} so labels inherit the
 #'   line colors automatically. If NULL, labels are drawn in black.
 #' @param min_gap Numeric. Minimum vertical distance between labels in data
-#'   units. Increase if labels still overlap; decrease if labels are spread
-#'   too far apart. Default: 0.035.
+#'   units. If NULL (default), automatically calculated as 5% of the y-axis range.
+#'   Increase if labels still overlap; decrease if labels are spread too far apart.
 #' @param x_offset Numeric. Horizontal distance from the last data point to
 #'   the label, in data units (or days for Date axes). Default: 0.3.
 #' @param hjust Numeric. Horizontal justification of the label text.
 #'   Default: 0 (left-aligned from the offset position).
+#' @param lineheight Numeric. Line height for multi-line labels (0-2, where 1 is normal).
+#'   If NULL (default), automatically calculated as 10.8 / font_label for
+#'   typography-appropriate spacing. Decrease for tighter lines.
 #' @param spec A spec list from \code{cori_chart_spec()}. Controls font size
 #'   and family. If NULL, uses package defaults.
 #'
@@ -492,18 +495,31 @@ label_lines <- function(
     y_col,
     label_col,
     color_col = NULL,
-    min_gap   = 0.035,
+    min_gap   = NULL,
     x_offset  = 0.3,
     hjust     = 0,
+    lineheight = NULL,
     spec      = NULL
 ) {
   if (is.null(spec)) spec <- cori_chart_spec()
-  
+
+  # Auto-calculate lineheight based on font size if not provided
+  if (is.null(lineheight)) {
+    lineheight = 10.8 / spec$font_label
+  }
+
   # Capture column names as strings for tidy evaluation
   x_str     <- deparse(substitute(x_col))
   y_str     <- deparse(substitute(y_col))
   label_str <- deparse(substitute(label_col))
   color_str <- deparse(substitute(color_col))
+
+  # Auto-calculate min_gap based on y-axis range if not provided
+  if (is.null(min_gap)) {
+    y_vals <- data[[y_str]]
+    y_range <- max(y_vals, na.rm = TRUE) - min(y_vals, na.rm = TRUE)
+    min_gap <- y_range / 20  # 5% of range
+  }
   
   # Build label data: one row per line at the final x value
   label_data <- data[data[[x_str]] == max(data[[x_str]], na.rm = TRUE), ]
@@ -550,6 +566,7 @@ label_lines <- function(
     mapping     = mapping,
     hjust       = hjust,
     size        = spec$font_label / ggplot2::.pt,
+    lineheight  = lineheight,
     fontface    = "bold",
     family      = "Lato",
     show.legend = FALSE
