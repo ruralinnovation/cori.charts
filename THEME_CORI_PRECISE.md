@@ -2,7 +2,7 @@
 
 ## What Changed
 
-We've added a new precision theming system to `cori.charts` that eliminates the post-export Figma editing workflow. All charts can now be finalized entirely in R with physically-locked dimensions and typography.
+Added a new precision theming system to `cori.charts` that eliminates the post-export Figma editing workflow. All charts can now be finalized entirely in R with physically-locked dimensions and typography.
 
 ### Old Workflow
 1. Create chart in R (with relative font sizes, arbitrary gridline widths)
