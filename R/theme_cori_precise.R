@@ -226,7 +226,7 @@ theme_cori_precise <- function(
     type,
     "line"    = theme_cori_line(title_family = title_family, base_family = base_family, base_size = 11),
     "bar"     = theme_cori_horizontal_bars(title_family = title_family, base_family = base_family, base_size = 11),
-    "scatter" = theme_cori(title_family = title_family, base_family = base_family, base_size = 11),
+    "scatter" = theme_cori_scatter(title_family = title_family, base_family = base_family, base_size = 11),
     "map"     = theme_cori_map(title_family = title_family, base_family = base_family, base_size = 11),
     stop("type must be one of: 'line', 'bar', 'scatter', 'map'")
   )
