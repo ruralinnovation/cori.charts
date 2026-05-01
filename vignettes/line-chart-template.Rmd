@@ -90,12 +90,13 @@ fig <- chart_dta %>%
 
   # Direct line labels — replace with legend if lines are too close to label
   label_lines(
-    data      = chart_dta,
-    x_col     = year,
-    y_col     = value,
-    label_col = category,
-    color_col = category,   # remove if you want black labels
-    min_gap   = 0.05        # in data units; increase if labels overlap
+    data       = chart_dta,
+    x_col      = year,
+    y_col      = value,
+    label_col  = category,
+    color_col  = category,      # remove if you want black labels
+    min_gap    = 0.05,          # in data units; increase if labels overlap
+    label_width = 12            # auto-wrap labels at this width (set to Inf to disable)
   ) +
 
   # Titles
@@ -166,6 +167,7 @@ save_chart(fig, "export/my_chart", preset = "report", spec = spec)
 | Line colors | `scale_color_manual()` in chart script |
 | Line stroke width | `geom_line(linewidth = ...)` in chart script |
 | Label spacing | `label_lines(min_gap = ...)` in chart script |
+| Label wrapping | `label_lines(label_width = ...)` in chart script |
 | Right margin (label clipping) | `theme(plot.margin = ...)` in chart script |
 | Aspect ratio for one chart | `save_chart(aspect_ratio = ...)` |
 | Y axis scale / breaks | `scale_y_continuous()` in chart script |

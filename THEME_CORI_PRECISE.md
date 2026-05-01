@@ -108,7 +108,11 @@ fig <- fig +
 **Parameters:**
 - `min_gap`: Minimum vertical spacing in data units (tune per chart based on value range)
 - `x_offset`: Horizontal distance from last data point (default 0.3 in data units)
+- `label_width`: Character width at which to wrap labels (default 12). Set to `Inf` to disable wrapping.
+- `lineheight`: Line spacing for wrapped labels (default: 8.1 / font_label, which = 0.9 for 9pt labels)
 - `spec`: Pulls font size and family from spec
+
+**Note on multi-line labels:** If labels wrap to multiple lines, you may need to increase `min_gap` to ensure adequate visual spacing between labels. The overlap prevention uses simple y-value comparison, so multi-line labels may appear closer together than single-line pairs with the same `min_gap` value.
 
 ### 5. `save_chart()`
 
@@ -187,7 +191,7 @@ save_chart(fig, "export/my_chart", preset = "report")
 - **No manual spec needed** if using defaults—just specify `preset`
 - **Min-gap tuning**: If lines converge closely, increase `min_gap` (e.g., 0.05, 0.08)
 - **Margin adjustment**: If labels still clip, override with `theme(plot.margin = margin(...))`
-- **Text wrapping**: Use `stringr::str_wrap(label, width = 12)` in data prep if needed
+- **Text wrapping**: Labels wrap automatically at the specified `label_width` (default 12 characters)
 
 ---
 

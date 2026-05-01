@@ -499,13 +499,14 @@ label_lines <- function(
     x_offset  = 0.3,
     hjust     = 0,
     lineheight = NULL,
+    label_width = 12,
     spec      = NULL
 ) {
   if (is.null(spec)) spec <- cori_chart_spec()
 
   # Auto-calculate lineheight based on font size if not provided
   if (is.null(lineheight)) {
-    lineheight = 10.8 / spec$font_label
+    lineheight = 8.1 / spec$font_label
   }
 
   # Capture column names as strings for tidy evaluation
@@ -524,13 +525,20 @@ label_lines <- function(
   # Build label data: one row per line at the final x value
   label_data <- data[data[[x_str]] == max(data[[x_str]], na.rm = TRUE), ]
   label_data <- label_data[order(label_data[[y_str]]), ]
-  
+
+  # Wrap labels at specified width
+  label_data[[label_str]] <- stringr::str_wrap(
+    label_data[[label_str]],
+    width = label_width
+  )
+
   # Apply x offset for horizontal placement
   label_data[[x_str]] <- label_data[[x_str]] + x_offset
   
   # Store adjusted y positions; nudge upward to resolve overlaps
   label_data[["label_y"]] <- label_data[[y_str]]
-  
+
+  # Simple overlap prevention: nudge overlapping labels upward
   if (nrow(label_data) > 1) {
     for (i in 2:nrow(label_data)) {
       gap <- label_data[["label_y"]][i] - label_data[["label_y"]][i - 1]
