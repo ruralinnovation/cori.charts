@@ -133,7 +133,9 @@ save_chart(
 - If `preset = "slide"`: 4.75" × 3.09" (with default 0.65 aspect ratio)
 - PNG rendered with ragg at declared DPI
 - SVG rendered with svglite for accurate text sizing
-- Logo composited onto PNG (not SVG)
+- Logo composited onto PNG only (not SVG)
+
+**Why no logo on SVG?** SVG is a vector format (XML describing shapes/paths), not raster pixels. Logo compositing uses `magick::image_write()` which manipulates raster images—it would have to rasterize the SVG first, defeating the purpose of having a vector export. Practical split: PNG for Word/PowerPoint/presentations (ready-to-use); SVG for Figma editing (where you'd add the logo yourself as part of design refinement).
 
 ---
 
