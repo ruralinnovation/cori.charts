@@ -51,7 +51,8 @@ fig + coord_cartesian(xlim = c(NA, 2022), clip = "off") +
   scale_x_continuous(expand = expansion(mult = c(0, 0.1)))
 
 # After: One call
-fig + set_chart_limits(chart_data, x_col = year)
+fig + set_chart_limits(chart_data, x_col = year) +
+  theme(plot.margin = margin(13, 60, 13, 13, "pt"))  # Add margin for labels if needed
 ```
 
 ---
@@ -125,7 +126,7 @@ save_plot(fig2, "export/chart2.png", preset = "report")
 
 ## 📋 Future Phases
 
-### Phase 2: ❌ ELIMINATED
+### Phase 2: ❌ Eliminated
 **Reason:** `save_plot()` already has preset support. SVG exports work via standard `ggsave()` (no logo compositing). Full `save_chart()` wrapper not necessary.
 
 ---
@@ -238,4 +239,11 @@ save_plot(fig, path, preset = "report")  # ✅ Dimensions auto-calculated
 3. **Update team docs/vignettes** with usage examples
 4. **(Optional) Phase 3** — enhance themes incrementally as needs arise
 5. **(Future) Phase 4** — refresh brand colors in separate session
+
+
+
+
+
+
+
 
