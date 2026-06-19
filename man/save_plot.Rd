@@ -7,6 +7,7 @@
 save_plot(
   fig,
   export_path,
+  preset = NULL,
   chart_width = 8.888889,
   chart_height = 6.25,
   add_logo = TRUE,
@@ -23,9 +24,15 @@ save_plot(
 
 \item{export_path}{file path for the exported plot}
 
-\item{chart_width}{The width in "in" of the chart}
+\item{preset}{Optional preset for chart dimensions. One of \code{"report"}
+(6.5" wide, aspect ratio 0.625) or \code{"slide"} (4.75" wide, aspect ratio 0.65).
+If provided, overrides chart_width and chart_height. Default: NULL (uses explicit dimensions).}
 
-\item{chart_height}{The height in "in" of the chart}
+\item{chart_width}{The width in "in" of the chart. Ignored if preset is specified.
+Default: 8.888889.}
+
+\item{chart_height}{The height in "in" of the chart. Ignored if preset is specified.
+Default: 6.25.}
 
 \item{add_logo}{Boolean that determines if a logo is included or not}
 

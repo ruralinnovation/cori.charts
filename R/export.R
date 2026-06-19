@@ -142,8 +142,13 @@ save_with_logo_svg <- function(
 #'
 #' @param fig The ggplot2 figure
 #' @param export_path file path for the exported plot
-#' @param chart_width The width in "in" of the chart
-#' @param chart_height The height in "in" of the chart
+#' @param preset Optional preset for chart dimensions. One of \code{"report"}
+#'   (6.5" wide, aspect ratio 0.625) or \code{"slide"} (4.75" wide, aspect ratio 0.65).
+#'   If provided, overrides chart_width and chart_height. Default: NULL (uses explicit dimensions).
+#' @param chart_width The width in "in" of the chart. Ignored if preset is specified.
+#'   Default: 8.888889.
+#' @param chart_height The height in "in" of the chart. Ignored if preset is specified.
+#'   Default: 6.25.
 #' @param add_logo Boolean that determines if a logo is included or not
 #' @param logo_position Combination of top/bottom and right/left. Defaults to top right.
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
@@ -156,6 +161,7 @@ save_with_logo_svg <- function(
 save_plot <- function(
   fig,
   export_path,
+  preset = NULL,
   chart_width = 8.888889,
   chart_height = 6.25,
   add_logo = TRUE,
@@ -166,6 +172,20 @@ save_plot <- function(
   units = "in",
   background = "white"
 ) {
+
+  # If preset is provided, use it to set dimensions
+  if (!is.null(preset)) {
+    spec <- cori_chart_spec()
+    if (preset == "report") {
+      chart_width <- spec$width_report
+      chart_height <- spec$width_report * spec$aspect_ratio
+    } else if (preset == "slide") {
+      chart_width <- spec$width_slide
+      chart_height <- spec$width_slide * 0.65
+    } else {
+      stop("preset must be 'report' or 'slide', or NULL for custom dimensions")
+    }
+  }
 
   ggplot2::ggsave(
     export_path,
