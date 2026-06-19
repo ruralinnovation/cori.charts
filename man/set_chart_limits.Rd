@@ -4,17 +4,12 @@
 \alias{set_chart_limits}
 \title{Truncate chart gridlines and axis at the last data point}
 \usage{
-set_chart_limits(data, x_col, label_offset = 0, left_expand = 0, ...)
+set_chart_limits(data, x_col, left_expand = 0, ...)
 }
 \arguments{
 \item{data}{A data frame containing the chart data.}
 
 \item{x_col}{Unquoted column name of the x-axis variable.}
-
-\item{label_offset}{Numeric. Extra space added to the right of the last
-data point (in data units for numeric x, in days for Date x) to
-accommodate line labels. Default: 0 (no extra space; \code{label_lines}
-handles its own offset via \code{x_offset}).}
 
 \item{left_expand}{Numeric. Fractional expansion on the left side of the
 x-axis. Default: 0 (starts at first data point).}
@@ -29,13 +24,17 @@ A list of ggplot2 layers (scale + coord).
 Sets \code{scale_x_continuous} or \code{scale_x_date} expansion to zero on
 the right side and applies \code{coord_cartesian(clip = "off")} so that
 gridlines stop at the final data point rather than extending to the edge of
-the panel. This also provides space on the right for direct line labels
+the panel. This provides clean space on the right for direct line labels
 added by \code{label_lines()}.
 }
 \details{
+To add extra margin for labels, use \code{theme(plot.margin = margin(..., "pt"))}.
 Works with both numeric and Date x-axis columns.
 }
 \examples{
 fig + set_chart_limits(chart_dta, x_col = year)
 fig + set_chart_limits(chart_dta, x_col = date)  # works with Date columns too
+# To add right margin for labels:
+fig + set_chart_limits(chart_dta, x_col = year) +
+  theme(plot.margin = margin(13, 60, 13, 13, "pt"))
 }

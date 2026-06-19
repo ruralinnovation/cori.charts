@@ -458,17 +458,14 @@ cori_chart_spec <- function(
 #' Sets \code{scale_x_continuous} or \code{scale_x_date} expansion to zero on
 #' the right side and applies \code{coord_cartesian(clip = "off")} so that
 #' gridlines stop at the final data point rather than extending to the edge of
-#' the panel. This also provides space on the right for direct line labels
+#' the panel. This provides clean space on the right for direct line labels
 #' added by \code{label_lines()}.
 #'
+#' To add extra margin for labels, use \code{theme(plot.margin = margin(..., "pt"))}.
 #' Works with both numeric and Date x-axis columns.
 #'
 #' @param data A data frame containing the chart data.
 #' @param x_col Unquoted column name of the x-axis variable.
-#' @param label_offset Numeric. Extra space added to the right of the last
-#'   data point (in data units for numeric x, in days for Date x) to
-#'   accommodate line labels. Default: 0 (no extra space; \code{label_lines}
-#'   handles its own offset via \code{x_offset}).
 #' @param left_expand Numeric. Fractional expansion on the left side of the
 #'   x-axis. Default: 0 (starts at first data point).
 #' @param ... Additional arguments passed to \code{scale_x_continuous} or
@@ -480,33 +477,34 @@ cori_chart_spec <- function(
 #' @examples
 #' fig + set_chart_limits(chart_dta, x_col = year)
 #' fig + set_chart_limits(chart_dta, x_col = date)  # works with Date columns too
-set_chart_limits <- function(data, x_col, label_offset = 0, left_expand = 0, ...) {
+#' # To add right margin for labels:
+#' fig + set_chart_limits(chart_dta, x_col = year) +
+#'   theme(plot.margin = margin(13, 60, 13, 13, "pt"))
+set_chart_limits <- function(data, x_col, left_expand = 0, ...) {
   x_vals <- data[[deparse(substitute(x_col))]]
   x_max  <- max(x_vals, na.rm = TRUE)
   
   is_date <- inherits(x_vals, "Date")
   
   if (is_date) {
-    x_upper <- x_max + label_offset
     list(
       ggplot2::scale_x_date(
         expand = ggplot2::expansion(mult = c(left_expand, 0)),
         ...
       ),
       ggplot2::coord_cartesian(
-        xlim = c(NA, x_upper),
+        xlim = c(NA, x_max),
         clip = "off"
       )
     )
   } else {
-    x_upper <- x_max + label_offset
     list(
       ggplot2::scale_x_continuous(
         expand = ggplot2::expansion(mult = c(left_expand, 0)),
         ...
       ),
       ggplot2::coord_cartesian(
-        xlim = c(NA, x_upper),
+        xlim = c(NA, x_max),
         clip = "off"
       )
     )
