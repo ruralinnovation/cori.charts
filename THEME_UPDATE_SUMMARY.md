@@ -117,31 +117,50 @@ save_plot(fig2, "export/chart2.png", preset = "report")
 
 ### Phase 3: Enhance Existing Themes (Optional, Incremental)
 
-**Goal:** Add `preset` parameter to `theme_cori()`, `theme_cori_line()`, etc. for consistent font sizing.
+**Goal:** Add `preset` parameter to replace the inconsistent `base_size` approach with a complete, coordinated font sizing system.
 
-**Proposed usage (future):**
+**Current Problem:**
+The existing `theme_cori_line()` uses mixed font sizing:
+- Some fonts are **absolute points:** `plot.title` = 20pt (always), `plot.caption` = 13pt (always)
+- Some fonts are **relative multipliers:** `axis.text` = `base_size` (default 15, changes if you override)
+
+This means calling `theme_cori_line(base_size = 8)` changes only *some* fonts, not all—leading to inconsistency.
+
+**Proposed Solution (Phase 3):**
+Add `preset` parameter that sets **all** fonts at once, using absolute points from `cori_chart_spec()`:
+
 ```r
 fig + theme_cori_line(preset = "report")
-# Would set: font_title = 12pt, font_axis = 8pt, font_label = 9pt, etc.
+# Sets ALL fonts together:
+# plot.title = 12pt
+# plot.subtitle = 9pt
+# axis.text = 8pt
+# axis.title = 8pt
+# plot.caption = 8pt
+# legend.text = 9pt
 ```
+
+Unlike `base_size`, a `preset` would coordinate all fonts—no partial updates, no guessing which font sizes will actually change.
 
 **How Phase 1 & Phase 3 Work Together**
 
 These two are **independent but complement each other**:
 
-| Component | Controls | Current | Future |
-|-----------|----------|---------|--------|
-| **`save_plot(..., preset = "report")`** | Export dimensions | ✅ Done | (width: 6.5", height auto-calculated) |
-| **`theme_cori_line(preset = "report")`** | Font sizes | ⏳ Future | (absolute points: 8pt, 9pt, etc.) |
+| Component | Controls | Current | When Phase 3 Done |
+|-----------|----------|---------|-------------------|
+| **`save_plot(..., preset = "report")`** | Export dimensions | ✅ Done | width: 6.5", height auto-calculated |
+| **`theme_cori_line(preset = "report")`** | Font sizes (all at once) | ⏳ Future | All fonts set to: 12pt, 9pt, 8pt, etc. |
 
-**Use together for full consistency:**
-1. Apply theme with preset: `theme_cori_line(preset = "report")` → sets fonts
-2. Export with preset: `save_plot(fig, path, preset = "report")` → sets dimensions
-3. Everything scales together—fonts and canvas size locked
+**Full workflow (Phase 3 + Phase 1):**
+1. Apply theme with preset: `theme_cori_line(preset = "report")` → all fonts locked
+2. Add labels: `label_lines(...)` → uses font sizes from theme
+3. Export with preset: `save_plot(fig, path, preset = "report")` → dimensions locked
+4. Result: Everything scales together—fonts, label sizes, and canvas dimensions all coordinated
 
-**Use independently:**
-- Can mix presets: `theme_cori() with base_size = 15` + `save_plot(..., preset = "report")`
-- Or skip Phase 3 entirely if not needed
+**Current workflow (Phase 1 only, no Phase 3):**
+- Use `theme_cori_line(base_size = 15)` (partial font control) + `save_plot(..., preset = "report")` (dimension control)
+- Works fine, but fonts aren't as tightly coordinated
+- Can upgrade to Phase 3 later if needed
 
 ---
 
