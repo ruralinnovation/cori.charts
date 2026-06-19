@@ -130,9 +130,9 @@ save_plot(fig2, "export/chart2.png", preset = "report")
 
 ---
 
-### Phase 3: Enhance Existing Themes (Optional, Incremental)
+### Phase 3: Enhance Existing Themes (Completes the Picture)
 
-**Goal:** Add `preset` parameter to replace the inconsistent `base_size` approach with complete, coordinated font sizing.
+**Goal:** Add `preset` parameter to replace the inconsistent `base_size` approach with complete, coordinated font sizing. This completes the preset-based system started in Phase 1.
 
 **Current Problem:**
 Existing theme functions (`theme_cori()`, `theme_cori_line()`, etc.) use **mixed font sizing**:
@@ -169,16 +169,19 @@ fig + theme_cori_line(preset = "report")
 3. `save_plot(fig, path, preset = "report")` → exports at 6.5" wide
 4. Result: All fonts, label sizes, and canvas dimensions coordinated
 
-**Current workflow (Phase 1 only):**
+**Why Phase 3 Matters:**
+Best practice for accessible charts is using a minimum font size (not relative multipliers). The `base_size` approach makes this difficult—you have to guess what `base_size = 8` produces at different canvas sizes. Phase 3 locks all fonts to absolute points (8pt, 9pt, 12pt), ensuring readability and consistency across all use cases.
+
+**Current workflow without Phase 3:**
 - `theme_cori_line(base_size = 15)` + `save_plot(..., preset = "report")`
-- Works fine, but fonts aren't fully coordinated
-- Can upgrade to Phase 3 later if needed
+- Works, but font sizing isn't guaranteed at minimum sizes
+- Partial solution; Phase 3 completes the system
 
 ---
 
-### Phase 4: Brand Color Updates (Separate Session)
+### Phase 4: Brand Color Updates (Pending Final Colors from Branding)
 
-**Goal:** Update color palette in `R/colors.R` with new CORI colors.
+**Goal:** Update color palette in `R/colors.R` with new CORI colors once final branding is approved.
 
 **Includes:**
 - Rural (emerald): `#00835D` + 5-color gradient
@@ -187,7 +190,9 @@ fig + theme_cori_line(preset = "report")
 - Single-hue sequential scales (teal, magenta, blue)
 - Grey, cream, white for context
 
-**Note:** Diverging scale flagged as "too political"—placeholder only, will refine.
+**Known Issues to Address:**
+- **Diverging scale (orange/blue):** Current placeholder is too political. Needs refinement—consider shifting hue balance or changing one anchor color entirely. Midpoint currently too light to read; needs contrast improvement.
+- **Grey contrast:** May need adjustment to ensure sufficient contrast against categorical colors.
 
 ---
 
