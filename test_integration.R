@@ -35,13 +35,16 @@ fig <- test_data %>%
     labels = scales::label_percent(accuracy = 1)
   ) + 
   # scale_x_continuous(
-  #   expand = expansion(.01, .5)
+  #   expand = expansion(.01, 1)
   # ) +
   scale_color_manual(
     values = c("Rural" = "#00835D", "Non-Rural" = "#211448")
   ) +
   theme_cori_line() +
-  theme(legend.position = "none") +
+  theme(
+    legend.position = "none",
+    plot.margin = margin(13, 60, 13, 13, "pt")
+    ) +
   labs(
     title = "Employment Index: Rural vs. Non-Rural",
     subtitle = "Indexed to 2015 = 100",
@@ -53,6 +56,6 @@ fig <- test_data %>%
 print(fig)
 
 # Test exports
-save_plot(fig, "test_report.png", preset = "report", add_logo = FALSE)
-save_plot(fig, "test_slide.png", preset = "slide", add_logo = FALSE)
+save_plot(fig, "test_report.png", preset = "report", add_logo = TRUE)
+save_plot(fig, "test_slide.png", preset = "slide", add_logo = TRUE)
 save_plot(fig, "test_old_style.png", chart_width = 9, chart_height = 6, add_logo = TRUE)
