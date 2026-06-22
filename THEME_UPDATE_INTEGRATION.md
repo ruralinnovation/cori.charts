@@ -61,7 +61,7 @@ fig + set_chart_limits(chart_data, x_col = year) +
 
 **What it does:** Direct end-of-line labels with automatic overlap prevention and text wrapping.
 
-**Why it matters:** Previously took 20–30 minutes per chart to manually tweak label positions. Now automatic, consistent, styled uniformly.
+**Why it matters:** Previously took time to manually tweak label positions. Now automatic, consistent, styled uniformly.
 
 ```r
 # Before: Manual, tedious
