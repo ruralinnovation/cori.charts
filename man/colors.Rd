@@ -30,7 +30,7 @@ cori_pal(palette = "ctg2gn", reverse = FALSE, ...)
 }
 \description{
 These utility functions provide fluent access to CORI colors and palettes in
-formats ready for \link{ggplot2}.
+formats ready for \link[ggplot2:ggplot2-package]{ggplot2::ggplot2}.
 }
 \examples{
 cori_colors["Emerald"]

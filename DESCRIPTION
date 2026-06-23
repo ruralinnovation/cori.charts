@@ -20,20 +20,20 @@ URL: https://github.com/ruralinnovation/cori.charts,
 BugReports: https://github.com/ruralinnovation/cori.charts/issues
 Depends: 
     R (>= 2.10)
-Imports: 
+Imports:
     ggplot2,
     grid,
     rlang,
     magick,
     showtext,
     sysfonts,
-    googlesheets4
-Suggests: 
+    googlesheets4,
+    stringr
+Suggests:
     dplyr,
     knitr,
     rmarkdown,
     scales,
-    stringr,
     testthat (>= 3.0.0),
     tidyr,
     curl,
@@ -46,4 +46,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
