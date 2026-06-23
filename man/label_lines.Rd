@@ -46,6 +46,9 @@ Default: 0 (left-aligned from the offset position).}
 If NULL (default), automatically calculated as 10.8 / font_label for
 typography-appropriate spacing. Decrease for tighter lines.}
 
+\item{label_width}{Numeric. Maximum character width for label text wrapping.
+Default: 12 (wraps longer labels to the next line).}
+
 \item{spec}{A spec list from \code{cori_chart_spec()}. Controls font size
 and family. If NULL, uses package defaults.}
 }
@@ -70,6 +73,7 @@ internal size units, so font_label is divided by \code{.pt} internally to
 convert from points to the correct display size.
 }
 \examples{
+\dontrun{
 fig + label_lines(
   data      = chart_dta,
   x_col     = year,
@@ -78,4 +82,5 @@ fig + label_lines(
   color_col = category,
   min_gap   = 0.035
 )
+}
 }

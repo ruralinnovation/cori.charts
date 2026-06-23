@@ -28,15 +28,12 @@ Imports:
     showtext,
     sysfonts,
     googlesheets4,
-    stringr,
-    ragg,
-    svglite
-Suggests: 
+    stringr
+Suggests:
     dplyr,
     knitr,
     rmarkdown,
     scales,
-    stringr,
     testthat (>= 3.0.0),
     tidyr,
     curl,

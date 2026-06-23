@@ -54,6 +54,8 @@ Default: 4.75 (16:9 slide with text column occupying ~38\% of slide width).}
 \item{gridline_width}{Numeric. Major gridline stroke width in mm. Default: 0.25.}
 
 \item{axis_line_width}{Numeric. Axis line stroke width in mm. Default: 0.4.}
+
+\item{line_width}{Numeric. Data line stroke width in mm. Default: 1.5.}
 }
 \value{
 A named list of chart specification constants.
