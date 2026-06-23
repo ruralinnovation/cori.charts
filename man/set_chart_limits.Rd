@@ -32,9 +32,11 @@ To add extra margin for labels, use \code{theme(plot.margin = margin(..., "pt"))
 Works with both numeric and Date x-axis columns.
 }
 \examples{
+\dontrun{
 fig + set_chart_limits(chart_dta, x_col = year)
 fig + set_chart_limits(chart_dta, x_col = date)  # works with Date columns too
 # To add right margin for labels:
 fig + set_chart_limits(chart_dta, x_col = year) +
   theme(plot.margin = margin(13, 60, 13, 13, "pt"))
+}
 }
