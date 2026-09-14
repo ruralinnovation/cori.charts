@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme.R
 \name{theme_cori}
 \alias{theme_cori}
-\title{A \link{ggplot2} theme for the Center on Rural Innovation (CORI) style}
+\title{A \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme for the Center on Rural Innovation (CORI) style}
 \usage{
 theme_cori(title_family = "Lato", base_family = "Lato", base_size = 15)
 }
@@ -14,6 +14,6 @@ theme_cori(title_family = "Lato", base_family = "Lato", base_size = 15)
 \item{base_size}{Base text font size, defaults to 12}
 }
 \description{
-\code{theme_cori()} provides a \link{ggplot2} theme formatted according to the CORI
+\code{theme_cori()} provides a \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme formatted according to the CORI
 style guide.
 }

@@ -1,9 +1,19 @@
 #' Add CORI logo to an image
 #'
-#' @param plot_path file path to the chart/plot/graphic
+#' @param plot_path file path to the chart/plot/graphic. Must be a `.png` or
+#'   `.svg` file; other file types raise an error.
 #' @param logo_path Path to the logo. Defaults to hosted Full CORI Black logo
 #' @param logo_position Combination of top/bottom and right/left. Defaults to top right.
 #' @param logo_scale Scale logo to 1/10 width of plot
+#' @param logo_margin Gap between the logo and the two borders it sits
+#'   nearest, as a fraction of the plot's dimensions: a single number for
+#'   both axes, or `c(x, y)` to set them separately (e.g. `0.05` for 5%, or
+#'   `c(0.04, 0.06)`). Defaults to `NULL`, which keeps the padding this
+#'   function has always used.
+#' @param overwrite Boolean. If `plot_path` is an SVG file, the file is
+#'   always updated in place with the logo embedded, regardless of this
+#'   value. If `plot_path` is a PNG file, the file is only updated in place
+#'   when `overwrite = TRUE`. Default `FALSE`.
 #'
 #' @return magick image
 #'
@@ -12,17 +22,82 @@ add_logo <- function(
   plot_path,
   logo_path = "https://rwjf-public.s3.amazonaws.com/Logo-Mark_CORI_Black.svg",
   logo_position = "top right",
-  logo_scale = 20
+  logo_scale = 20,
+  logo_margin = NULL,
+  overwrite = FALSE
 ) {
-
-  # Requires magick R Package https://github.com/ropensci/magick
 
   # Useful error message for logo position
   if (!logo_position %in% c("top right", "top left", "bottom right", "bottom left")) {
     stop("Error Message: Uh oh! Logo Position not recognized\n  Try: logo_positon = 'top left', 'top right', 'bottom left', or 'bottom right'")
   }
 
-  # read in raw images
+  ext <- tolower(tools::file_ext(plot_path))
+  if (!ext %in% c("png", "svg")) {
+    stop("add_logo() only supports PNG or SVG files. Got: .", ext)
+  }
+
+  if (ext == "svg") {
+    add_logo_svg(plot_path, logo_path, logo_position, logo_scale, logo_margin)
+  } else {
+    add_logo_png(plot_path, logo_path, logo_position, logo_scale, logo_margin, overwrite)
+  }
+}
+
+#' Place a logo in one corner of a plot
+#' @description Internal helper shared by [add_logo_png()] and
+#' [add_logo_svg()] so the two formats cannot drift apart. Returns the
+#' top-left corner the logo should be drawn at, in the same units as the
+#' dimensions passed in (pixels for PNG, user units for SVG).
+#' @inheritParams add_logo
+#' @param plot_width,plot_height dimensions of the plot
+#' @param logo_width,logo_height dimensions of the scaled logo
+#' @return named numeric of length 2: `x` and `y`
+#' @keywords internal
+logo_offsets <- function(
+  logo_position,
+  plot_width,
+  plot_height,
+  logo_width,
+  logo_height,
+  logo_margin = NULL
+) {
+
+  if (is.null(logo_margin)) {
+    # Padding this function has always applied, kept exactly so output is
+    # unchanged when logo_margin is not supplied. "top right" is the odd one
+    # out: it pads wider horizontally, and its vertical padding is a fraction
+    # of the plot's WIDTH rather than its height.
+    pads <- switch(
+      logo_position,
+      "top right"    = c(x = 0.02 * plot_width, y = 0.015 * plot_width),
+      "top left"     = c(x = 0.01 * plot_width, y = 0.01 * plot_height),
+      "bottom right" = c(x = 0.01 * plot_width, y = 0.01 * plot_height),
+      "bottom left"  = c(x = 0.01 * plot_width, y = 0.01 * plot_height)
+    )
+  } else {
+    if (!is.numeric(logo_margin) || !length(logo_margin) %in% 1:2 || anyNA(logo_margin)) {
+      stop("logo_margin must be a numeric of length 1 or 2, as fractions of the plot's width and height.")
+    }
+    margin <- rep(logo_margin, length.out = 2)
+    pads <- c(x = margin[[1]] * plot_width, y = margin[[2]] * plot_height)
+  }
+
+  c(
+    x = if (grepl("right$", logo_position)) plot_width - logo_width - pads[["x"]] else pads[["x"]],
+    y = if (grepl("^top", logo_position)) pads[["y"]] else plot_height - logo_height - pads[["y"]]
+  )
+}
+
+#' Add CORI logo to a raster (PNG) image
+#' @description Internal helper used by [add_logo()] when `plot_path` is a
+#' PNG file. Composites the logo onto the raster image using magick.
+#' @inheritParams add_logo
+#' @return magick image
+#' @keywords internal
+add_logo_png <- function(plot_path, logo_path, logo_position, logo_scale, logo_margin, overwrite) {
+
+  # Requires magick R Package https://github.com/ropensci/magick
   plot <- magick::image_read(plot_path)
   logo_raw <- magick::image_read_svg(logo_path)
 
@@ -32,33 +107,213 @@ add_logo <- function(
 
   # default scale to 1/10th width of plot
   # Can change with logo_scale
-  logo <- magick::image_scale(logo_raw, as.character(plot_width/logo_scale))
+  logo <- magick::image_scale(logo_raw, as.character(plot_width / logo_scale))
 
   # Get width of logo
   logo_width <- magick::image_info(logo)$width
   logo_height <- magick::image_info(logo)$height
 
-  # Set position of logo
-  # Position starts at 0,0 at top left
-  # Using 0.01 for 1% - aesthetic padding
-
-  if (logo_position == "top right") {
-    x_pos = plot_width - logo_width - 0.02 * plot_width
-    y_pos = 0.015 * plot_width
-  } else if (logo_position == "top left") {
-    x_pos = 0.01 * plot_width
-    y_pos = 0.01 * plot_height
-  } else if (logo_position == "bottom right") {
-    x_pos = plot_width - logo_width - 0.01 * plot_width
-    y_pos = plot_height - logo_height - 0.01 * plot_height
-  } else if (logo_position == "bottom left") {
-    x_pos = 0.01 * plot_width
-    y_pos = plot_height - logo_height - 0.01 * plot_height
-  }
+  # Set position of logo. Position starts at 0,0 at top left.
+  offsets <- logo_offsets(logo_position, plot_width, plot_height, logo_width, logo_height, logo_margin)
+  x_pos <- offsets[["x"]]
+  y_pos <- offsets[["y"]]
 
   # Compose the actual overlay
-  magick::image_composite(plot, logo, offset = paste0("+", x_pos, "+", y_pos))
+  composited <- magick::image_composite(plot, logo, offset = paste0("+", x_pos, "+", y_pos))
 
+  if (isTRUE(overwrite)) {
+    magick::image_write(composited, path = plot_path)
+  }
+
+  composited
+}
+
+#' Resolve a logo's own styling onto its shape elements
+#' @description Internal helper used by [add_logo_svg()]. CSS in the host
+#' document reaches into an embedded `<svg>`: an svglite chart carries
+#' `.svglite path { fill: none; stroke: #000000 }` on its root, which
+#' outranks a logo's own `.st0 { fill: ... }` rule (specificity 0-1-1 beats
+#' 0-1-0) and also outranks any `fill="..."` presentation attribute, leaving
+#' the logo a hollow black outline. An inline `style` attribute outranks
+#' every author rule whatever its selector, so each shape's resolved fill and
+#' stroke are written inline before the logo is embedded.
+#' @param logo_root the logo document's root `<svg>` node
+#' @return `logo_root`, modified in place
+#' @keywords internal
+inline_logo_styles <- function(logo_root) {
+
+  # Parse the simple `.class { prop: value; }` rules Illustrator and Figma
+  # emit. Anything more exotic is left to the element's own attributes.
+  style_text <- paste(
+    xml2::xml_text(xml2::xml_find_all(logo_root, ".//*[local-name()='style']")),
+    collapse = "\n"
+  )
+
+  class_decls <- list()
+  for (rule in regmatches(style_text, gregexpr("[^{}]+\\{[^}]*\\}", style_text, perl = TRUE))[[1]]) {
+    decls <- sub("\\}\\s*$", "", sub("^[^{]*\\{", "", rule))
+    for (selector in trimws(strsplit(sub("\\{.*$", "", rule), ",")[[1]])) {
+      if (grepl("^\\.[-_A-Za-z][-_A-Za-z0-9]*$", selector)) {
+        class_decls[[sub("^\\.", "", selector)]] <- decls
+      }
+    }
+  }
+
+  # Pull one property out of a declaration list. The `[^-]` guard keeps
+  # "fill" from matching "fill-opacity" (likewise stroke/stroke-width).
+  css_value <- function(decls, prop) {
+    hit <- regmatches(decls, regexpr(paste0("(^|;)\\s*", prop, "\\s*:\\s*[^;]+"), decls, perl = TRUE))
+    if (length(hit) == 0L || !nzchar(hit)) return(NULL)
+    trimws(sub(paste0("^.*?", prop, "\\s*:\\s*"), "", hit))
+  }
+
+  # Walk node -> logo_root. At each level inline style beats a class rule,
+  # which beats a presentation attribute (that is the CSS cascade order).
+  # fill and stroke both inherit, so an ancestor's value still counts.
+  resolve_prop <- function(node, prop) {
+    cur <- node
+    repeat {
+      inline <- xml2::xml_attr(cur, "style")
+      if (!is.na(inline)) {
+        val <- css_value(inline, prop)
+        if (!is.null(val)) return(val)
+      }
+
+      classes <- xml2::xml_attr(cur, "class")
+      if (!is.na(classes)) {
+        for (cls in strsplit(trimws(classes), "\\s+")[[1]]) {
+          if (!is.null(class_decls[[cls]])) {
+            val <- css_value(class_decls[[cls]], prop)
+            if (!is.null(val)) return(val)
+          }
+        }
+      }
+
+      attr_val <- xml2::xml_attr(cur, prop)
+      if (!is.na(attr_val)) return(attr_val)
+
+      if (identical(xml2::xml_path(cur), xml2::xml_path(logo_root))) return(NULL)
+      cur <- xml2::xml_parent(cur)
+      if (inherits(cur, "xml_missing")) return(NULL)
+    }
+  }
+
+  shapes <- xml2::xml_find_all(
+    logo_root,
+    ".//*[local-name()='path' or local-name()='polygon' or local-name()='polyline' or
+          local-name()='rect' or local-name()='circle' or local-name()='ellipse' or
+          local-name()='line']"
+  )
+
+  for (node in shapes) {
+    fill <- resolve_prop(node, "fill")
+    stroke <- resolve_prop(node, "stroke")
+
+    # SVG initial values, applied only when the logo itself says nothing
+    if (is.null(fill)) fill <- "#000000"
+    if (is.null(stroke)) stroke <- "none"
+
+    decls <- c(paste0("fill:", fill), paste0("stroke:", stroke))
+    if (!identical(tolower(stroke), "none")) {
+      stroke_width <- resolve_prop(node, "stroke-width")
+      if (!is.null(stroke_width)) decls <- c(decls, paste0("stroke-width:", stroke_width))
+    }
+
+    existing <- xml2::xml_attr(node, "style")
+    keep <- if (is.na(existing)) character() else trimws(strsplit(existing, ";")[[1]])
+    keep <- keep[nzchar(keep)]
+    decls <- decls[!sub("\\s*:.*$", "", decls) %in% sub("\\s*:.*$", "", keep)]
+
+    xml2::xml_set_attr(node, "style", paste(c(keep, decls), collapse = ";"))
+  }
+
+  logo_root
+}
+
+#' Add CORI logo to an SVG chart without rasterizing
+#' @description Internal helper used by [add_logo()] when `plot_path` is an
+#' SVG file. Overlays the logo as a nested `<svg>` element inside the plot's
+#' root `<svg>` element (the standard technique for embedding one vector
+#' document inside another), so the chart's vector paths and text are
+#' preserved rather than rasterized or traced. Always writes the result back
+#' to `plot_path`, since there is no way to produce a true vector SVG output
+#' via any raster round trip.
+#' @inheritParams add_logo
+#' @return magick image (a rasterized preview of the updated file; the
+#'   persisted file at `plot_path` remains fully vector)
+#' @keywords internal
+add_logo_svg <- function(plot_path, logo_path, logo_position, logo_scale, logo_margin) {
+
+  plot_doc <- xml2::read_xml(plot_path)
+  logo_doc <- xml2::read_xml(logo_path)
+
+  plot_root <- xml2::xml_root(plot_doc)
+  logo_root <- xml2::xml_root(logo_doc)
+
+  # Get width/height in the SVG's own user-unit coordinate system.
+  # Prefer viewBox (unit-agnostic, and it's the actual coordinate space the
+  # SVG's own content is drawn in); fall back to width/height attrs with any
+  # trailing unit suffix (pt, px, in, cm, mm, %) stripped.
+  get_dims <- function(root) {
+    vb <- xml2::xml_attr(root, "viewBox")
+    if (!is.na(vb)) {
+      parts <- as.numeric(strsplit(trimws(vb), "\\s+")[[1]])
+      return(c(width = parts[3], height = parts[4]))
+    }
+    c(
+      width  = as.numeric(gsub("[a-zA-Z%]+$", "", xml2::xml_attr(root, "width"))),
+      height = as.numeric(gsub("[a-zA-Z%]+$", "", xml2::xml_attr(root, "height")))
+    )
+  }
+
+  plot_dims   <- get_dims(plot_root)
+  plot_width  <- plot_dims[["width"]]
+  plot_height <- plot_dims[["height"]]
+
+  logo_dims <- get_dims(logo_root)
+
+  # default scale to 1/logo_scale width of plot, preserving logo aspect ratio
+  logo_width  <- plot_width / logo_scale
+  logo_height <- logo_width * (logo_dims[["height"]] / logo_dims[["width"]])
+
+  # Set position of logo (same helper as add_logo_png(); SVG's y-axis also
+  # starts top-left)
+  offsets <- logo_offsets(logo_position, plot_width, plot_height, logo_width, logo_height, logo_margin)
+  x_pos <- offsets[["x"]]
+  y_pos <- offsets[["y"]]
+
+  # Turn the logo's root <svg> into a nested SVG viewport: setting
+  # x/y/width/height (unitless, i.e. in the parent's user-unit coordinate
+  # system) on a child <svg> element embeds it as its own vector document
+  # without rasterizing either the plot or the logo.
+  xml2::xml_set_attr(logo_root, "x", as.character(x_pos))
+  xml2::xml_set_attr(logo_root, "y", as.character(y_pos))
+  xml2::xml_set_attr(logo_root, "width", as.character(logo_width))
+  xml2::xml_set_attr(logo_root, "height", as.character(logo_height))
+
+  # Immunize the logo against the host chart's stylesheet before embedding:
+  # svglite's `.svglite path { fill: none; stroke: #000000 }` would otherwise
+  # reach into the nested <svg> and strip the logo down to a hollow outline.
+  inline_logo_styles(logo_root)
+
+  # Cross-document insertion: xml_add_child()'s default `.copy = TRUE`
+  # deep-copies logo_root's subtree into plot_doc; logo_doc is untouched.
+  # This also preserves logo_root's original xmlns declaration automatically
+  # -- do NOT xml_set_attr(logo_root, "xmlns", ...) here, it segfaults R
+  # whenever the node already carries that namespace from parsing (always
+  # true for a read_xml()'d SVG root).
+  xml2::xml_add_child(plot_root, logo_root)
+
+  # SVG output must always be persisted in place: it's the only way to get a
+  # valid vector artifact with the logo embedded (magick cannot write true
+  # vector SVG at all).
+  xml2::write_xml(plot_doc, file = plot_path)
+
+  # Return a magick image to honor add_logo()'s existing return contract
+  # uniformly across input types: re-read the just-written file (now with
+  # the embedded vector logo) via the rsvg-backed renderer as a
+  # high-quality preview object, distinct from the persisted vector file.
+  magick::image_read_svg(plot_path)
 }
 
 #' Add CORI logo to ggplot figure in an SVG-friendly way, then export

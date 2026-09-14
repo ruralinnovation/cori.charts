@@ -2,7 +2,7 @@
 % Please edit documentation in R/update_defaults.R
 \name{update_cori_geom_defaults}
 \alias{update_cori_geom_defaults}
-\title{The Center for Rural Innovation \link{ggplot2} theme}
+\title{The Center for Rural Innovation \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme}
 \usage{
 update_cori_geom_defaults(base_family = "Lato")
 }
@@ -10,7 +10,7 @@ update_cori_geom_defaults(base_family = "Lato")
 \item{base_family}{The base font family for the theme, defaults to "Lato".}
 }
 \description{
-\code{update_cori_geom_defaults()} provides a \link{ggplot2} theme that aligns with the
+\code{update_cori_geom_defaults()} provides a \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme that aligns with the
 CORI style guide, with sensible defaults.
 }
 \examples{
